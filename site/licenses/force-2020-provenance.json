@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.0",
+  "purpose": "evaluation",
+  "selectionPolicy": {
+    "version": "force-v2.1",
+    "usesHoldoutLabels": false,
+    "splitSeed": "force-v2-2026-10-25",
+    "windowPoints": 500,
+    "wellOrder": "sha256(splitSeed + \"|\" + wellId) 升序；前 6 口，其顺序即拆分顺序",
+    "windowRule": "窗内无采样断点且 GR 全有效；RHOB/NPHI/RDEP 覆盖率各 ≥ 0.50；排序键＝最低覆盖率高 → 窗内 GR 标准差大 → 深度浅；全程不读标签",
+    "classRule": "只统计训练井窗内标签：白垩 70032 并入石灰岩 70000；岩盐/硬石膏/凝灰岩/煤/基底排除；占比 < 2% 的类不建独立标签",
+    "split": "哈希序前 4 口训练、第 5 口验证、第 6 口测试；同井不跨组"
+  },
+  "source": {
+    "kind": "public",
+    "label": "FORCE 2020 Wells and Lithofacies dataset（挪威北海公开井）",
+    "url": "https://github.com/bolgebrygg/Force-2020-Machine-Learning-competition",
+    "licenses": {
+      "curves": "NLOD 2.0 (Norwegian Licence for Open Government Data)",
+      "labels": "CC BY 4.0 (Zenodo record 4351156)"
+    },
+    "retrievedAt": "2026-10-25",
+    "files": [
+      {
+        "name": "train.zip (lithology_competition/data/train.zip)",
+        "sha256": "e996c8466f2d0dc7116daa71485cc90c31fcfac6345a5bb33165026478b642e9"
+      },
+      {
+        "name": "train.csv (train.zip 内解压)",
+        "sha256": "f72eaa9d4d30b0990b553333baaac7d129f2a2c5bce96fd580b31592658641da"
+      }
+    ],
+    "citation": "Bormann P., Aursand P., Dilib F., Dischington P., Manral S. 2020. FORCE Machine Learning Competition. https://github.com/bolgebrygg/Force-2020-Machine-Learning-competition",
+    "modification": "按观测覆盖与连续性截窗，再按固定哈希选井拆分；按训练标签规则合并/排除岩性编码。曲线保存四位小数、深度三位小数；保留原始采样间隔，未插补、未重采样。"
+  },
+  "split": {
+    "train": [
+      "25/7-2",
+      "31/6-8",
+      "34/11-2 S",
+      "33/5-2"
+    ],
+    "validation": [
+      "35/9-5"
+    ],
+    "test": [
+      "15/9-15"
+    ]
+  },
+  "wellCount": 6,
+  "pointCount": 3000,
+  "requiredAcknowledgement": "Lithofacies data was provided by the FORCE Machine Learning competition with well logs and seismic 2020.",
+  "licenseArchives": [
+    {
+      "file": "NLOD-2.0.txt",
+      "source": "https://data.norge.no/nlod/en/2.0",
+      "sha256": "45d7409310d94bdd3ac27ae48ba52804ed7fb20db4c2656a61bfcc120191f20e",
+      "retrievedAt": "2026-10-27T14:47:59.359630+00:00"
+    },
+    {
+      "file": "CC-BY-4.0.txt",
+      "source": "https://creativecommons.org/licenses/by/4.0/legalcode.txt",
+      "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
+      "retrievedAt": "2026-10-27T14:47:59.375115+00:00"
+    }
+  ]
+}

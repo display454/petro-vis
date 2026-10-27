@@ -1,0 +1,140 @@
+{
+ "schemaVersion": "1.0",
+ "source_column": "FORCE_2020_LITHOFACIES_LITHOLOGY",
+ "policyVersion": "force-v2.1",
+ "classes": [
+  {
+   "code": 30000,
+   "name": "砂岩"
+  },
+  {
+   "code": 65000,
+   "name": "泥岩"
+  },
+  {
+   "code": 65030,
+   "name": "砂泥互层"
+  },
+  {
+   "code": 70000,
+   "name": "石灰岩"
+  }
+ ],
+ "mapping": [
+  {
+   "code": 30000,
+   "raw_name": "砂岩",
+   "mapped_code": 30000,
+   "mapped_name": "砂岩",
+   "status": "kept",
+   "train_share": 0.175
+  },
+  {
+   "code": 65000,
+   "raw_name": "泥岩",
+   "mapped_code": 65000,
+   "mapped_name": "泥岩",
+   "status": "kept",
+   "train_share": 0.6945
+  },
+  {
+   "code": 65030,
+   "raw_name": "砂泥互层",
+   "mapped_code": 65030,
+   "mapped_name": "砂泥互层",
+   "status": "kept",
+   "train_share": 0.096
+  },
+  {
+   "code": 70000,
+   "raw_name": "石灰岩",
+   "mapped_code": 70000,
+   "mapped_name": "石灰岩",
+   "status": "kept",
+   "train_share": 0.021
+  },
+  {
+   "code": 70032,
+   "raw_name": "白垩",
+   "mapped_code": 70000,
+   "mapped_name": "石灰岩",
+   "status": "merged",
+   "train_share": 0.0
+  },
+  {
+   "code": 74000,
+   "raw_name": "白云岩",
+   "mapped_code": null,
+   "mapped_name": null,
+   "status": "below_threshold",
+   "train_share": 0.0
+  },
+  {
+   "code": 80000,
+   "raw_name": "泥灰岩",
+   "mapped_code": null,
+   "mapped_name": null,
+   "status": "below_threshold",
+   "train_share": 0.0065
+  },
+  {
+   "code": 86000,
+   "raw_name": "硬石膏",
+   "mapped_code": null,
+   "mapped_name": null,
+   "status": "excluded",
+   "train_share": 0.0
+  },
+  {
+   "code": 88000,
+   "raw_name": "岩盐",
+   "mapped_code": null,
+   "mapped_name": null,
+   "status": "excluded",
+   "train_share": 0.0
+  },
+  {
+   "code": 90000,
+   "raw_name": "煤",
+   "mapped_code": null,
+   "mapped_name": null,
+   "status": "excluded",
+   "train_share": 0.007
+  },
+  {
+   "code": 93000,
+   "raw_name": "基底",
+   "mapped_code": null,
+   "mapped_name": null,
+   "status": "excluded",
+   "train_share": 0.0
+  },
+  {
+   "code": 99000,
+   "raw_name": "凝灰岩",
+   "mapped_code": null,
+   "mapped_name": null,
+   "status": "excluded",
+   "train_share": 0.0
+  }
+ ],
+ "merge_rule": {
+  "70032": 70000
+ },
+ "excluded": {
+  "88000": "岩盐：蒸发岩，非本组目标岩性",
+  "86000": "硬石膏：蒸发岩，非本组目标岩性",
+  "99000": "凝灰岩：火山岩类，样本极少，响应不可比",
+  "90000": "煤：有机质层，样本极少",
+  "93000": "基底：非沉积岩"
+ },
+ "min_train_share": 0.02,
+ "computed_from": "训练井窗口内标签（split.train = 25/7-2, 31/6-8, 34/11-2 S, 33/5-2）",
+ "notes": [
+  "originalLithologyCode 始终是数据源中的原始编码，被合并或被排除的类也照原样保留。",
+  "mappedLithologyCode 是合并/过滤后的模型编码；null 表示该类不进入模型，不是原始缺失。",
+  "lithology 是 mappedLithologyCode 的中文展示名；mapped 为 null 时 lithology 也为 null。",
+  "白垩 (70032) 与石灰岩 (70000) 映射到同一模型类，但两者原始编码保持不同。",
+  "岩性标签不是地层界面真值，不用于 w1 分层评价；NPHI 不是实测孔隙度真值。"
+ ]
+}

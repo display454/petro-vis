@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>w5 · 测井数据修复：可见、遮挡与两种补全</title>
+<meta name="description" content="先遮住一部分 GR 当考题，再看线性插值与岭回归各自补得怎么样。只在人工遮挡点评价，真缺口不评价。真实公开数据，指标由当前内核计算。">
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<div class="bench">
+
+  <header class="bench-top">
+    <div class="bt-eyebrow">
+      <span class="bt-live" id="bt-mode">—</span>
+    </div>
+    <h1>测井数据修复：先藏住答案，再比较两种补法</h1>
+    <p class="bt-sub">
+      人为遮住部分 GR 观测作为评价区：<b>线性插值</b>只看两侧可见点，<b>岭回归</b>用 RHOB / NPHI / log RDEP 估。
+      指标只在人工遮挡点计算；数据源本来就没有的段（真缺口）没有真值，那里不评价、也不写残差。
+    </p>
+  </header>
+
+  <section class="experiment-guide" aria-label="引导实验"><div><h2>复杂模型一定比插值好吗？</h2><p>用默认的 15% 遮挡比较两种方法，再切换测试井。查看同区 MAE 与局部缺口，判断方法的优势是否能迁移到另一口井。</p></div><div class="experiment-actions"><button type="button" data-experiment="default">验证井 · 15%</button><button type="button" data-experiment="stress">测试井 · 15%</button><button type="button" data-experiment="empty">无遮挡</button></div><p class="experiment-note">快捷实验会恢复默认条件，再只改变所述因素；也可继续手动调节参数。</p></section>
+
+
+  <div id="alert" class="alert" role="alert" hidden></div>
+
+  <div class="workbench">
+
+    <section class="col-controls" aria-labelledby="ctl-h">
+      <div class="col-head">
+        <h2 id="ctl-h">参数与数据</h2>
+        <button type="button" class="btn-quiet" id="reset">复位</button>
+      </div>
+
+      <div class="field">
+        <label for="well">井</label>
+        <select id="well"></select>
+        <p class="tip" id="well-tip">—</p>
+      </div>
+
+      <div class="field">
+        <label for="ratio">遮挡比例 <output id="ratio-out">15%</output></label>
+        <input type="range" id="ratio" min="0" max="30" step="1" value="15">
+        <p class="tip">只遮 GR，不动辅助曲线与真值；同一 seed 下提高比例会得到嵌套遮罩。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">显示方法 <span class="mono" id="method-out">两种</span></span>
+        <div class="seg" id="method-group" role="group" aria-label="显示方法">
+          <button type="button" class="m-chip" data-method="both" aria-pressed="true">两种</button>
+          <button type="button" class="m-chip" data-method="linear" aria-pressed="false">线性</button>
+          <button type="button" class="m-chip" data-method="ridge" aria-pressed="false">岭回归</button>
+        </div>
+        <p class="tip">切换只改显示，不重新遮罩、不重新拟合。</p>
+      </div>
+
+      <label class="check" for="show-truth">
+        <input type="checkbox" id="show-truth" checked> 显示遮挡段真值
+      </label>
+
+      <div class="field-group">
+        <h3>模型与遮罩</h3>
+        <dl class="facts" id="facts"></dl>
+      </div>
+    </section>
+
+    <section class="col-plots" aria-label="图表">
+
+      <div class="panel">
+        <div class="plot-head">
+          <h2>全井段 GR · 可见 / 遮挡 / 两种修复</h2>
+          <span class="mono">深度 / m</span>
+        </div>
+        <ul class="legend" id="track-legend"></ul>
+        <div class="track-row">
+          <div class="chart" id="track-main"></div>
+          <div class="chart" id="track-aux"></div>
+        </div>
+        <p class="plot-status" id="track-status">—</p>
+      </div>
+
+      <div class="panel">
+        <div class="plot-head">
+          <h2>局部对比 · 段内逐点</h2>
+          <span class="mono" id="gap-cap">未选择缺口</span>
+        </div>
+        <div class="gap-list" id="gap-list" role="group" aria-label="遮挡缺口列表"></div>
+        <div class="chart" id="local"></div>
+        <p class="plot-hint" id="local-hint">
+          点上面任一缺口可查看该段逐点对比；在图上用 ↑↓ 逐点移动，Enter 读整段，Esc 取消。
+        </p>
+      </div>
+
+    </section>
+
+    <aside class="col-inspect" aria-labelledby="ins-h">
+      <div class="col-head">
+        <h2 id="ins-h">指标</h2>
+        <span class="tag-tol">仅遮挡点</span>
+      </div>
+
+      <table class="m-table">
+        <caption>两法各自指标；n 是成功预测的遮挡点数，可以小于 masked。</caption>
+        <thead>
+          <tr><th scope="col">指标</th><th scope="col">线性</th><th scope="col">岭回归</th></tr>
+        </thead>
+        <tbody id="m-body"></tbody>
+      </table>
+
+      <div class="cmp-box">
+        <div class="bb-head">
+          <h3>共同点对比</h3>
+          <span class="mono" id="cmp-common">—</span>
+        </div>
+        <dl class="cmp-list" id="cmp-list">
+          <div><dt>线性更近</dt><dd id="cmp-a">—</dd></div>
+          <div><dt>岭回归更近</dt><dd id="cmp-b">—</dd></div>
+          <div><dt>相同</dt><dd id="cmp-t">—</dd></div>
+          <div><dt>MAE 差（岭−线）</dt><dd id="cmp-d">—</dd></div>
+        </dl>
+        <p class="cmp-note" id="cmp-note">—</p>
+      </div>
+
+      <div class="inspector-block">
+        <h3>选中读数 <span class="mono" id="sel-mode">未选中</span></h3>
+        <div class="sel-detail" id="detail">
+          默认不预选任何点。点缺口或曲线上的位置后再看这里的真值、两法预测与残差。
+        </div>
+      </div>
+
+      <details class="src-block">
+        <summary>数据来源与限制</summary>
+        <div id="source">—</div>
+      </details>
+    </aside>
+
+  </div>
+
+  <details class="reading-help"><summary>读图与指标说明</summary><p>GR 是自然伽马，单位 API。线性插值连接缺口两侧的可见点；岭回归根据其它曲线估计 GR。MAE 越小越好，公平比较只使用双方均有预测的相同遮挡点。原生缺失没有参考值，不能计算误差。</p></details>
+
+  <footer class="bench-foot">
+    <p>
+      <b>三类空格要分清</b> 可见区是原始值；遮挡区是被我们故意藏起来、但仍有真值的点，只有这里算误差；
+      真缺口是数据源本来就没有的段，没有真值，任何误差数字都不该出现在那里。
+      本批 6 井的 GR 全部有效，<b>原生缺口为 0</b>，斜纹图例保留但当前不会出现。
+    </p>
+    <p>
+      <b>说法边界</b> 遮挡比例、块长与 seed 固定后可复现；提高比例会得到嵌套遮罩，不是在原遮罩上重抽。
+      两法差值只用双方都预测成功的共同点，不能拿两个不同覆盖范围的 MAE 直接相减。
+      负 R² 原样显示；真值方差为 0 或没有可评价点时写“不适用”，不写 0。
+    </p>
+  </footer>
+
+</div>
+
+<script src="data.js"></script>
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

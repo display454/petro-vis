@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>w4 · 岩性识别：交会散点、岩性柱与混淆矩阵</title>
+<meta name="description" content="用训练井拟合一次 kNN，对公开井做岩性识别，把准确率拆到类别、深度与混淆矩阵上。真实公开数据，指标由当前内核实时计算。">
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<div class="bench">
+
+  <header class="bench-top">
+    <div class="bt-eyebrow">
+      <span class="bt-live" id="bt-mode">—</span>
+    </div>
+    <h1>岩性识别：把准确率拆到每一类</h1>
+    <p class="bt-sub">
+      用 FORCE 公开井子集训练 kNN，并分别在验证井、测试井上评价。交会图看曲线分布，岩性柱看深度位置，混淆矩阵区分不同类别的正确与错判。
+    </p>
+  </header>
+
+  <section class="experiment-guide" aria-label="引导实验"><div><h2>总体准确率会掩盖哪些错误？</h2><p>切到冻结测试井，同时看准确率与宏 F1。点混淆矩阵的非对角格，追踪该类错判在岩性柱与交会图中的位置。</p></div><div class="experiment-actions"><button type="button" data-experiment="default">验证井</button><button type="button" data-experiment="stress">冻结测试井</button></div><p class="experiment-note">快捷实验会恢复默认条件，再只改变所述因素；也可继续手动调节参数。</p></section>
+
+
+  <div id="alert" class="alert" role="alert" hidden></div>
+
+  <div class="workbench">
+
+    <section class="col-controls" aria-labelledby="ctl-h">
+      <div class="col-head">
+        <h2 id="ctl-h">参数与数据</h2>
+        <button type="button" class="btn-quiet" id="reset">复位</button>
+      </div>
+
+      <div class="field">
+        <label for="well">井</label>
+        <select id="well"></select>
+        <p class="tip" id="well-tip">—</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">邻居数 k <output id="k-out">15</output></span>
+        <div class="seg" id="k-group" role="group" aria-label="邻居数 k"></div>
+        <p class="tip" id="k-tip">—</p>
+      </div>
+
+      <div class="field">
+        <label for="xkey">显示轴 x</label>
+        <select id="xkey"></select>
+        <label for="ykey" class="lbl lbl-2">显示轴 y</label>
+        <select id="ykey"></select>
+        <p class="tip">换显示轴只改画法；模型特征固定四条，不重新拟合、不改指标。</p>
+      </div>
+
+      <div class="field-group">
+        <h3>显示筛选</h3>
+        <div class="chips" id="class-filter"></div>
+        <label class="check" for="errors-only">
+          <input type="checkbox" id="errors-only"> 只看已知错判
+        </label>
+        <p class="tip" id="filter-tip">—</p>
+      </div>
+
+      <div class="field-group">
+        <h3>模型与数据</h3>
+        <dl class="facts" id="facts"></dl>
+      </div>
+    </section>
+
+    <section class="col-plots" aria-label="图表">
+
+      <div class="plot-row">
+        <div class="panel panel-scatter">
+          <div class="plot-head">
+            <h2>交会散点 · <span id="axis-title">—</span></h2>
+            <span class="mono" id="scatter-count">—</span>
+          </div>
+          <ul class="legend" id="scatter-legend"></ul>
+          <div class="chart" id="scatter"></div>
+          <p class="plot-status" id="scatter-status">—</p>
+        </div>
+
+        <div class="panel panel-cols">
+          <div class="plot-head">
+            <h2>岩性柱</h2>
+            <span class="mono">深度 / m</span>
+          </div>
+          <div class="chart" id="columns"></div>
+          <p class="plot-hint">左柱=参考，右柱=预测；右侧细竖条标出两柱不一致的位置。</p>
+        </div>
+      </div>
+
+      <div class="panel panel-matrix">
+        <div class="plot-head">
+          <h2>混淆矩阵 · 行=参考，列=预测</h2>
+          <span class="mono" id="matrix-cap">—</span>
+        </div>
+        <div class="matrix-wrap" id="matrix"></div>
+        <p class="plot-hint">
+          末行是参考未映射（原始编码 80000/90000，不进 P/R/F1），末列是模型拒判。
+          定向格点按可查看对应的样本组合；矩阵总和等于本井点数。
+        </p>
+      </div>
+
+    </section>
+
+    <aside class="col-inspect" aria-labelledby="ins-h">
+      <div class="col-head">
+        <h2 id="ins-h">指标</h2>
+        <span class="tag-tol">全井 · 不随筛选变化</span>
+      </div>
+
+      <div class="score">
+        <span class="score-l">固定四类宏 F1</span>
+        <strong id="m-f1">—</strong>
+        <span class="score-s" id="m-f1s">—</span>
+      </div>
+
+      <dl class="metrics">
+        <div><dt>准确率</dt><dd id="m-acc">—</dd></div>
+        <div><dt>已知参考</dt><dd id="m-known">—</dd></div>
+        <div><dt>未映射</dt><dd id="m-unknown">—</dd></div>
+      </dl>
+      <dl class="metrics tight">
+        <div><dt>参考覆盖</dt><dd id="m-refcov">—</dd></div>
+        <div><dt>拒判</dt><dd id="m-reject">—</dd></div>
+        <div><dt>预测覆盖</dt><dd id="m-predcov">—</dd></div>
+      </dl>
+
+      <div class="baseline-box">
+        <div class="bb-head">
+          <h3>多数类基线</h3>
+          <span class="mono" id="m-maj-note">—</span>
+        </div>
+        <dl class="metrics tight">
+          <div><dt>宏 F1</dt><dd id="m-maj-f1">—</dd></div>
+          <div><dt>准确率</dt><dd id="m-maj-acc">—</dd></div>
+          <div><dt>输出类</dt><dd id="m-maj-class">—</dd></div>
+        </dl>
+      </div>
+
+      <div class="inspector-block">
+        <h3>逐类 P / R / F1</h3>
+        <table class="pc-table">
+          <thead>
+            <tr><th scope="col">类</th><th scope="col">P</th><th scope="col">R</th><th scope="col">F1</th><th scope="col">支持</th></tr>
+          </thead>
+          <tbody id="per-class"></tbody>
+        </table>
+      </div>
+
+      <div class="inspector-block">
+        <h3>选中样本 <span class="mono" id="sel-mode">未选中</span></h3>
+        <div class="sel-detail" id="detail">
+          在两个柱、散点或矩阵格上点选一个样本组合；方向键移动，Enter 选中，Esc 清除。
+        </div>
+      </div>
+
+      <details class="src-block">
+        <summary>数据来源与限制</summary>
+        <div id="source">—</div>
+      </details>
+    </aside>
+
+  </div>
+
+  <details class="reading-help"><summary>读图与指标说明</summary><p>准确率按样本计分，容易受多数类影响；宏 F1 给训练定义的四个类别相同权重。混淆矩阵行是参考、列是预测，对角线为正确分类。未映射参考单独记账，不并入四类指标；邻居投票占比不是校准概率。</p></details>
+
+  <footer class="bench-foot">
+    <p>
+      <b>数据</b> FORCE 2020 公开井的 6 段窗（每段 500 点、原始 0.152 m 间隔）。曲线为公开观测，
+      岩性为人工解释标签，4 训 / 1 验 / 1 测互斥；类别只由训练井决定（4 类），泥灰岩与煤未映射、保留在数据里。
+    </p>
+    <p>
+      <b>说法边界</b> 邻居投票占比是等权邻居频率，不是校准概率，不能当置信度用；模型没有自动未知类检测，
+      只有特征缺失才拒判，低票不会自行变成未知。训练井的成绩是回代，不是泛化分数。本页不做生产级性能声明。
+    </p>
+  </footer>
+
+</div>
+
+<script src="data.js"></script>
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

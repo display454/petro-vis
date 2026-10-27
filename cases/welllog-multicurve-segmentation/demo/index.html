@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>测井曲线智能分层 · 可运行示范</title>
+<meta name="description" content="用多曲线惩罚最优分段，从连续测井曲线中找出候选地层界面，并与邻窗均值差基线对照。教学合成数据，固定种子可复现。">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<div class="bench">
+
+  <header class="bench-top">
+    <div class="bt-eyebrow">
+      <span class="bt-live" id="live-flag">教学合成数据</span>
+    </div>
+    <h1>从连续曲线中，找出地层的边界。</h1>
+    <p class="bt-sub" id="well-meta">正在生成教学井…</p>
+  </header>
+
+  <section class="experiment-guide" aria-label="引导实验"><div><h2>薄层为什么会被漏掉？</h2><p>先看默认结果，再增大分段惩罚。比较同一深度上的参考虚线与预测实线，并查看漏检数 FN。</p></div><div class="experiment-actions"><button type="button" data-experiment="default">默认对照</button><button type="button" data-experiment="stress">增大惩罚至 32</button></div><p class="experiment-note">快捷实验会恢复默认条件，再只改变所述因素；也可继续手动调节参数。</p></section>
+
+
+  <div class="workbench">
+
+    <!-- ============ 左：参数与输入 ============ -->
+    <aside class="col col-controls" aria-label="参数与输入">
+      <div class="col-head">
+        <h2>输入与参数</h2>
+        <button type="button" class="btn-quiet" id="reset">复位 ↺</button>
+      </div>
+
+      <div class="field">
+        <label for="preset">井段情境</label>
+        <select id="preset">
+          <option value="thin">薄互层 · 观察漏检</option>
+          <option value="standard">常规层 · 界面清晰</option>
+          <option value="spike">尖峰干扰 · 观察误检</option>
+        </select>
+        <p class="tip">改变潜在层界组合；同一 seed 下噪声仍可单独调。</p>
+      </div>
+
+      <div class="field">
+        <label for="features">观测曲线组合</label>
+        <select id="features">
+          <option value="grr">GR + RHOB + RDEP</option>
+          <option value="gr">GR + RHOB</option>
+          <option value="g">仅 GR</option>
+        </select>
+        <p class="tip">RDEP 先取 log10，再与其它曲线一起做 z 分数。</p>
+      </div>
+
+      <div class="field">
+        <label for="penalty">分段惩罚 <output id="penalty-out" for="penalty">4.0</output></label>
+        <input id="penalty" type="range" min="0.2" max="32" step="0.2" value="4">
+        <p class="tip">越大，界面越少；过大时短层会被合并。</p>
+      </div>
+
+      <div class="field">
+        <label for="thickness">最小层厚 <output id="thickness-out" for="thickness">0.75 m</output></label>
+        <input id="thickness" type="range" min="0.25" max="3" step="0.125" value="0.75">
+        <p class="tip">0.125 m / 点，换算为最少样本数约束每个分段。</p>
+      </div>
+
+      <div class="field">
+        <label for="noise">噪声幅度 <output id="noise-out" for="noise">0.35</output></label>
+        <input id="noise" type="range" min="0" max="2" step="0.05" value="0.35">
+        <p class="tip">只改观测扰动，潜在界面位置不变。</p>
+      </div>
+
+      <div class="field-group">
+        <h3>对照基线</h3>
+        <div class="field">
+          <label for="threshold">邻窗均值差阈值 <output id="threshold-out" for="threshold">0.65</output></label>
+          <input id="threshold" type="range" min="0.2" max="2" step="0.05" value="0.65">
+          <p class="tip">独立算法：四样本窗均值差，超过阈值即为候选。</p>
+        </div>
+      </div>
+
+      <label class="check" for="truth">
+        <input id="truth" type="checkbox" checked>
+        <span>显示合成参考界面</span>
+      </label>
+
+      <button type="button" class="btn-wide" id="new-well">换一口教学井 <span aria-hidden="true">→</span></button>
+      <p class="seed-line" id="seed-line"></p>
+
+      <dl class="facts">
+        <div><dt>井段</dt><dd id="fact-depth">—</dd></div>
+        <div><dt>采样</dt><dd id="fact-step">—</dd></div>
+        <div><dt>样本</dt><dd id="fact-n">—</dd></div>
+        <div><dt>最小样本数</dt><dd id="fact-min">—</dd></div>
+      </dl>
+    </aside>
+
+    <!-- ============ 中：三轨共享深度图 ============ -->
+    <section class="col col-plots" aria-label="多轨曲线、预测界面与模型拟合">
+      <div class="plot-head">
+        <h2>共享深度轴（深度 / m）· 三轨对照</h2>
+        <div class="plot-head-r"><span class="mono" id="plot-size"></span></div>
+      </div>
+
+      <ul class="legend" id="legend">
+        <li><i class="lg-curve"></i>观测曲线</li>
+        <li><i class="lg-fit"></i>模型拟合（分段均值）</li>
+        <li><i class="lg-pred"></i>预测界面</li>
+        <li id="lg-ref"><i class="lg-ref"></i>参考界面（合成）</li>
+        <li><i class="lg-base"></i>基线界面</li>
+        <li><i class="lg-fn"></i>漏检<i class="lg-fp"></i>误检</li>
+      </ul>
+
+      <div class="chart-wrap">
+        <div id="chart" class="chart"></div>
+      </div>
+
+      <p class="plot-hint">上下移动光标读取同一深度的三条读数；点按预测界面查看它匹配到哪条参考界面。键盘：↑↓ 移动，Enter 选中最近界面，Esc 取消。</p>
+
+      <p class="plot-status" id="plot-status" aria-live="polite"></p>
+    </section>
+
+    <!-- ============ 右：指标与检视 ============ -->
+    <aside class="col col-inspect" aria-label="指标与选中明细">
+      <div class="col-head"><h2>本次界面匹配</h2><span class="mono tag-tol">容差 ±0.5 m</span></div>
+
+      <div class="score">
+        <span class="score-l">F1</span>
+        <strong id="f1">—</strong>
+        <span class="score-s" id="match-count">—</span>
+      </div>
+
+      <dl class="metrics">
+        <div><dt>精确率 P</dt><dd id="precision">—</dd></div>
+        <div><dt>召回率 R</dt><dd id="recall">—</dd></div>
+        <div><dt>匹配 MAE</dt><dd id="mae">—</dd></div>
+      </dl>
+
+      <dl class="counts">
+        <div><dt>TP</dt><dd id="tp">—</dd></div>
+        <div><dt>FP</dt><dd id="fp">—</dd></div>
+        <div><dt>FN</dt><dd id="fn">—</dd></div>
+      </dl>
+
+      <div class="baseline-box">
+        <div class="bb-head"><h3>独立基线</h3><span class="mono" id="base-note">—</span></div>
+        <dl class="metrics tight">
+          <div><dt>基线 F1</dt><dd id="base-f1">—</dd></div>
+          <div><dt>P</dt><dd id="base-p">—</dd></div>
+          <div><dt>R</dt><dd id="base-r">—</dd></div>
+        </dl>
+      </div>
+
+      <section class="inspector-block">
+        <h3>共同深度游标</h3>
+        <div class="depth-row">
+          <output id="cur-depth" class="depth-big">—</output>
+          <span class="depth-unit">m</span>
+        </div>
+        <label class="sr-only" for="depth-slider">定位深度</label>
+        <input id="depth-slider" type="range" min="0" max="479" step="1" value="0">
+        <dl class="readout">
+          <div><dt>GR<small>API</small></dt><dd id="cur-gr">—</dd></div>
+          <div><dt>RHOB<small>g/cm³</small></dt><dd id="cur-rhob">—</dd></div>
+          <div><dt>RDEP<small>Ω·m</small></dt><dd id="cur-rdep">—</dd></div>
+        </dl>
+      </section>
+
+      <section class="inspector-block">
+        <h3>界面复核</h3>
+        <p class="sel-detail" id="sel-detail">尚未选中界面。点按图上的预测界面，或从下方列表选择。</p>
+      </section>
+
+      <section class="inspector-block">
+        <h3>预测界面 <span class="mono count-badge" id="list-count">—</span></h3>
+        <div class="bound-list" id="bound-list"></div>
+      </section>
+    </aside>
+  </div>
+
+  <p class="alert" id="alert" role="alert" hidden></p>
+
+  <details class="reading-help"><summary>读图与指标说明</summary><p>GR 是自然伽马；RHOB 是体积密度；RDEP 是深电阻率（对数轴）。TP=命中、FP=误检、FN=漏检。精确率看预测有多少正确，召回率看参考有多少被找到；F1 综合二者。匹配 MAE 只统计已匹配界面的深度误差。</p></details>
+
+  <footer class="bench-foot">
+    <p><b>方法：</b>多条曲线标准化后的惩罚最优分段（动态规划求全局最优，段长受最小层厚约束）；基线为四样本邻窗均值差 + 阈值 + 最小间距抑制。两者使用同一份输入、同一套评价。</p>
+    <p><b>身份：</b>输入是固定种子的教学合成观测，参考界面由生成器给出、只用于评价，算法读不到它。这是合成条件下的取舍演示，不代表真实井的泛化精度。</p>
+  </footer>
+</div>
+
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

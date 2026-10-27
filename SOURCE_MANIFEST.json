@@ -1,0 +1,522 @@
+[
+  {
+    "path": ".gitattributes",
+    "bytes": 8,
+    "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+  },
+  {
+    "path": ".gitignore",
+    "bytes": 164,
+    "sha256": "228a88123d6c6927fbbce8e5a104c3dc5e82e4e5ff7da9ea135a353a7530156c"
+  },
+  {
+    "path": "LICENSE",
+    "bytes": 1324,
+    "sha256": "fc111f08a521316bae377c6fa0378a8d1a872fdca0c5c3cae2013b6ab0daf7bb"
+  },
+  {
+    "path": "README.md",
+    "bytes": 4169,
+    "sha256": "a839c3d107ef9ade9a5187c194efb2eed02e333fdb72f16361db99dc3178f589"
+  },
+  {
+    "path": "THIRD_PARTY_NOTICES.md",
+    "bytes": 2615,
+    "sha256": "1c11b1b1b2ba800a7a0c246d4cf1f99ad277b8a125792e7afa51f3fbe7311b17"
+  },
+  {
+    "path": "cases/welllog-curve-reconstruction/README.txt",
+    "bytes": 45433,
+    "sha256": "340c88befae12be76b84412a5492659b544697270f271b26a1a74e325d778d65"
+  },
+  {
+    "path": "cases/welllog-curve-reconstruction/case.json",
+    "bytes": 50197,
+    "sha256": "8a5c17521841cc84fca24946107c0d3ddf90aeee9486476b1a5c2651b1661068"
+  },
+  {
+    "path": "cases/welllog-curve-reconstruction/demo/app.js",
+    "bytes": 40550,
+    "sha256": "e0885a4540eb8d7cb8baa4cd86e3cb878d7188235b7de200f027a2602ad52327"
+  },
+  {
+    "path": "cases/welllog-curve-reconstruction/demo/core.js",
+    "bytes": 10214,
+    "sha256": "cefe4eb94032c151f248d3d512ea428e492f2f4557be9a9023b74f1d8fa0afac"
+  },
+  {
+    "path": "cases/welllog-curve-reconstruction/demo/data.js",
+    "bytes": 187485,
+    "sha256": "285662692b0f75278e186ee212d545abb1c1991d323625007a37c0b1a2483e69"
+  },
+  {
+    "path": "cases/welllog-curve-reconstruction/demo/demo.css",
+    "bytes": 19188,
+    "sha256": "d0eaa1f225e5f414346b303737287829762a3c4c84b752f4ce25303f247c485d"
+  },
+  {
+    "path": "cases/welllog-curve-reconstruction/demo/index.html",
+    "bytes": 7256,
+    "sha256": "434b4ad3eec9f485e168a9936f2a0349ed3a0abc4cebaa56c2220ddfe0938b77"
+  },
+  {
+    "path": "cases/welllog-fracture-detection/README.txt",
+    "bytes": 2526,
+    "sha256": "347cd9adb7b38fe7797d85dce3a2ed5203694c178a165c9f6b14c173b668aef6"
+  },
+  {
+    "path": "cases/welllog-fracture-detection/case.json",
+    "bytes": 146282,
+    "sha256": "055f72fe93ec9b2ed26b73dd7e1245b1435d1f10e001f92669d9fcc0fa6ad2a4"
+  },
+  {
+    "path": "cases/welllog-fracture-detection/demo/app.js",
+    "bytes": 23254,
+    "sha256": "40749f781809724e00dd5dd4af5ae4554eafc1781e2c66ab925e12dfa07cc289"
+  },
+  {
+    "path": "cases/welllog-fracture-detection/demo/core.js",
+    "bytes": 8176,
+    "sha256": "7fb7f5d4224ed6a93fbac42ebf022ed03cc43f7ba99eaf3ee9e5f965eb139bcd"
+  },
+  {
+    "path": "cases/welllog-fracture-detection/demo/demo.css",
+    "bytes": 16440,
+    "sha256": "0735629069c1d8f65b8180f9760ba686d9370a51a94f0f923ad940c91d0b070f"
+  },
+  {
+    "path": "cases/welllog-fracture-detection/demo/index.html",
+    "bytes": 10476,
+    "sha256": "3e56898c0114b85fbd40abb3dadd4484b5efbb992ddb5d19d510393cb54282a6"
+  },
+  {
+    "path": "cases/welllog-lithology-classification/README.txt",
+    "bytes": 45494,
+    "sha256": "6fc280c66bf35d395fb2b9f04810276628ecfd1e5e03a21f9bee0283fac5bf3a"
+  },
+  {
+    "path": "cases/welllog-lithology-classification/case.json",
+    "bytes": 105278,
+    "sha256": "dadc6d51b37ee75c95687b9b363c37ac77663977e6f5aaa20e8722973c502b02"
+  },
+  {
+    "path": "cases/welllog-lithology-classification/demo/app.js",
+    "bytes": 46658,
+    "sha256": "bbf20ef38d69b498475920a52c6648c71ddd95d4187c58b96f217dd8ac3844f1"
+  },
+  {
+    "path": "cases/welllog-lithology-classification/demo/core.js",
+    "bytes": 6944,
+    "sha256": "93f3a3e6f6cc9c48f2abd9cfca1590b335340f59b3f2fd464e84f64743c6bcb8"
+  },
+  {
+    "path": "cases/welllog-lithology-classification/demo/data.js",
+    "bytes": 187485,
+    "sha256": "285662692b0f75278e186ee212d545abb1c1991d323625007a37c0b1a2483e69"
+  },
+  {
+    "path": "cases/welllog-lithology-classification/demo/demo.css",
+    "bytes": 20711,
+    "sha256": "ab14d94df538bd055da63948f78aa48d928628451bdecad6c8fd999a385cce39"
+  },
+  {
+    "path": "cases/welllog-lithology-classification/demo/index.html",
+    "bytes": 7624,
+    "sha256": "8585bf7ea9ffe17180a6a8d6c7388f822fba711fe73313ec45b75a396457e6c3"
+  },
+  {
+    "path": "cases/welllog-multicurve-segmentation/README.txt",
+    "bytes": 3668,
+    "sha256": "8d1587dd80bb45526c7f95329016b377d6838abc0aa1cbcb1913374b3e0c4a49"
+  },
+  {
+    "path": "cases/welllog-multicurve-segmentation/case.json",
+    "bytes": 74541,
+    "sha256": "9b8df278f6fdee3dab68de640aec4d74719593c97f2e7234186b4423d4e2e46d"
+  },
+  {
+    "path": "cases/welllog-multicurve-segmentation/demo/app.js",
+    "bytes": 33877,
+    "sha256": "fc7747c57753bf5635b6d0133aee25e40b88a59435ea4f80382dbde59d52e9a1"
+  },
+  {
+    "path": "cases/welllog-multicurve-segmentation/demo/core.js",
+    "bytes": 12504,
+    "sha256": "19887fb51aeb07f86c0fd268c9cf1852fb9bfe615f58b571db458bb70aff3c7f"
+  },
+  {
+    "path": "cases/welllog-multicurve-segmentation/demo/demo.css",
+    "bytes": 19518,
+    "sha256": "4736cccdeb7a955ef2369e9beff2acefa7f6eda357daf622814f50313f05b882"
+  },
+  {
+    "path": "cases/welllog-multicurve-segmentation/demo/index.html",
+    "bytes": 8965,
+    "sha256": "882695d2dd83424781f936d9cd221d2653c5688bc6132b892adbcec6bb825817"
+  },
+  {
+    "path": "cases/welllog-porosity-regression/README.txt",
+    "bytes": 2566,
+    "sha256": "1a1fbbd465660fb21afc5e38cb69e12139dccd8411e8bf0af4fb159f1e528f33"
+  },
+  {
+    "path": "cases/welllog-porosity-regression/case.json",
+    "bytes": 87365,
+    "sha256": "6a8f8102904ca2449bb733ccd908e60a2a9b7c95153e56d5cab6bf90eae07d9f"
+  },
+  {
+    "path": "cases/welllog-porosity-regression/demo/app.js",
+    "bytes": 35370,
+    "sha256": "3d0a1501e27fb1574c4a85a6ab4727d1e0992bb821b33439e2990563473a5613"
+  },
+  {
+    "path": "cases/welllog-porosity-regression/demo/core.js",
+    "bytes": 7956,
+    "sha256": "55a5cbab3222b7331178a44d7c948ca683f9686a0decd7c7f8bd10d261238e3e"
+  },
+  {
+    "path": "cases/welllog-porosity-regression/demo/demo.css",
+    "bytes": 16129,
+    "sha256": "3965ecea7d1a038c3f5b0bf9b5a7e1f95ac93c23e4a8d07104ae47f2d247e345"
+  },
+  {
+    "path": "cases/welllog-porosity-regression/demo/index.html",
+    "bytes": 9273,
+    "sha256": "337eca7f6d95862db42c12a9971138f781e685e4e1ecb56ac6300d3828a7c989"
+  },
+  {
+    "path": "contracts/interfaces.d.ts",
+    "bytes": 11276,
+    "sha256": "a0dd5da438695f17d309394017fc3d8b74cb3e09520aeb4c18ee506a1f29efde"
+  },
+  {
+    "path": "data/processed/force-demo-v2.json",
+    "bytes": 345105,
+    "sha256": "0f2b2a2012d8b352dfdd70a5843b87abd1dc1de9bc0cebe39a1178bf95d23bb7"
+  },
+  {
+    "path": "data/research/catalog.json",
+    "bytes": 62237,
+    "sha256": "ab00a2f8f29a1dbf90398fd640d8614f4f9157c76b5c98221a8b40a6671f9311"
+  },
+  {
+    "path": "data/research/lithology-map.json",
+    "bytes": 3333,
+    "sha256": "ada96c3c964816711129104af42bae074143cf3454f8cf4cfa5e36574dd56152"
+  },
+  {
+    "path": "deliverables/cases/manifest.json",
+    "bytes": 1908,
+    "sha256": "c73066e3cf071e37d829d13c9f663d55a3b3f337e27d4a738ddfc9c9ae77ae58"
+  },
+  {
+    "path": "deliverables/cases/测井-储层参数智能解释.zip",
+    "bytes": 40218,
+    "sha256": "aeae9ef7394e21b821428396bb3b77c94ea10705277c64139528793f2fbc297f"
+  },
+  {
+    "path": "deliverables/cases/测井-岩性识别.zip",
+    "bytes": 102056,
+    "sha256": "1517f6d97357c03de7ece08f5ea327da13a35dc928a5f7115ec71775e9725c32"
+  },
+  {
+    "path": "deliverables/cases/测井-成像测井裂缝识别.zip",
+    "bytes": 125293,
+    "sha256": "f33a4b388bfdd6d75bfe0e6ad6eff4652df0bdc1bf4766fe25f6d1535f7d5b22"
+  },
+  {
+    "path": "deliverables/cases/测井-测井数据修复.zip",
+    "bytes": 101141,
+    "sha256": "c233616158fd15f8eef7ec6de9425f9dbae01d779d4423bd7313294bf5d9fc1f"
+  },
+  {
+    "path": "deliverables/cases/测井-测井曲线智能分层.zip",
+    "bytes": 48090,
+    "sha256": "db1e4bacd3a8b572344a6ef8c8e02789a8eb52511665ccd4249a5875dd282764"
+  },
+  {
+    "path": "docs/case-01-design.md",
+    "bytes": 7825,
+    "sha256": "3d77b7042a327bf8094413203cd84d83c19cb4e66a2f9e31589b34781b92612e"
+  },
+  {
+    "path": "docs/case-02-03-design.md",
+    "bytes": 6032,
+    "sha256": "9a53b7a6d4f85e4da821d03bfcea56cb17a8c584e663c50ccb6860907a780d11"
+  },
+  {
+    "path": "docs/case-04-05-design.md",
+    "bytes": 6245,
+    "sha256": "8269c353f6dc797d3eca4158fa065e5e0c0cb290763a1123898c7b2902309466"
+  },
+  {
+    "path": "docs/experiments/R03-core-results.json",
+    "bytes": 20912,
+    "sha256": "bfee02455e81bf7077ae27028d47eb1d89ac1358e2559438d92b3cac59f15621"
+  },
+  {
+    "path": "docs/interfaces-v1.md",
+    "bytes": 28244,
+    "sha256": "12d7e119e2ae6f960d3628670720c1837873d14f814f374ebfafe9d8088f9d2c"
+  },
+  {
+    "path": "extracted/assets/core/case-demo-host.js",
+    "bytes": 14476,
+    "sha256": "b714731358d5f5b7c68ded5dfedef1c126683ce7861e38db0ac9375c5ff8cea2"
+  },
+  {
+    "path": "extracted/assets/core/registry.js",
+    "bytes": 6485,
+    "sha256": "8f05258ab1773f632fcf85b42d0217832955db6db88c4e4cb1da9642c3ddd993"
+  },
+  {
+    "path": "extracted/assets/data.js",
+    "bytes": 79603,
+    "sha256": "c72429b12a68f11739f297e5fb70ab353e5fb4a377ec0e5522f4da9ddfd478e2"
+  },
+  {
+    "path": "site/LICENSE.txt",
+    "bytes": 1324,
+    "sha256": "fc111f08a521316bae377c6fa0378a8d1a872fdca0c5c3cae2013b6ab0daf7bb"
+  },
+  {
+    "path": "site/THIRD_PARTY_NOTICES.md",
+    "bytes": 2576,
+    "sha256": "befb457e9dd924f4328999bcedd6cde5f034117a649361c9ee68df1c52051a1b"
+  },
+  {
+    "path": "site/assets/cases/_template.case.js",
+    "bytes": 8138,
+    "sha256": "240f7ba5f403f829c28c9568d0140b6c73d1f678e8a6bd04456a6a3becf694a6"
+  },
+  {
+    "path": "site/assets/cases/_template.case.json",
+    "bytes": 5053,
+    "sha256": "199671209a54f00b2e573a60d1912f0257bd004a8201ebfcd4d9de6db43aefc8"
+  },
+  {
+    "path": "site/assets/cases/welllog-curve-reconstruction.case.js",
+    "bytes": 369069,
+    "sha256": "ec695be64cbd2d6734cfb9f29b87073f642ae9524eb6eb20354520ce8d343c57"
+  },
+  {
+    "path": "site/assets/cases/welllog-fracture-detection.case.js",
+    "bytes": 208288,
+    "sha256": "cf7e2374e34a1d9a215132a7bea2c1c59f687073e9945f9484213edb2f55a509"
+  },
+  {
+    "path": "site/assets/cases/welllog-layer.case.js",
+    "bytes": 20872,
+    "sha256": "aa77d965f07ac6af4ec60fa66ddb916536f12eded49f1386320d3e55e73a9313"
+  },
+  {
+    "path": "site/assets/cases/welllog-layer.demo.js",
+    "bytes": 22766,
+    "sha256": "cda5c3883fe99ba41eebd12c6e8bb3997e9162d650e58095361367e5e1f8b849"
+  },
+  {
+    "path": "site/assets/cases/welllog-lithology-classification.case.js",
+    "bytes": 429097,
+    "sha256": "801b13f3550f8ff495b0e1641a7fff44df3a0128e5bac56dadc9e148d6c02c0d"
+  },
+  {
+    "path": "site/assets/cases/welllog-multicurve-segmentation.case.js",
+    "bytes": 154806,
+    "sha256": "0259f7b7b91d5590acb41dd8570229defb858979b2a5b7108e293c4fe0c0f448"
+  },
+  {
+    "path": "site/assets/cases/welllog-porosity-regression.case.js",
+    "bytes": 160220,
+    "sha256": "8f6f43b0f33261e04a06ea2626c1e30eefdc92ca29aca8934c40ea06ecd6cd3e"
+  },
+  {
+    "path": "site/assets/core/admin.js",
+    "bytes": 24682,
+    "sha256": "25abed50581002bb10740abaa4eb4b79e01f6c716b69907eaa1c385ed2dc7c13"
+  },
+  {
+    "path": "site/assets/core/case-demo-host.js",
+    "bytes": 14814,
+    "sha256": "0022fe3d50e5e755c62e3c381ef79f24be49ba4429d4794cf04eee41d56e439c"
+  },
+  {
+    "path": "site/assets/core/case-upload.js",
+    "bytes": 66694,
+    "sha256": "7e6591bdbd07d1b1b5dba2140190787c94b4f91217c7d0fd96ccb86807f97a99"
+  },
+  {
+    "path": "site/assets/core/kit.js",
+    "bytes": 8151,
+    "sha256": "617d84843cad0ad45ba52b0a56c17fba116adb9fb55dea85f3506dc23ac6011f"
+  },
+  {
+    "path": "site/assets/core/layout.css",
+    "bytes": 17977,
+    "sha256": "d713df258742648d08a600aeebc1ad580155e88cae215e0a7569cb77b2f38fdd"
+  },
+  {
+    "path": "site/assets/core/registry.js",
+    "bytes": 6485,
+    "sha256": "8f05258ab1773f632fcf85b42d0217832955db6db88c4e4cb1da9642c3ddd993"
+  },
+  {
+    "path": "site/assets/core/shell.js",
+    "bytes": 63919,
+    "sha256": "5ca36c7d22678287c625015ffe54584dd0a0b6db101ffa72d7e645f9ac3d1621"
+  },
+  {
+    "path": "site/assets/core/tokens.css",
+    "bytes": 7020,
+    "sha256": "dd854039321271b1f948af9ca76266d186e7fb35f756f0445b242641c95e22fa"
+  },
+  {
+    "path": "site/assets/core/ui.css",
+    "bytes": 50599,
+    "sha256": "b845960f9fe9bd8d46e35c3a9bb9f7fe3128b1bbdf0c08dd3d42bdbfa6deea1b"
+  },
+  {
+    "path": "site/assets/data.js",
+    "bytes": 79603,
+    "sha256": "c72429b12a68f11739f297e5fb70ab353e5fb4a377ec0e5522f4da9ddfd478e2"
+  },
+  {
+    "path": "site/docs/如何添加新案例.md",
+    "bytes": 10878,
+    "sha256": "a9d79418c3a2b10646fd67531ddfdb2498144830edbb43ceebe12c08dba1cab9"
+  },
+  {
+    "path": "site/downloads/index.html",
+    "bytes": 2024,
+    "sha256": "5988f835507aa4d7fb7b5c5a976efbdf7cbfbd201368e826c3fe366ca0bd6914"
+  },
+  {
+    "path": "site/firstbreak-pick-case/README.txt",
+    "bytes": 1411,
+    "sha256": "848fa6f94869a71a0da5ddc09fff7c54b9bec4465f8f1469502f4ebac0a148a1"
+  },
+  {
+    "path": "site/firstbreak-pick-case/case.json",
+    "bytes": 6704,
+    "sha256": "f8f1abc31ac3949fed5ff8dc93e8b8152fd370c11475545f463cc27279de43e7"
+  },
+  {
+    "path": "site/firstbreak-pick-case/demo/demo.css",
+    "bytes": 1644,
+    "sha256": "c32c7f70a3b1d7338d57ed35b4ad9bc6b533abc5918cf0860d8bf4a99ab25f49"
+  },
+  {
+    "path": "site/firstbreak-pick-case/demo/demo.js",
+    "bytes": 8847,
+    "sha256": "557177fb73470f5ab047c02ce41df78cdf529564effe9d8bffd3fb6d8ccd8ae7"
+  },
+  {
+    "path": "site/firstbreak-pick-case/demo/index.html",
+    "bytes": 1598,
+    "sha256": "e689e7bd35ddaa2dc4be4907322a8b41b18fbc0647b42050f254bead834071a5"
+  },
+  {
+    "path": "site/index.html",
+    "bytes": 2993,
+    "sha256": "a626d67bfa280307504b80aa70f2a771ff2f9188dd0da14e704c5604af2a7887"
+  },
+  {
+    "path": "site/licenses/CC-BY-4.0.txt",
+    "bytes": 18657,
+    "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411"
+  },
+  {
+    "path": "site/licenses/NLOD-2.0.txt",
+    "bytes": 20943,
+    "sha256": "45d7409310d94bdd3ac27ae48ba52804ed7fb20db4c2656a61bfcc120191f20e"
+  },
+  {
+    "path": "site/licenses/force-2020-provenance.json",
+    "bytes": 2893,
+    "sha256": "c363f28e7b9f2499e35c0f18f573357ec1d14d3d05504645d000abd33a5c963b"
+  },
+  {
+    "path": "site/licenses/index.html",
+    "bytes": 3135,
+    "sha256": "35c8388e15109d5ee993e7fc9d322727433b37d78ace9457f2fa35ab0fc79894"
+  },
+  {
+    "path": "tests/case-01-core.test.cjs",
+    "bytes": 4045,
+    "sha256": "27132621dab67a30336b538cfc94479e7a2c4c8f202a522e3e873c789c823d43"
+  },
+  {
+    "path": "tests/case-02-core.test.cjs",
+    "bytes": 3108,
+    "sha256": "6931466610cd414c8e73dc14179aa93d6eb31331300790cb570f5aa864baac1d"
+  },
+  {
+    "path": "tests/case-03-core.test.cjs",
+    "bytes": 2729,
+    "sha256": "90d2b0f8217867819a9bb6634540a17826b7963eff0bf130862a5c35e56d6057"
+  },
+  {
+    "path": "tests/case-04-core.test.cjs",
+    "bytes": 3408,
+    "sha256": "595d730dc38aef098d70a8b467710fb43c7e967991073c872ee422f6bb4839cd"
+  },
+  {
+    "path": "tests/case-05-core.test.cjs",
+    "bytes": 4474,
+    "sha256": "5c979bcabb1b5b381da0d8c248825c1febc05f912aac018b7738836086912b1e"
+  },
+  {
+    "path": "tests/ui-render-regressions.test.cjs",
+    "bytes": 3537,
+    "sha256": "87e0cbf0ef890cc211058698ec34c1d1d3928d5352fdccad2c9781e40579ab6f"
+  },
+  {
+    "path": "tools/build-case-01-content.cjs",
+    "bytes": 17564,
+    "sha256": "30600c4ce0487806fb906fa92303aa0cfac46de63669e2ff6fad042665bc6a50"
+  },
+  {
+    "path": "tools/build-case-02-03-content.cjs",
+    "bytes": 22746,
+    "sha256": "30d2222b34ab7192220dbbfdbdac1a0793cff9186c2e29770c3e0c5795ba6616"
+  },
+  {
+    "path": "tools/build-case-04-05-content.cjs",
+    "bytes": 23824,
+    "sha256": "5df47a103f3f72ffe406eadb0222313181ec242a8134415104f5f9db39360231"
+  },
+  {
+    "path": "tools/build-public-demo-data.cjs",
+    "bytes": 5083,
+    "sha256": "d3c0793dded9978e9545311e60a7f735e8b85bbb9fecf5f59299f70aff830c92"
+  },
+  {
+    "path": "tools/build_cases.py",
+    "bytes": 5498,
+    "sha256": "43f253f17216c6dd1fe44c3ffa2c2247f7f3870da1fbcb14452416297aa4b747"
+  },
+  {
+    "path": "tools/build_release.py",
+    "bytes": 4320,
+    "sha256": "e55fd4bdf4a68a706573e917e56da8ddf4ea77a7c0c739cc318e907bd7ff2cb0"
+  },
+  {
+    "path": "tools/data/check_force_v2.py",
+    "bytes": 16927,
+    "sha256": "c18daf577dc42363097399fe61be7380cd30efe574cb4cb9ac95b01ebae0ae1f"
+  },
+  {
+    "path": "tools/data/extract_force.py",
+    "bytes": 24295,
+    "sha256": "58dd4a2f63b17e734869b030e25bcc15d1180c9d227708d0b9bfc031eb172c2e"
+  },
+  {
+    "path": "tools/prepare_github.py",
+    "bytes": 3099,
+    "sha256": "63b7579d28508aac3c0c3a307850f6af1fc40fe30c12c0211d02026909b7219c"
+  },
+  {
+    "path": "tools/validate-cases.cjs",
+    "bytes": 6222,
+    "sha256": "10ed66764a67c2c4352d4ad92721c49c87d7a12c21eb9f94371471e7b98fe42c"
+  }
+]

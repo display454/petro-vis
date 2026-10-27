@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>w3 · 成像裂缝候选：从像素搜索正弦几何</title>
+<meta name="description" content="在合成的井壁展开灰度图上搜索正弦几何候选，用固定几何容差评价命中与误检；候选需要人工确认，不是已识别天然裂缝。">
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<div class="bench">
+
+  <header class="bench-top">
+    <div class="bt-eyebrow">
+      <span class="bt-live" id="bt-mode">—</span>
+    </div>
+    <h1>成像裂缝候选：几何能看见什么、看不见什么</h1>
+    <p class="bt-sub">
+      在合成井壁图像中增强暗线，搜索正弦轨迹，并与参考裂缝作几何匹配。对照原图与候选叠加图，观察噪声、层理干扰和可见度带来的漏检与误检。
+    </p>
+    <div class="identity">
+      <span class="id-badge">合成灰度图 · 几何候选需人工确认</span>
+      <span class="id-note">灰色/几何教学模型，不模拟电成像或声波成像仪器的真实物理响应</span>
+    </div>
+  </header>
+
+  <section class="experiment-guide" aria-label="引导实验"><div><h2>几何形状相似，就一定是裂缝吗？</h2><p>先看清晰图像，再加入层理干扰。对照叠加图与候选列表中的误检：算法找到了正弦形状，地质解释仍需复核。</p></div><div class="experiment-actions"><button type="button" data-experiment="default">清晰图像</button><button type="button" data-experiment="stress">加入层理干扰</button></div><p class="experiment-note">快捷实验会恢复默认条件，再只改变所述因素；也可继续手动调节参数。</p></section>
+
+
+  <div id="alert" class="alert" role="alert" hidden></div>
+
+  <div class="workbench">
+
+    <section class="col-controls" aria-labelledby="ctl-h">
+      <div class="col-head">
+        <h2 id="ctl-h">图像条件</h2>
+        <button type="button" class="btn-quiet" id="reset">复位</button>
+      </div>
+
+      <div class="field">
+        <span class="lbl">情境</span>
+        <div class="seg seg-wrap" id="preset-group" role="group" aria-label="图像情境">
+          <button type="button" data-preset="standard" aria-pressed="true">标准</button>
+          <button type="button" data-preset="occluded" aria-pressed="false">方位缺失</button>
+          <button type="button" data-preset="bedding" aria-pressed="false">层理干扰</button>
+        </div>
+        <p class="tip" id="preset-tip">—</p>
+      </div>
+
+      <div class="field">
+        <label for="noise">像素噪声 <output id="noise-out">0.06</output></label>
+        <input type="range" id="noise" min="0" max="0.18" step="0.01" value="0.06">
+        <p class="tip">只改像素噪声，不移动参考裂缝的几何位置。</p>
+      </div>
+
+      <div class="field">
+        <label for="vis">裂缝可见度 <output id="vis-out">0.80</output></label>
+        <input type="range" id="vis" min="0" max="1" step="0.05" value="0.8">
+        <p class="tip">乘在暗线深度上；可见度过低时参考裂缝几乎不可见，漏检是真实结果。</p>
+      </div>
+
+      <div class="field">
+        <label for="th">候选阈值 <output id="th-out">0.45</output></label>
+        <input type="range" id="th" min="0.15" max="0.9" step="0.01" value="0.45">
+        <p class="tip">只过滤缓存候选与评价；降阈值会多出弱候选与误检，不会重跑搜索。</p>
+      </div>
+
+      <div class="field-group">
+        <h3>图层</h3>
+        <label class="check" for="ly-enh"><input type="checkbox" id="ly-enh"> 左图显示暗线增强</label>
+        <label class="check" for="ly-all"><input type="checkbox" id="ly-all"> 叠加层显示全部缓存候选</label>
+        <label class="check" for="ly-res" checked><input type="checkbox" id="ly-res" checked> 叠加层显示阈值内结果</label>
+        <label class="check" for="ly-truth" checked><input type="checkbox" id="ly-truth" checked> 叠加层显示参考裂缝（真值）</label>
+        <p class="tip">真值只画在叠加层，不进入搜索；关闭它不影响任何指标。</p>
+      </div>
+
+      <div class="field-group">
+        <h3>配置与限值</h3>
+        <dl class="facts" id="facts"></dl>
+        <p class="tip" id="perf">—</p>
+      </div>
+    </section>
+
+    <section class="col-plots" aria-label="图像与候选">
+
+      <div class="img-row">
+        <div class="panel">
+          <div class="plot-head">
+            <h2 id="left-title">原图</h2>
+            <span class="mono" id="left-status">—</span>
+          </div>
+          <div class="img-axis"><span>0°</span><span>90°</span><span>180°</span><span>270°</span><span>360°</span></div>
+          <div class="img-body">
+            <div class="depth-rail" aria-hidden="true"><span style="top:0%">2500.00</span><span style="top:20%">2501.02</span><span style="top:40%">2502.04</span><span style="top:60%">2503.06</span><span style="top:80%">2504.08</span><span style="top:100%">2505.10</span></div>
+            <div class="img-wrap" id="img-left">
+              <canvas id="cv-left" width="128" height="256"></canvas>
+              <svg id="ov-left" viewBox="0 0 128 256" preserveAspectRatio="none" aria-hidden="true"></svg>
+            </div>
+          </div>
+          <p class="plot-hint" id="left-hint">方位 0—360°，深度向下增加；缺失方位用斜纹标出，不画成 0 灰度黑线。</p>
+        </div>
+
+        <div class="panel">
+          <div class="plot-head">
+            <h2>候选叠加</h2>
+            <span class="mono" id="right-status">—</span>
+          </div>
+          <div class="img-axis"><span>0°</span><span>90°</span><span>180°</span><span>270°</span><span>360°</span></div>
+          <div class="img-body">
+            <div class="depth-rail" aria-hidden="true"><span style="top:0%">2500.00</span><span style="top:20%">2501.02</span><span style="top:40%">2502.04</span><span style="top:60%">2503.06</span><span style="top:80%">2504.08</span><span style="top:100%">2505.10</span></div>
+            <div class="img-wrap" id="img-right">
+              <canvas id="cv-right" width="128" height="256"></canvas>
+              <svg id="ov-right" viewBox="0 0 128 256" preserveAspectRatio="none" aria-label="候选与参考裂缝叠加"></svg>
+            </div>
+          </div>
+          <ul class="legend" id="legend"></ul>
+        </div>
+      </div>
+
+      <div class="axes" id="axes">
+        <span class="ax-depth">深度 2500.00 → 2505.10 m（每行 0.02 m）</span>
+        <span class="ax-az">方位 0° 左边缘 → 360° 右边缘（整周展开）</span>
+      </div>
+
+      <div class="panel panel-list">
+        <div class="plot-head">
+          <h2>候选列表 · 按分数降序</h2>
+          <span class="mono" id="list-status">—</span>
+        </div>
+        <div class="list-wrap">
+          <table class="cand">
+            <thead>
+              <tr>
+                <th scope="col">#</th><th scope="col">分数</th><th scope="col">列支持率</th>
+                <th scope="col">中心深度 / m</th><th scope="col">幅度 / px</th>
+                <th scope="col">相位 / °</th><th scope="col">匹配</th>
+              </tr>
+            </thead>
+            <tbody id="cand-body"></tbody>
+          </table>
+        </div>
+        <p class="plot-hint">
+          分数是暗线响应均值，<b>不是概率</b>；相位是公式中的 ψ，不是校正后的倾向；像素幅度不是开度。
+          方向键移动、Enter 选中、Esc 清除；阈值把选中项过滤掉时明细会清空。
+        </p>
+      </div>
+
+    </section>
+
+    <aside class="col-inspect" aria-labelledby="ins-h">
+      <div class="col-head">
+        <h2 id="ins-h">指标</h2>
+        <span class="tag-tol">对象匹配 · 容差固定</span>
+      </div>
+
+      <div class="score">
+        <span class="score-l">F1</span>
+        <strong id="m-f1">—</strong>
+        <span class="score-s" id="m-f1s">—</span>
+      </div>
+
+      <dl class="metrics">
+        <div><dt>TP</dt><dd id="m-tp">—</dd></div>
+        <div><dt>FP</dt><dd id="m-fp">—</dd></div>
+        <div><dt>FN</dt><dd id="m-fn">—</dd></div>
+        <div><dt>精确率 P</dt><dd id="m-p">—</dd></div>
+        <div><dt>召回率 R</dt><dd id="m-r">—</dd></div>
+        <div><dt>平均匹配距离</dt><dd id="m-dist">—</dd></div>
+      </dl>
+      <p class="metric-note" id="m-note">—</p>
+
+      <div class="block">
+        <h3>图像与缓存</h3>
+        <dl class="metrics tight">
+          <div><dt>缓存候选</dt><dd id="m-coarse">—</dd></div>
+          <div><dt>阈值内</dt><dd id="m-kept">—</dd></div>
+          <div><dt>有效像素</dt><dd id="m-valid">—</dd></div>
+          <div><dt>参考裂缝</dt><dd id="m-refs">—</dd></div>
+        </dl>
+        <p class="tip" id="m-tol">—</p>
+      </div>
+
+      <div class="block">
+        <h3>选中候选 <span class="mono" id="sel-mode">未选中</span></h3>
+        <div class="sel-detail" id="detail">
+          在图上点一条候选，或在列表里用方向键移动、Enter 选中。初始不预选。
+        </div>
+      </div>
+
+      <details class="src-block">
+        <summary>数据来源与说法边界</summary>
+        <div id="source">—</div>
+      </details>
+    </aside>
+
+  </div>
+
+  <details class="reading-help"><summary>读图与指标说明</summary><p>横轴是井壁方位，纵轴是深度；倾斜平面展开后可呈正弦轨迹。绿色候选与合成参考按几何容差匹配；TP=命中、FP=误检、FN=漏检。候选分数是像素响应，不是裂缝概率。</p></details>
+
+  <footer class="bench-foot">
+    <p>
+      <b>依据</b> 图件借用井壁声波成像（ATV）的展开几何：横轴是方位、纵轴是深度，倾斜平面在展开图上呈正弦。
+      本例是自己写的灰度教学生成器，不复制任何仪器数据，也不宣称复现电阻率或声波成像的响应。
+    </p>
+    <p>
+      <b>说法边界</b> 命中的只是<b>几何候选</b>；层理也是正弦，进入几何结果时按误检计。没有井径、井斜与工具定向校正，
+      因此不输出真实倾角或开度，也不能把平面迹线直接称为已识别的天然裂缝。
+    </p>
+  </footer>
+
+</div>
+
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

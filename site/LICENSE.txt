@@ -1,0 +1,26 @@
+Project rights and third-party licences
+======================================
+
+Copyright (c) 2026 the respective petro-vis contributors.
+All rights reserved for original project contributions unless a separate
+licence is explicitly identified for a particular file or component.
+Publication of the website and source repository does not itself grant a
+blanket open-source licence. Statutory rights remain unaffected.
+
+The supplied course framework, scene catalogue, original sample cases and
+their adaptations remain subject to their respective authors' rights.
+The supplied baseline did not include a separate open-source licence.
+No MIT/Apache/Creative Commons licence is asserted for those components.
+
+The FORCE 2020 well-log data and interpreted lithofacies labels retain
+their existing third-party licences, independently of project code:
+
+* Well-log curves: Norwegian Licence for Open Government Data (NLOD) 2.0.
+  https://data.norge.no/nlod/en/2.0
+* Interpreted lithofacies labels: Creative Commons Attribution 4.0
+  International (CC BY 4.0).
+  https://creativecommons.org/licenses/by/4.0/
+
+These data licences are not restricted by the reservation of rights above.
+See THIRD_PARTY_NOTICES.md and site/licenses/ for attribution, full licence
+texts, source hashes and the changes made to the published data subset.

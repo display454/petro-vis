@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>w2 · 孔隙度解释：模拟标定下的 kNN 与密度公式</title>
+<meta name="description" content="在合成教学井上比较 kNN 回归与密度公式解释孔隙度：共用深度、误差用孔隙度百分点、局部邻居差异不是置信区间。">
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<div class="bench">
+
+  <header class="bench-top">
+    <div class="bt-eyebrow">
+      <span class="bt-live" id="bt-mode">—</span>
+    </div>
+    <h1>孔隙度解释：模拟标定下的两种读数</h1>
+    <p class="bt-sub">
+      用四口训练井的模拟标定点建立 kNN 回归，在另一口教学井上预测孔隙度，并与密度公式比较。点选图中的深度，联动查看预测与残差；误差单位为孔隙度百分点（pp）。
+    </p>
+    <div class="identity">
+      <span class="id-badge">合成数据与模拟岩心标定</span>
+      <span class="id-note">不是油田实测、不是实测岩心；目标井是留出教学井，允许交互查看结果</span>
+    </div>
+  </header>
+
+  <section class="experiment-guide" aria-label="引导实验"><div><h2>换一种流体，误差会怎样变化？</h2><p>从默认对照切换到流体偏移。查看散点偏离对角线的方向，再比较两法 MAE；两者都变差时，要考虑训练条件是否适用。</p></div><div class="experiment-actions"><button type="button" data-experiment="default">标准对照</button><button type="button" data-experiment="stress">流体偏移</button></div><p class="experiment-note">快捷实验会恢复默认条件，再只改变所述因素；也可继续手动调节参数。</p></section>
+
+
+  <div id="alert" class="alert" role="alert" hidden></div>
+
+  <div class="workbench">
+
+    <section class="col-controls" aria-labelledby="ctl-h">
+      <div class="col-head">
+        <h2 id="ctl-h">实验条件</h2>
+        <button type="button" class="btn-quiet" id="reset">复位</button>
+      </div>
+
+      <div class="field">
+        <span class="lbl">井段情境</span>
+        <div class="seg" id="scenario-group" role="group" aria-label="井段情境">
+          <button type="button" data-scenario="standard" aria-pressed="true">标准</button>
+          <button type="button" data-scenario="shift" aria-pressed="false">流体偏移</button>
+        </div>
+        <p class="tip" id="scenario-tip">流体偏移只改目标井的流体与观测响应；训练井与潜在孔隙度不变。</p>
+      </div>
+
+      <div class="field">
+        <label for="noise">观测噪声 <output id="noise-out">1.0</output></label>
+        <input type="range" id="noise" min="0" max="2" step="0.1" value="1">
+        <p class="tip">只改曲线观测噪声，不改潜在参考孔隙度；0 表示无噪声的模拟测井。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">每井标定点 <output id="perwell-out">24</output></span>
+        <div class="seg" id="perwell-group" role="group" aria-label="每井标定点">
+          <button type="button" data-perwell="6" aria-pressed="false">6</button>
+          <button type="button" data-perwell="12" aria-pressed="false">12</button>
+          <button type="button" data-perwell="24" aria-pressed="true">24</button>
+          <button type="button" data-perwell="48" aria-pressed="false">48</button>
+        </div>
+        <p class="tip" id="perwell-tip">—</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">邻居数 k <output id="k-out">9</output></span>
+        <div class="seg" id="k-group" role="group" aria-label="邻居数 k">
+          <button type="button" data-k="1" aria-pressed="false">1</button>
+          <button type="button" data-k="5" aria-pressed="false">5</button>
+          <button type="button" data-k="9" aria-pressed="true">9</button>
+          <button type="button" data-k="15" aria-pressed="false">15</button>
+        </div>
+        <p class="tip" id="k-tip">改 k 只重新预测，不重新拟合标定统计。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">模型特征</span>
+        <div class="seg seg-wrap" id="feature-group" role="group" aria-label="模型特征">
+          <button type="button" data-features="four" aria-pressed="true">四曲线</button>
+          <button type="button" data-features="rhob" aria-pressed="false">仅 RHOB</button>
+        </div>
+        <p class="tip">四曲线=GR / RHOB / NPHI / RDEP（RDEP 先取 log10）。换特征会重新拟合。</p>
+      </div>
+
+      <div class="field">
+        <label class="check" for="show-ref">
+          <input type="checkbox" id="show-ref" checked> 在深度轨显示模拟参考
+        </label>
+        <p class="tip">只影响绘制；参考数组从不进入拟合或预测。</p>
+      </div>
+
+      <div class="field-group">
+        <h3>数据身份</h3>
+        <dl class="facts" id="facts"></dl>
+        <button type="button" class="btn-quiet wide" id="newseed">换一份观测</button>
+      </div>
+    </section>
+
+    <section class="col-plots" aria-label="图表">
+
+      <div class="panel">
+        <div class="plot-head">
+          <h2>深度对齐 · 参考 / kNN / 密度公式</h2>
+          <span class="mono" id="depth-status">—</span>
+        </div>
+        <div class="chart" id="depth-track" tabindex="0" role="region" aria-label="可横向滚动的三轨孔隙度图"></div>
+        <p class="plot-hint">
+          窄屏可横向滑动三轨图。三条轨共用深度轴：灰色=模拟参考，绿色点线=kNN，铜色虚线=密度公式。点任一轨切换选中深度。
+        </p>
+      </div>
+
+      <div class="panel">
+        <div class="plot-head">
+          <h2>预测 vs 参考 · 虚线为 y=x</h2>
+          <span class="mono" id="scatter-status">—</span>
+        </div>
+        <ul class="legend" id="scatter-legend"></ul>
+        <div class="chart" id="scatter"></div>
+        <p class="plot-hint">
+          点在虚线上方=高估，下方=低估。虚线描边的点是<b>特征超出训练范围</b>的未校准提示，不删点、不自动判错。
+        </p>
+      </div>
+
+      <div class="panel">
+        <div class="plot-head">
+          <h2>残差随深度 · 预测 − 参考</h2>
+          <span class="mono" id="resid-status">—</span>
+        </div>
+        <div class="chart" id="resid"></div>
+        <p class="plot-hint">
+          残差用孔隙度百分点 pp。左右两侧分别是 kNN 与密度公式，零线为无偏；两法误差量级不同，不要只看符号。
+        </p>
+      </div>
+
+    </section>
+
+    <aside class="col-inspect" aria-labelledby="ins-h">
+      <div class="col-head">
+        <h2 id="ins-h">指标</h2>
+        <span class="tag-tol">全井 · 不随选中变化</span>
+      </div>
+
+      <table class="mtx" id="metric-table">
+        <thead>
+          <tr><th scope="col">指标</th><th scope="col">kNN</th><th scope="col">密度公式</th></tr>
+        </thead>
+        <tbody id="m-body"></tbody>
+      </table>
+      <p class="metric-note" id="m-note">—</p>
+
+      <div class="block">
+        <h3>范围与离散</h3>
+        <dl class="metrics tight">
+          <div><dt>特征范围外</dt><dd id="m-outside">—</dd></div>
+          <div><dt>邻居标定差异</dt><dd id="m-spread">—</dd></div>
+          <div><dt>标定组合</dt><dd id="m-calib">—</dd></div>
+        </dl>
+        <p class="tip">
+          「邻居标定差异」是 k 个邻居标定值的总体标准差（中位 / 最大），<b>不是 95% 置信区间</b>，也不随选中重算。
+        </p>
+      </div>
+
+      <div class="block">
+        <h3>选中深度 <span class="mono" id="sel-mode">未选中</span></h3>
+        <div class="sel-detail" id="detail">
+          在三张图上点一个深度，或用方向键移动游标、Enter 确认、Esc 清除。初始不预选。
+        </div>
+      </div>
+
+      <details class="src-block">
+        <summary>数据来源与说法边界</summary>
+        <div id="source">—</div>
+      </details>
+    </aside>
+
+  </div>
+
+  <details class="reading-help"><summary>读图与指标说明</summary><p>孔隙度是孔隙体积占岩石总体积的比例，0.20 v/v 表示 20%。MAE 是平均绝对误差，RMSE 更敏感于大误差，二者越小越好；1 pp 是 1 个孔隙度百分点。散点对角线表示预测等于参考。</p></details>
+
+  <footer class="bench-foot">
+    <p>
+      <b>生成器</b> 潜在孔隙度由岩相与泥质含量驱动，再生成 GR / RHOB / NPHI / RDEP 观测；标定值是潜在孔隙度加一点点噪声的模拟岩心读数。
+      这是教学模型，不是仪器仿真，也没有 FORCE 独立岩心真值——公开数据的 NPHI 或预测都不能充当岩心标定。
+    </p>
+    <p>
+      <b>说法边界</b> 目标井是留出教学井，允许看着结果调参数；默认值是预设教学配置，不是按目标分数挑出来的“最优”。
+      密度公式的负值或越界值照原样显示，不裁到 0—1。所有误差单位是孔隙度百分点 pp。
+    </p>
+  </footer>
+
+</div>
+
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

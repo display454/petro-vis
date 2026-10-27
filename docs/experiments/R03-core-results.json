@@ -1,0 +1,929 @@
+{
+  "date": "2026-10-26",
+  "dataFile": "data/processed/force-demo-v2.json",
+  "datasetSha256": "0f2b2a2012d8b352dfdd70a5843b87abd1dc1de9bc0cebe39a1178bf95d23bb7",
+  "split": {
+    "train": [
+      "25/7-2",
+      "31/6-8",
+      "34/11-2 S",
+      "33/5-2"
+    ],
+    "validation": [
+      "35/9-5"
+    ],
+    "test": [
+      "15/9-15"
+    ]
+  },
+  "classCodes": [
+    30000,
+    65000,
+    65030,
+    70000
+  ],
+  "classCounts": [
+    350,
+    1389,
+    192,
+    42
+  ],
+  "trainingSamples": {
+    "lithology": 1973,
+    "repair": 2000
+  },
+  "defaults": {
+    "lithology": {
+      "k": 15,
+      "featureKeys": [
+        "gr_api",
+        "rhob_g_cm3",
+        "nphi_vv",
+        "rdep_ohm_m"
+      ]
+    },
+    "repair": {
+      "lambda": 10,
+      "curve": "gr_api",
+      "ratio": 0.15,
+      "seed": "r03-w5-01",
+      "blockSamples": 15
+    }
+  },
+  "selection": {
+    "rule": "w4: validation fixed-four-class macro F1 maximum, ties prefer smaller k; w5: validation masked MAE minimum, ties prefer smaller lambda",
+    "lithologyCandidates": [
+      {
+        "k": 1,
+        "metrics": {
+          "classCodes": [
+            30000,
+            65000,
+            65030,
+            70000
+          ],
+          "matrix": [
+            [
+              0,
+              17,
+              3,
+              0,
+              0
+            ],
+            [
+              11,
+              124,
+              103,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              32,
+              6,
+              5,
+              1,
+              0
+            ],
+            [
+              173,
+              7,
+              17,
+              0,
+              0
+            ]
+          ],
+          "perClass": [
+            {
+              "code": 30000,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 20,
+              "predicted": 43
+            },
+            {
+              "code": 65000,
+              "precision": 0.8435374149659864,
+              "recall": 0.5188284518828452,
+              "f1": 0.6424870466321244,
+              "support": 239,
+              "predicted": 147
+            },
+            {
+              "code": 65030,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 0,
+              "predicted": 111
+            },
+            {
+              "code": 70000,
+              "precision": 0.5,
+              "recall": 0.022727272727272728,
+              "f1": 0.04347826086956522,
+              "support": 44,
+              "predicted": 2
+            }
+          ],
+          "macroF1": 0.1714913268754224,
+          "accuracy": 0.41254125412541254,
+          "evaluated": 303,
+          "total": 500,
+          "unknownReference": 197,
+          "rejectedKnown": 0,
+          "referenceCoverage": 0.606,
+          "predictionCoverage": 1,
+          "unknownPolicy": "separate-row-column; known-reference denominator includes rejections; fixed-class macro"
+        }
+      },
+      {
+        "k": 5,
+        "metrics": {
+          "classCodes": [
+            30000,
+            65000,
+            65030,
+            70000
+          ],
+          "matrix": [
+            [
+              0,
+              19,
+              1,
+              0,
+              0
+            ],
+            [
+              11,
+              170,
+              58,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              32,
+              10,
+              2,
+              0,
+              0
+            ],
+            [
+              177,
+              3,
+              17,
+              0,
+              0
+            ]
+          ],
+          "perClass": [
+            {
+              "code": 30000,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 20,
+              "predicted": 43
+            },
+            {
+              "code": 65000,
+              "precision": 0.8542713567839196,
+              "recall": 0.7112970711297071,
+              "f1": 0.7762557077625571,
+              "support": 239,
+              "predicted": 199
+            },
+            {
+              "code": 65030,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 0,
+              "predicted": 61
+            },
+            {
+              "code": 70000,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 44,
+              "predicted": 0
+            }
+          ],
+          "macroF1": 0.1940639269406393,
+          "accuracy": 0.5610561056105611,
+          "evaluated": 303,
+          "total": 500,
+          "unknownReference": 197,
+          "rejectedKnown": 0,
+          "referenceCoverage": 0.606,
+          "predictionCoverage": 1,
+          "unknownPolicy": "separate-row-column; known-reference denominator includes rejections; fixed-class macro"
+        }
+      },
+      {
+        "k": 9,
+        "metrics": {
+          "classCodes": [
+            30000,
+            65000,
+            65030,
+            70000
+          ],
+          "matrix": [
+            [
+              0,
+              19,
+              1,
+              0,
+              0
+            ],
+            [
+              11,
+              177,
+              51,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              31,
+              11,
+              2,
+              0,
+              0
+            ],
+            [
+              173,
+              7,
+              17,
+              0,
+              0
+            ]
+          ],
+          "perClass": [
+            {
+              "code": 30000,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 20,
+              "predicted": 42
+            },
+            {
+              "code": 65000,
+              "precision": 0.855072463768116,
+              "recall": 0.7405857740585774,
+              "f1": 0.7937219730941704,
+              "support": 239,
+              "predicted": 207
+            },
+            {
+              "code": 65030,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 0,
+              "predicted": 54
+            },
+            {
+              "code": 70000,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 44,
+              "predicted": 0
+            }
+          ],
+          "macroF1": 0.1984304932735426,
+          "accuracy": 0.5841584158415841,
+          "evaluated": 303,
+          "total": 500,
+          "unknownReference": 197,
+          "rejectedKnown": 0,
+          "referenceCoverage": 0.606,
+          "predictionCoverage": 1,
+          "unknownPolicy": "separate-row-column; known-reference denominator includes rejections; fixed-class macro"
+        }
+      },
+      {
+        "k": 15,
+        "metrics": {
+          "classCodes": [
+            30000,
+            65000,
+            65030,
+            70000
+          ],
+          "matrix": [
+            [
+              0,
+              19,
+              1,
+              0,
+              0
+            ],
+            [
+              10,
+              184,
+              45,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              31,
+              9,
+              4,
+              0,
+              0
+            ],
+            [
+              176,
+              4,
+              17,
+              0,
+              0
+            ]
+          ],
+          "perClass": [
+            {
+              "code": 30000,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 20,
+              "predicted": 41
+            },
+            {
+              "code": 65000,
+              "precision": 0.8679245283018868,
+              "recall": 0.7698744769874477,
+              "f1": 0.8159645232815964,
+              "support": 239,
+              "predicted": 212
+            },
+            {
+              "code": 65030,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 0,
+              "predicted": 50
+            },
+            {
+              "code": 70000,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 44,
+              "predicted": 0
+            }
+          ],
+          "macroF1": 0.2039911308203991,
+          "accuracy": 0.6072607260726073,
+          "evaluated": 303,
+          "total": 500,
+          "unknownReference": 197,
+          "rejectedKnown": 0,
+          "referenceCoverage": 0.606,
+          "predictionCoverage": 1,
+          "unknownPolicy": "separate-row-column; known-reference denominator includes rejections; fixed-class macro"
+        }
+      }
+    ],
+    "repairCandidates": [
+      {
+        "lambda": 0.001,
+        "metrics": {
+          "mae": 28.738023957036894,
+          "rmse": 34.33990040656342,
+          "r2": -0.6331527782916704,
+          "n": 75,
+          "masked": 75,
+          "coverage": 1
+        }
+      },
+      {
+        "lambda": 0.01,
+        "metrics": {
+          "mae": 28.518503070124872,
+          "rmse": 34.101645906260785,
+          "r2": -0.6105693600750155,
+          "n": 75,
+          "masked": 75,
+          "coverage": 1
+        }
+      },
+      {
+        "lambda": 0.1,
+        "metrics": {
+          "mae": 26.847072177610997,
+          "rmse": 32.7701643639695,
+          "r2": -0.4872568943367046,
+          "n": 75,
+          "masked": 75,
+          "coverage": 1
+        }
+      },
+      {
+        "lambda": 1,
+        "metrics": {
+          "mae": 23.352309072616293,
+          "rmse": 32.18690298032827,
+          "r2": -0.43478600990413985,
+          "n": 75,
+          "masked": 75,
+          "coverage": 1
+        }
+      },
+      {
+        "lambda": 10,
+        "metrics": {
+          "mae": 22.80864014559751,
+          "rmse": 32.62112490275694,
+          "r2": -0.4737595003994559,
+          "n": 75,
+          "masked": 75,
+          "coverage": 1
+        }
+      }
+    ]
+  },
+  "reports": [
+    {
+      "split": "validation",
+      "wellId": "35/9-5",
+      "lithology": {
+        "knn": {
+          "classCodes": [
+            30000,
+            65000,
+            65030,
+            70000
+          ],
+          "matrix": [
+            [
+              0,
+              19,
+              1,
+              0,
+              0
+            ],
+            [
+              10,
+              184,
+              45,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              31,
+              9,
+              4,
+              0,
+              0
+            ],
+            [
+              176,
+              4,
+              17,
+              0,
+              0
+            ]
+          ],
+          "perClass": [
+            {
+              "code": 30000,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 20,
+              "predicted": 41
+            },
+            {
+              "code": 65000,
+              "precision": 0.8679245283018868,
+              "recall": 0.7698744769874477,
+              "f1": 0.8159645232815964,
+              "support": 239,
+              "predicted": 212
+            },
+            {
+              "code": 65030,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 0,
+              "predicted": 50
+            },
+            {
+              "code": 70000,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 44,
+              "predicted": 0
+            }
+          ],
+          "macroF1": 0.2039911308203991,
+          "accuracy": 0.6072607260726073,
+          "evaluated": 303,
+          "total": 500,
+          "unknownReference": 197,
+          "rejectedKnown": 0,
+          "referenceCoverage": 0.606,
+          "predictionCoverage": 1,
+          "unknownPolicy": "separate-row-column; known-reference denominator includes rejections; fixed-class macro"
+        },
+        "majority": {
+          "classCodes": [
+            30000,
+            65000,
+            65030,
+            70000
+          ],
+          "matrix": [
+            [
+              0,
+              20,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              239,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              44,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              197,
+              0,
+              0,
+              0
+            ]
+          ],
+          "perClass": [
+            {
+              "code": 30000,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 20,
+              "predicted": 0
+            },
+            {
+              "code": 65000,
+              "precision": 0.7887788778877888,
+              "recall": 1,
+              "f1": 0.8819188191881918,
+              "support": 239,
+              "predicted": 303
+            },
+            {
+              "code": 65030,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 0,
+              "predicted": 0
+            },
+            {
+              "code": 70000,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 44,
+              "predicted": 0
+            }
+          ],
+          "macroF1": 0.22047970479704795,
+          "accuracy": 0.7887788778877888,
+          "evaluated": 303,
+          "total": 500,
+          "unknownReference": 197,
+          "rejectedKnown": 0,
+          "referenceCoverage": 0.606,
+          "predictionCoverage": 1,
+          "unknownPolicy": "separate-row-column; known-reference denominator includes rejections; fixed-class macro"
+        }
+      },
+      "repair": {
+        "masked": 75,
+        "genuine": 0,
+        "linear": {
+          "mae": 10.554114833333394,
+          "rmse": 16.741973989149916,
+          "r2": 0.6118120257057886,
+          "n": 75,
+          "masked": 75,
+          "coverage": 1
+        },
+        "ridge": {
+          "mae": 22.80864014559751,
+          "rmse": 32.62112490275694,
+          "r2": -0.4737595003994559,
+          "n": 75,
+          "masked": 75,
+          "coverage": 1
+        },
+        "paired": {
+          "a": {
+            "mae": 10.554114833333394,
+            "rmse": 16.741973989149916,
+            "r2": 0.6118120257057886,
+            "n": 75,
+            "masked": 75,
+            "coverage": 1
+          },
+          "b": {
+            "mae": 22.80864014559751,
+            "rmse": 32.62112490275694,
+            "r2": -0.4737595003994559,
+            "n": 75,
+            "masked": 75,
+            "coverage": 1
+          },
+          "common": 75,
+          "aBetter": 43,
+          "bBetter": 32,
+          "tied": 0
+        }
+      }
+    },
+    {
+      "split": "test",
+      "wellId": "15/9-15",
+      "lithology": {
+        "knn": {
+          "classCodes": [
+            30000,
+            65000,
+            65030,
+            70000
+          ],
+          "matrix": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              368,
+              0,
+              0,
+              0
+            ],
+            [
+              7,
+              77,
+              0,
+              0,
+              0
+            ],
+            [
+              3,
+              9,
+              0,
+              0,
+              0
+            ],
+            [
+              33,
+              2,
+              0,
+              0,
+              0
+            ]
+          ],
+          "perClass": [
+            {
+              "code": 30000,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 0,
+              "predicted": 11
+            },
+            {
+              "code": 65000,
+              "precision": 0.8105726872246696,
+              "recall": 0.997289972899729,
+              "f1": 0.8942891859052248,
+              "support": 369,
+              "predicted": 454
+            },
+            {
+              "code": 65030,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 84,
+              "predicted": 0
+            },
+            {
+              "code": 70000,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 12,
+              "predicted": 0
+            }
+          ],
+          "macroF1": 0.2235722964763062,
+          "accuracy": 0.7913978494623656,
+          "evaluated": 465,
+          "total": 500,
+          "unknownReference": 35,
+          "rejectedKnown": 0,
+          "referenceCoverage": 0.93,
+          "predictionCoverage": 1,
+          "unknownPolicy": "separate-row-column; known-reference denominator includes rejections; fixed-class macro"
+        },
+        "majority": {
+          "classCodes": [
+            30000,
+            65000,
+            65030,
+            70000
+          ],
+          "matrix": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              369,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              84,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              12,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              35,
+              0,
+              0,
+              0
+            ]
+          ],
+          "perClass": [
+            {
+              "code": 30000,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 0,
+              "predicted": 0
+            },
+            {
+              "code": 65000,
+              "precision": 0.7935483870967742,
+              "recall": 1,
+              "f1": 0.8848920863309353,
+              "support": 369,
+              "predicted": 465
+            },
+            {
+              "code": 65030,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 84,
+              "predicted": 0
+            },
+            {
+              "code": 70000,
+              "precision": 0,
+              "recall": 0,
+              "f1": 0,
+              "support": 12,
+              "predicted": 0
+            }
+          ],
+          "macroF1": 0.22122302158273383,
+          "accuracy": 0.7935483870967742,
+          "evaluated": 465,
+          "total": 500,
+          "unknownReference": 35,
+          "rejectedKnown": 0,
+          "referenceCoverage": 0.93,
+          "predictionCoverage": 1,
+          "unknownPolicy": "separate-row-column; known-reference denominator includes rejections; fixed-class macro"
+        }
+      },
+      "repair": {
+        "masked": 75,
+        "genuine": 0,
+        "linear": {
+          "mae": 42.41586016667186,
+          "rmse": 99.60097532907363,
+          "r2": -0.8181852515558448,
+          "n": 75,
+          "masked": 75,
+          "coverage": 1
+        },
+        "ridge": {
+          "mae": 36.40637625173583,
+          "rmse": 73.82366760675588,
+          "r2": 0.0011456092410673246,
+          "n": 75,
+          "masked": 75,
+          "coverage": 1
+        },
+        "paired": {
+          "a": {
+            "mae": 42.41586016667186,
+            "rmse": 99.60097532907363,
+            "r2": -0.8181852515558448,
+            "n": 75,
+            "masked": 75,
+            "coverage": 1
+          },
+          "b": {
+            "mae": 36.40637625173583,
+            "rmse": 73.82366760675588,
+            "r2": 0.0011456092410673246,
+            "n": 75,
+            "masked": 75,
+            "coverage": 1
+          },
+          "common": 75,
+          "aBetter": 50,
+          "bBetter": 25,
+          "tied": 0
+        }
+      }
+    }
+  ]
+}

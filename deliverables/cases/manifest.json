@@ -1,0 +1,52 @@
+[
+  {
+    "id": "welllog-curve-reconstruction",
+    "sceneId": "w5",
+    "version": "1.0.0",
+    "sourceBytes": 360323,
+    "zipBytes": 101141,
+    "archive": "deliverables/cases/测井-测井数据修复.zip",
+    "sha256": "c233616158fd15f8eef7ec6de9425f9dbae01d779d4423bd7313294bf5d9fc1f",
+    "plugin": "site/assets/cases/welllog-curve-reconstruction.case.js"
+  },
+  {
+    "id": "welllog-fracture-detection",
+    "sceneId": "w3",
+    "version": "1.0.0",
+    "sourceBytes": 207154,
+    "zipBytes": 125293,
+    "archive": "deliverables/cases/测井-成像测井裂缝识别.zip",
+    "sha256": "f33a4b388bfdd6d75bfe0e6ad6eff4652df0bdc1bf4766fe25f6d1535f7d5b22",
+    "plugin": "site/assets/cases/welllog-fracture-detection.case.js"
+  },
+  {
+    "id": "welllog-lithology-classification",
+    "sceneId": "w4",
+    "version": "1.0.0",
+    "sourceBytes": 420194,
+    "zipBytes": 102056,
+    "archive": "deliverables/cases/测井-岩性识别.zip",
+    "sha256": "1517f6d97357c03de7ece08f5ea327da13a35dc928a5f7115ec71775e9725c32",
+    "plugin": "site/assets/cases/welllog-lithology-classification.case.js"
+  },
+  {
+    "id": "welllog-multicurve-segmentation",
+    "sceneId": "w1",
+    "version": "1.0.0",
+    "sourceBytes": 153073,
+    "zipBytes": 48090,
+    "archive": "deliverables/cases/测井-测井曲线智能分层.zip",
+    "sha256": "db1e4bacd3a8b572344a6ef8c8e02789a8eb52511665ccd4249a5875dd282764",
+    "plugin": "site/assets/cases/welllog-multicurve-segmentation.case.js"
+  },
+  {
+    "id": "welllog-porosity-regression",
+    "sceneId": "w2",
+    "version": "1.0.0",
+    "sourceBytes": 158659,
+    "zipBytes": 40218,
+    "archive": "deliverables/cases/测井-储层参数智能解释.zip",
+    "sha256": "aeae9ef7394e21b821428396bb3b77c94ea10705277c64139528793f2fbc297f",
+    "plugin": "site/assets/cases/welllog-porosity-regression.case.js"
+  }
+]

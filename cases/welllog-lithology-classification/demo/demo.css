@@ -1,0 +1,435 @@
+/* =========================================================
+   w4 岩性识别 · 独立样式
+   ---------------------------------------------------------
+   不依赖父站 CSS：iframe 内自带默认令牌，色值与主站默认一致。
+   布局：参数列 / 散点+岩性柱 / 检视列，矩阵在图中列下方。
+   信息文字不小于 12px；类别既用颜色也配形状与纹理。
+   ========================================================= */
+
+:root{
+  --paper:      #f5f3ec;
+  --paper-2:    #edeae1;
+  --card:       #fffefa;
+  --card-soft:  #faf8f2;
+  --track:      #fffefa;
+
+  --line:       #e2ded2;
+  --line-2:     #d5d0c2;
+  --line-3:     #bdb7a6;
+
+  --ink:        #263a35;
+  --ink-2:      #48584f;
+  --ink-3:      #5c6b63;
+  --ink-4:      #5c6b63;
+  --ink-inv:    #fbfaf5;
+
+  --jade:       #256754;
+  --jade-d:     #1b4c3e;
+  --jade-l:     #e5efe9;
+  --clay:       #a45d36;
+  --clay-d:     #7f4726;
+  --clay-l:     #f7ece1;
+
+  --ok:         #2f6b4a;
+  --warn:       #8a6210;
+  --bad:        #a04a41;
+
+  --c-1:        #a45d36;
+  --c-2:        #2f6f5b;
+  --c-3:        #77681c;
+  --c-4:        #3f6b96;
+  --c-unknown:  #a7afa6;
+
+  --mono: 'JetBrains Mono','SFMono-Regular','Cascadia Mono',Consolas,'Liberation Mono',monospace;
+  --sans: -apple-system,BlinkMacSystemFont,'Segoe UI Variable','Segoe UI',
+          'PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',sans-serif;
+
+  --r-s:4px; --r-m:6px; --r-l:8px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);font-size:16px;line-height:1.65;color:var(--ink);
+  background:var(--paper);-webkit-font-smoothing:antialiased;
+}
+button{font-family:inherit;font-size:inherit;color:inherit;background:none;border:none;cursor:pointer}
+input,select{font-family:inherit;font-size:inherit}
+output{font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--jade);outline-offset:2px;border-radius:2px}
+.mono{font-family:var(--sans);font-variant-numeric:tabular-nums}
+
+/* ---------------- 顶部 ---------------- */
+.bench{max-width:1440px;margin:0 auto;padding:20px 24px 32px}
+.bench-top{border-bottom:1px solid var(--line-2);padding-bottom:14px}
+.bt-eyebrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.bt-chip{
+  font-family:var(--sans);font-size:14px;letter-spacing:normal;
+  background:var(--jade);color:var(--ink-inv);border-radius:3px;padding:2px 7px;
+}
+.bt-path{font-family:var(--sans);font-size:14px;letter-spacing:normal;color:var(--ink-3);text-transform:uppercase}
+.bt-live{
+  margin-left:auto;font-family:var(--sans);font-size:14px;letter-spacing:normal;
+  color:var(--clay-d);border:1px solid rgba(164,93,54,.32);background:var(--clay-l);
+  border-radius:3px;padding:2px 8px;
+}
+.bt-live.is-frozen{color:var(--jade-d);border-color:rgba(37,103,84,.35);background:var(--jade-l)}
+.bench-top h1{
+  font-size:28px;font-weight:640;letter-spacing:normal;
+  margin-top:9px;line-height:1.24;
+}
+.bt-sub{margin-top:6px;font-size:14px;color:var(--ink-3);line-height:1.72;max-width:104ch}
+.bt-sub b{color:var(--ink-2);font-weight:600}
+
+/* ---------------- 工作台 ---------------- */
+.workbench{
+  display:grid;gap:20px;align-items:start;margin-top:16px;
+  grid-template-columns:230px minmax(0,1fr) 258px;
+  grid-template-areas:"controls plots inspect";
+}
+.col-controls{grid-area:controls}
+.col-plots{grid-area:plots;min-width:0}
+.col-inspect{grid-area:inspect}
+.col-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:10px}
+.col-head h2{font-size:16px;letter-spacing:normal;font-weight:640;color:var(--ink)}
+
+/* ---------------- 参数列 ---------------- */
+.col-controls{
+  border:1px solid var(--line);border-radius:var(--r-m);
+  background:var(--card);padding:13px 14px 12px;
+}
+.field{margin-bottom:13px}
+.field:last-child{margin-bottom:0}
+.field > label,.field > .lbl{
+  display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+  font-size:14px;color:var(--ink-2);font-weight:600;margin-bottom:5px;
+}
+.field > .lbl-2{margin-top:10px}
+.field > label output,.field > .lbl output{
+  font-family:var(--sans);font-size:14px;font-weight:500;color:var(--jade-d);
+  background:var(--jade-l);border-radius:3px;padding:0 5px;min-width:32px;text-align:right;
+}
+.field .tip{font-size:14px;line-height:1.6;color:var(--ink-3);margin-top:5px}
+.field-group{border-top:1px solid var(--line);margin:14px 0 12px;padding-top:11px}
+.field-group h3{
+  font-family:var(--sans);font-size:14px;letter-spacing:normal;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;margin-bottom:9px;
+}
+
+select{
+  width:100%;height:31px;padding:0 8px;font-size:14px;color:var(--ink);
+  background:var(--card);border:1px solid var(--line-2);border-radius:var(--r-s);
+  appearance:none;-webkit-appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--ink-4) 50%),
+                   linear-gradient(135deg,var(--ink-4) 50%,transparent 50%);
+  background-position:calc(100% - 14px) 13px,calc(100% - 9px) 13px;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat;
+}
+select:hover{border-color:var(--line-3)}
+select:disabled{color:var(--ink-4);background-color:var(--card-soft);cursor:not-allowed}
+
+.seg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.k-chip{
+  font-family:var(--sans);font-size:14px;padding:5px 0;text-align:center;
+  border:1px solid var(--line-2);border-radius:var(--r-s);background:var(--card);
+  color:var(--ink-2);transition:background .12s,border-color .12s,color .12s;
+}
+.k-chip:hover:not(:disabled){border-color:var(--jade);color:var(--jade-d)}
+.k-chip[aria-pressed="true"]{background:var(--jade);border-color:var(--jade);color:var(--ink-inv)}
+.k-chip:disabled{opacity:.55;cursor:not-allowed}
+
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.cls-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:14px;padding:4px 8px;border:1px solid var(--line-2);border-radius:999px;
+  background:var(--card);color:var(--ink-2);transition:background .12s,border-color .12s;
+}
+.cls-chip:hover{border-color:var(--line-3)}
+.cls-chip i{width:9px;height:9px;border-radius:2px;background:var(--ink-4);flex-shrink:0}
+.cls-chip i.sq{border-radius:1px;background:transparent;border:1px solid var(--ink-3)}
+.cls-chip[aria-pressed="false"]{opacity:.5}
+.cls-chip[aria-pressed="true"]{background:var(--jade-l);border-color:var(--jade);color:var(--jade-d)}
+
+.check{
+  display:flex;align-items:center;gap:7px;font-size:14px;color:var(--ink-2);
+  padding:9px 0 0;margin-top:8px;border-top:1px solid var(--line);cursor:pointer;
+}
+.check input{width:14px;height:14px;accent-color:var(--jade)}
+
+.btn-quiet{
+  font-size:14px;color:var(--ink-3);border:1px solid var(--line-2);border-radius:var(--r-s);
+  padding:3px 8px;background:var(--card);transition:color .14s,border-color .14s;
+}
+.btn-quiet:hover{color:var(--jade-d);border-color:var(--jade)}
+
+.facts{display:grid;gap:4px}
+.facts div{display:flex;align-items:baseline;justify-content:space-between;gap:8px;min-width:0}
+.facts dt{font-size:14px;color:var(--ink-3);flex-shrink:0}
+.facts dd{font-family:var(--sans);font-size:14px;color:var(--ink-2);text-align:right;min-width:0}
+
+/* ---------------- 图 ---------------- */
+.plot-row{display:grid;grid-template-columns:minmax(0,1fr) 238px;gap:14px;align-items:start}
+.panel{
+  border:1px solid var(--line);border-radius:var(--r-m);background:var(--card);
+  padding:11px 12px 10px;min-width:0;
+}
+.panel + .panel{margin-top:14px}
+.plot-row .panel + .panel{margin-top:0}
+.plot-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:8px}
+.plot-head h2{font-size:16px;letter-spacing:normal;font-weight:640;min-width:0}
+.plot-head .mono{font-size:14px;color:var(--ink-3);letter-spacing:normal;white-space:nowrap}
+
+.legend{
+  list-style:none;display:flex;flex-wrap:wrap;gap:5px 14px;
+  padding:7px 0 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  font-size:14px;color:var(--ink-3);
+}
+.legend li{display:flex;align-items:center;gap:6px}
+.legend i{display:block;flex-shrink:0;width:10px;height:10px;border-radius:50%}
+.legend i.sq{border-radius:1px;background:var(--c-unknown);border:1px solid #7f8b82}
+.legend svg{flex-shrink:0;display:block}
+
+.chart{width:100%;overflow:visible}
+.chart svg{display:block;width:100%;height:auto;overflow:visible;touch-action:pan-y}
+.chart svg:focus-visible{outline:2px solid var(--jade);outline-offset:3px;border-radius:4px}
+
+/* SVG 内部命名样式 */
+.t-bg{fill:var(--track)}
+.t-grid{stroke:var(--line);stroke-width:1;shape-rendering:crispEdges}
+.t-grid-v{stroke:var(--line);stroke-width:1;stroke-dasharray:1 4}
+.t-frame{stroke:var(--line-2);stroke-width:1;fill:none}
+.t-tick{font-family:var(--sans);font-size:14px;fill:var(--ink-3)}
+.t-axis{font-family:var(--sans);font-size:14px;fill:var(--ink-2);letter-spacing:normal}
+.t-depth{font-family:var(--sans);font-size:14px;fill:var(--ink-2)}
+.t-col-lbl{font-family:var(--sans);font-size:14px;fill:var(--ink-2);letter-spacing:normal}
+.t-pt{stroke:rgba(255,254,250,.55);stroke-width:.6}
+.t-pt.dim{opacity:.18}
+.t-pt.gone{display:none}
+.t-ring{fill:none;stroke:var(--ink);stroke-width:1.6}
+.t-cursor{stroke:var(--ink);stroke-width:1;stroke-dasharray:2 3;opacity:.5}
+/* 不一致标记用墨色而不是类色：砂岩本身就是暖铜，用同色会让人误读成“砂岩” */
+.t-mismatch{fill:var(--ink);opacity:.55}
+/* 只有热区接收指针；未设 fill 的 SVG 矩形默认是黑色，必须显式透明。
+   网格/框/游标/错判条都不能抢指针，否则柱上的点选会被游标线截走。 */
+.t-hit{fill:transparent;cursor:pointer}
+.t-cursor,.t-frame,.t-grid,.t-grid-v,.t-mismatch,.t-ring,.t-band{pointer-events:none}
+.t-emptymsg{font-family:var(--sans);font-size:14px;fill:var(--ink-3)}
+.t-band{fill:var(--jade-l);opacity:.55}
+.t-band-alt{fill:var(--clay-l);opacity:.6}
+
+.plot-status{
+  margin-top:8px;font-size:14px;line-height:1.72;color:var(--ink-2);
+  border-left:2px solid var(--jade);padding:2px 0 2px 10px;
+}
+.plot-status b{color:var(--jade-d);font-weight:640}
+.plot-status.is-warn{border-left-color:var(--clay)}
+.plot-hint{font-size:14px;line-height:1.68;color:var(--ink-3);margin-top:8px}
+
+/* ---------------- 矩阵 ---------------- */
+.matrix-wrap{overflow-x:auto;margin-top:2px}
+.matrix{border-collapse:separate;border-spacing:2px;font-size:14px;min-width:0}
+.matrix caption{
+  caption-side:bottom;text-align:left;font-size:14px;color:var(--ink-3);
+  padding-top:7px;line-height:1.6;
+}
+.matrix th{font-weight:500;color:var(--ink-3);font-size:14px;padding:0 2px}
+.matrix thead th{text-align:center;vertical-align:bottom;padding-bottom:4px;line-height:1.3}
+.matrix tbody th{text-align:right;vertical-align:middle;padding-right:6px;line-height:1.3;white-space:nowrap}
+.matrix th.corner{font-size:14px;color:var(--ink-4);text-align:left;padding-left:2px}
+.matrix td{padding:0}
+.cell{
+  display:block;width:100%;min-width:44px;padding:6px 4px;border-radius:3px;
+  font-family:var(--sans);font-size:14px;color:var(--ink);text-align:center;
+  border:1px solid transparent;transition:outline-color .1s,background .12s;
+}
+.cell:hover{border-color:var(--jade)}
+.cell.is-zero{color:var(--ink-4);background:var(--card-soft)}
+.cell[data-lv="1"]{background:rgba(37,103,84,.09)}
+.cell[data-lv="2"]{background:rgba(37,103,84,.18)}
+.cell[data-lv="3"]{background:rgba(37,103,84,.28)}
+.cell[data-lv="4"]{background:rgba(37,103,84,.40);color:var(--ink)}
+.cell.is-diag{font-weight:600}
+.cell.is-sel{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.cell.is-dim{opacity:.4}
+.cell:disabled{cursor:default;opacity:.35}
+
+/* ---------------- 指标列 ---------------- */
+.col-inspect{
+  border:1px solid var(--line);border-radius:var(--r-m);background:var(--card);
+  padding:13px 14px 14px;
+}
+.tag-tol{font-size:14px;color:var(--ink-3);letter-spacing:normal;text-align:right}
+
+.score{
+  display:grid;grid-template-columns:auto 1fr;align-items:baseline;
+  gap:2px 8px;padding:4px 0 9px;border-bottom:1px solid var(--line);
+}
+.score-l{font-family:var(--sans);font-size:14px;letter-spacing:normal;color:var(--ink-3)}
+.score strong{
+  font-family:var(--sans);font-size:28px;line-height:1;font-weight:500;
+  color:var(--jade-d);letter-spacing:normal;justify-self:end;
+}
+.score strong.is-na{font-size:16px;color:var(--ink-3);letter-spacing:normal}
+.score-s{
+  grid-column:1 / -1;font-family:var(--sans);font-size:14px;color:var(--ink-3);
+  text-align:right;margin-top:4px;line-height:1.55;
+}
+
+.metrics{display:grid;gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
+.metrics{grid-template-columns:repeat(3,minmax(0,1fr))}
+.metrics.tight{border-bottom:0;background:transparent;gap:0}
+.metrics div{background:var(--card);padding:7px 6px 8px;min-width:0}
+.metrics dt{
+  font-family:var(--sans);font-size:14px;letter-spacing:normal;color:var(--ink-3);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.metrics dd{font-family:var(--sans);font-size:16px;color:var(--ink);margin-top:3px;letter-spacing:normal}
+.metrics dd.is-na{font-size:14px;color:var(--ink-3);font-family:var(--sans)}
+
+.baseline-box{margin-top:11px;padding:9px 0 2px;border-top:1px solid var(--line)}
+.bb-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:4px}
+.bb-head h3{font-size:14px;font-weight:640;color:var(--ink-2)}
+.bb-head .mono{font-size:14px;color:var(--ink-3)}
+.baseline-box .metrics dd{color:var(--clay-d)}
+
+.inspector-block{margin-top:13px;padding-top:11px;border-top:1px solid var(--line)}
+.inspector-block h3{
+  font-size:14px;font-weight:640;color:var(--ink-2);margin-bottom:7px;
+  display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+}
+.inspector-block h3 .mono{font-size:14px;font-weight:400;color:var(--ink-3)}
+
+.pc-table{width:100%;border-collapse:collapse;font-size:14px}
+.pc-table th{
+  font-family:var(--sans);font-size:14px;font-weight:500;color:var(--ink-3);
+  text-align:right;padding:0 2px 4px;border-bottom:1px solid var(--line);
+}
+.pc-table th:first-child{text-align:left}
+.pc-table td{
+  font-family:var(--sans);font-size:14px;color:var(--ink-2);text-align:right;
+  padding:4px 2px;border-bottom:1px solid var(--line-2);
+}
+.pc-table td:first-child{text-align:left;font-family:var(--sans);color:var(--ink)}
+.pc-table tr:last-child td{border-bottom:0}
+.pc-table td.is-zero{color:var(--clay-d)}
+.pc-table .swatch{
+  display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px;
+  vertical-align:1px;
+}
+
+.sel-detail{font-size:14px;line-height:1.72;color:var(--ink-2)}
+.sel-detail b{color:var(--ink)}
+.sel-detail .k{display:block;font-size:14px;color:var(--ink-3);margin-top:3px}
+.sel-detail .hit{color:var(--ok)}
+.sel-detail .miss{color:var(--clay-d)}
+.sel-detail dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 8px;margin-top:6px}
+.sel-detail dt{font-size:14px;color:var(--ink-3)}
+.sel-detail dd{font-family:var(--sans);font-size:14px;color:var(--ink-2);text-align:right}
+
+.vote-list{list-style:none;margin-top:6px;display:grid;gap:2px}
+.vote-list li{display:grid;grid-template-columns:52px minmax(0,1fr) 44px;gap:6px;align-items:center;font-size:14px}
+.vote-list .bar{height:6px;background:var(--paper-2);border-radius:2px;overflow:hidden}
+.vote-list .bar span{display:block;height:100%;background:var(--ink-4)}
+.vote-list .n{font-family:var(--sans);font-size:14px;color:var(--ink-3);text-align:right}
+
+.src-block{margin-top:13px;padding-top:11px;border-top:1px solid var(--line)}
+.src-block summary{
+  font-size:14px;color:var(--ink-2);font-weight:600;cursor:pointer;list-style:none;
+  display:flex;align-items:center;gap:6px;
+}
+.src-block summary::-webkit-details-marker{display:none}
+.src-block summary::before{content:'+';font-family:var(--sans);color:var(--ink-3)}
+.src-block[open] summary::before{content:'−'}
+.src-block > div{margin-top:7px;font-size:14px;line-height:1.7;color:var(--ink-3)}
+.src-block dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:3px 8px;margin-top:6px}
+.src-block dt{font-size:14px;color:var(--ink-4)}
+.src-block dd{font-size:14px;color:var(--ink-3);word-break:break-word}
+
+/* ---------------- 提示与页脚 ---------------- */
+.alert{
+  margin-top:14px;padding:10px 13px;border-radius:var(--r-s);
+  border:1px solid rgba(160,74,65,.32);background:#f8e8e4;color:#7d342c;
+  font-size:14px;line-height:1.65;
+}
+.alert b{color:#6d2b24}
+
+.bench-foot{margin-top:18px;padding-top:12px;border-top:1px solid var(--line-2)}
+.bench-foot p{font-size:14px;line-height:1.75;color:var(--ink-3);max-width:104ch}
+.bench-foot p + p{margin-top:5px}
+.bench-foot b{color:var(--ink-2);font-weight:600}
+
+/* ---------------- 响应式 ---------------- */
+@media (max-width:1279px){
+  .workbench{
+    grid-template-columns:minmax(0,1fr) 250px;
+    grid-template-areas:"controls controls" "plots inspect";
+    gap:18px;
+  }
+  .col-controls{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;align-items:start}
+  .col-controls .col-head{grid-column:1 / -1}
+  .col-controls .field-group{grid-column:1 / -1;margin-top:4px}
+  .col-controls .facts{grid-column:1 / -1;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 12px}
+  .col-controls .facts div{justify-content:flex-start;gap:6px}
+  .col-controls .facts dt{white-space:nowrap}
+}
+@media (max-width:899px){
+  .plot-row{grid-template-columns:minmax(0,1fr)}
+  .plot-row .panel + .panel{margin-top:14px}
+}
+@media (max-width:767px){
+  .bench{padding:14px 14px 24px}
+  .workbench{
+    grid-template-columns:minmax(0,1fr);
+    grid-template-areas:"controls" "plots" "inspect";
+    gap:14px;
+  }
+  .col-controls{display:block}
+  .col-controls .facts{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
+  .panel{padding:10px 9px 8px}
+  .legend{font-size:14px;gap:5px 11px}
+  .bt-live{margin-left:0}
+  .score strong{font-size:28px}
+  .cell{min-width:40px;padding:5px 2px}
+}
+
+/* 阅读版：控制与正文16px，图注/刻度14px，标题20/28px。 */
+body{font-size:16px;line-height:1.8}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.bench-top h1{font-size:28px;line-height:1.4;margin-top:8px}
+.bt-sub{font-size:16px;line-height:1.8}
+.col-head h2,.plot-head h2{font-size:20px;line-height:1.5;letter-spacing:normal}
+.field > label,.field > .lbl,.check,.checks label,select,.seg button,button,.reset{font-size:16px}
+.field > label,.field > .lbl,.col-head,.plot-head{flex-wrap:wrap}
+select{height:auto;min-height:40px;line-height:1.5;padding-top:7px;padding-bottom:7px}
+.seg button{min-height:38px;white-space:normal}
+.field-group h3,.block h3,.inspector-block h3{font-size:16px;font-weight:650;letter-spacing:normal}
+.facts,.sel-detail,.metrics,.readout,.src-block{overflow-wrap:anywhere}
+.bt-live{margin-left:0;font-size:14px;letter-spacing:normal}
+.col-controls,.col-inspect{min-width:0}
+.plot-head .mono{white-space:normal}
+@media(min-width:1280px){
+ .workbench{grid-template-columns:260px minmax(0,1fr) 290px;gap:20px}
+}
+@media(max-width:899px){
+ .workbench{grid-template-columns:minmax(0,1fr);grid-template-areas:"controls" "plots" "inspect"}
+ .col-controls,.col-inspect{display:block}
+ .col-controls .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .col-head,.plot-head{gap:6px}
+}
+
+/* R06：短实验入口；术语解释随包独立提供。 */
+.experiment-guide{margin:16px 0;padding:16px 18px;background:var(--jade-l);border-left:3px solid var(--jade);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 24px;align-items:center}
+.experiment-guide h2{font-size:20px;line-height:1.5;margin:0 0 4px}
+.experiment-guide p{font-size:16px;line-height:1.75;color:var(--ink-2)}
+.experiment-actions{display:flex;flex-wrap:wrap;gap:8px;max-width:360px}
+.experiment-actions button{min-height:44px;padding:7px 12px;border:1px solid var(--jade);border-radius:4px;background:var(--card);color:var(--jade-d);font:inherit}
+.experiment-actions button:hover{background:var(--jade);color:#fff}
+.experiment-guide .experiment-note{grid-column:1/-1;font-size:14px;color:var(--ink-3)}
+.reading-help{margin-top:20px;border:1px solid var(--line-2);padding:12px 16px;background:var(--card)}
+.reading-help summary{font-size:16px;color:var(--jade-d);cursor:pointer}
+.reading-help p{font-size:16px;line-height:1.8;margin-top:8px;max-width:95ch}
+button,input[type=range]{min-height:40px}
+@media(max-width:900px){.experiment-guide{grid-template-columns:minmax(0,1fr)}.experiment-actions{max-width:none}}
+@media(max-width:560px){.bench{padding:12px 0 22px}.bench-top h1{font-size:20px}.experiment-guide{padding:12px}.col-head h2,.plot-head h2{font-size:20px}.identity{gap:6px}}
+
+.matrix{width:100%}.matrix .cell{font-size:16px;min-height:44px}.matrix th{padding:4px;white-space:normal}

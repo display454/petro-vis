@@ -1,0 +1,3102 @@
+{
+ "schemaVersion": "1.0",
+ "generated_by": "tools/data/extract_force.py",
+ "policyVersion": "force-v2.1",
+ "source": {
+  "file": "data/raw/train.csv",
+  "sha256": "f72eaa9d4d30b0990b553333baaac7d129f2a2c5bce96fd580b31592658641da",
+  "columns": [
+   "WELL",
+   "DEPTH_MD",
+   "X_LOC",
+   "Y_LOC",
+   "Z_LOC",
+   "GROUP",
+   "FORMATION",
+   "CALI",
+   "RSHA",
+   "RMED",
+   "RDEP",
+   "RHOB",
+   "GR",
+   "SGR",
+   "NPHI",
+   "PEF",
+   "DTC",
+   "SP",
+   "BS",
+   "ROP",
+   "DTS",
+   "DCAL",
+   "DRHO",
+   "MUDWEIGHT",
+   "RMIC",
+   "ROPA",
+   "RXO",
+   "FORCE_2020_LITHOFACIES_LITHOLOGY",
+   "FORCE_2020_LITHOFACIES_CONFIDENCE"
+  ],
+  "delimiter": ";",
+  "wells": 98,
+  "rows": 1170511,
+  "retrievedAt": "2026-10-25",
+  "licenses": {
+   "curves": "NLOD 2.0 (Norwegian Licence for Open Government Data)",
+   "labels": "CC BY 4.0 (Zenodo record 4351156)"
+  },
+  "url": "https://github.com/bolgebrygg/Force-2020-Machine-Learning-competition"
+ },
+ "selection": {
+  "splitSeed": "force-v2-2026-10-25",
+  "windowPoints": 500,
+  "minCurveCoverage": 0.5,
+  "eligibleWells": 98,
+  "rejectedCount": 0,
+  "chosen": [
+   {
+    "well": "25/7-2",
+    "split": "train",
+    "start_index": 18882,
+    "end_index": 19382,
+    "depth_from_m": 4081.6,
+    "depth_to_m": 4157.448,
+    "native_step_m": 0.152,
+    "min_coverage": 1.0,
+    "gr_std": 37.844745
+   },
+   {
+    "well": "31/6-8",
+    "split": "train",
+    "start_index": 4735,
+    "end_index": 5235,
+    "depth_from_m": 1407.804,
+    "depth_to_m": 1483.652,
+    "native_step_m": 0.152,
+    "min_coverage": 1.0,
+    "gr_std": 28.36779
+   },
+   {
+    "well": "34/11-2 S",
+    "split": "train",
+    "start_index": 16601,
+    "end_index": 17101,
+    "depth_from_m": 3692.168,
+    "depth_to_m": 3768.016,
+    "native_step_m": 0.152,
+    "min_coverage": 1.0,
+    "gr_std": 31.12974
+   },
+   {
+    "well": "33/5-2",
+    "split": "train",
+    "start_index": 250,
+    "end_index": 750,
+    "depth_from_m": 3938.56,
+    "depth_to_m": 4014.408,
+    "native_step_m": 0.152,
+    "min_coverage": 1.0,
+    "gr_std": 42.91194
+   },
+   {
+    "well": "35/9-5",
+    "split": "validation",
+    "start_index": 1285,
+    "end_index": 1785,
+    "depth_from_m": 2921.488,
+    "depth_to_m": 2997.336,
+    "native_step_m": 0.152,
+    "min_coverage": 1.0,
+    "gr_std": 24.673689
+   },
+   {
+    "well": "15/9-15",
+    "split": "test",
+    "start_index": 14700,
+    "end_index": 15200,
+    "depth_from_m": 2738.352,
+    "depth_to_m": 2814.2,
+    "native_step_m": 0.152,
+    "min_coverage": 1.0,
+    "gr_std": 96.998288
+   }
+  ],
+  "classRule": {
+   "kept": [
+    30000,
+    65000,
+    65030,
+    70000
+   ],
+   "shares": {
+    "30000": 0.175,
+    "65000": 0.6945,
+    "65030": 0.096,
+    "70000": 0.021,
+    "80000": 0.0065,
+    "90000": 0.007
+   },
+   "labelledSamples": 2000,
+   "minShare": 0.02
+  }
+ },
+ "wells": [
+  {
+   "well": "15/9-13",
+   "split": null,
+   "samples": 18270,
+   "depth_min_m": 494.528,
+   "depth_max_m": 3272.024,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 18270,
+    "rhob_g_cm3": 18270,
+    "nphi_vv": 14032,
+    "rdep_ohm_m": 18270
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.232,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 2937,
+    "65000": 12547,
+    "65030": 708,
+    "70000": 1418,
+    "74000": 41,
+    "80000": 429,
+    "86000": 17,
+    "99000": 173
+   },
+   "window": null
+  },
+  {
+   "well": "15/9-15",
+   "split": "test",
+   "samples": 17717,
+   "depth_min_m": 485.256,
+   "depth_max_m": 3200.128,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 17717,
+    "rhob_g_cm3": 17521,
+    "nphi_vv": 13346,
+    "rdep_ohm_m": 17717
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0111,
+    "nphi_vv": 0.2467,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 2722,
+    "65000": 10872,
+    "65030": 1729,
+    "70000": 905,
+    "70032": 969,
+    "80000": 385,
+    "99000": 135
+   },
+   "window": {
+    "start_index": 14700,
+    "end_index": 15200,
+    "points": 500,
+    "depth_from_m": 2738.352,
+    "depth_to_m": 2814.2,
+    "min_coverage": 1.0,
+    "gr_std": 96.998288,
+    "original_lith_counts": {
+     "65000": 369,
+     "65030": 84,
+     "70000": 12,
+     "80000": 35
+    }
+   }
+  },
+  {
+   "well": "15/9-17",
+   "split": null,
+   "samples": 17350,
+   "depth_min_m": 472.43,
+   "depth_max_m": 3114.494,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 17350,
+    "rhob_g_cm3": 16696,
+    "nphi_vv": 13796,
+    "rdep_ohm_m": 17350
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0377,
+    "nphi_vv": 0.2048,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 2312,
+    "65000": 12693,
+    "65030": 301,
+    "70000": 1481,
+    "74000": 18,
+    "80000": 225,
+    "99000": 320
+   },
+   "window": null
+  },
+  {
+   "well": "16/1-2",
+   "split": null,
+   "samples": 1734,
+   "depth_min_m": 2645.58,
+   "depth_max_m": 2908.996,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 1734,
+    "rhob_g_cm3": 1639,
+    "nphi_vv": 1646,
+    "rdep_ohm_m": 1734
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0548,
+    "nphi_vv": 0.0507,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 688,
+    "65000": 610,
+    "70000": 269,
+    "74000": 43,
+    "80000": 124
+   },
+   "window": null
+  },
+  {
+   "well": "16/1-6 A",
+   "split": null,
+   "samples": 3623,
+   "depth_min_m": 1175.98,
+   "depth_max_m": 1726.524,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 3623,
+    "rhob_g_cm3": 3479,
+    "nphi_vv": 3615,
+    "rdep_ohm_m": 3623
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0397,
+    "nphi_vv": 0.0022,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 276,
+    "65000": 3208,
+    "65030": 46,
+    "70000": 93
+   },
+   "window": null
+  },
+  {
+   "well": "16/10-1",
+   "split": null,
+   "samples": 17675,
+   "depth_min_m": 439.416,
+   "depth_max_m": 3125.864,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 17675,
+    "rhob_g_cm3": 11273,
+    "nphi_vv": 11431,
+    "rdep_ohm_m": 17675
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.3622,
+    "nphi_vv": 0.3533,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 955,
+    "65000": 12245,
+    "65030": 623,
+    "70000": 2334,
+    "70032": 984,
+    "74000": 80,
+    "80000": 294,
+    "88000": 20,
+    "90000": 49,
+    "99000": 91
+   },
+   "window": null
+  },
+  {
+   "well": "16/10-2",
+   "split": null,
+   "samples": 2437,
+   "depth_min_m": 2767.265,
+   "depth_max_m": 3137.537,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 2437,
+    "rhob_g_cm3": 2437,
+    "nphi_vv": 2437,
+    "rdep_ohm_m": 2437
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 958,
+    "65000": 380,
+    "65030": 760,
+    "70000": 132,
+    "70032": 18,
+    "80000": 189
+   },
+   "window": null
+  },
+  {
+   "well": "16/10-3",
+   "split": null,
+   "samples": 15956,
+   "depth_min_m": 415.262,
+   "depth_max_m": 2840.422,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 15956,
+    "rhob_g_cm3": 10485,
+    "nphi_vv": 4663,
+    "rdep_ohm_m": 15956
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.3429,
+    "nphi_vv": 0.7078,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 810,
+    "65000": 11242,
+    "65030": 1313,
+    "70000": 1460,
+    "70032": 658,
+    "80000": 209,
+    "90000": 9,
+    "99000": 255
+   },
+   "window": null
+  },
+  {
+   "well": "16/10-5",
+   "split": null,
+   "samples": 2765,
+   "depth_min_m": 2607.004,
+   "depth_max_m": 3027.132,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 2765,
+    "rhob_g_cm3": 2601,
+    "nphi_vv": 2653,
+    "rdep_ohm_m": 2755
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0593,
+    "nphi_vv": 0.0405,
+    "rdep_ohm_m": 0.0036
+   },
+   "lithology_counts_global": {
+    "30000": 543,
+    "65000": 1195,
+    "65030": 184,
+    "70000": 667,
+    "70032": 2,
+    "80000": 174
+   },
+   "window": null
+  },
+  {
+   "well": "16/11-1 ST3",
+   "split": null,
+   "samples": 14938,
+   "depth_min_m": 682.913,
+   "depth_max_m": 2953.337,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 14938,
+    "rhob_g_cm3": 3573,
+    "nphi_vv": 3643,
+    "rdep_ohm_m": 7564
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.7608,
+    "nphi_vv": 0.7561,
+    "rdep_ohm_m": 0.4936
+   },
+   "lithology_counts_global": {
+    "30000": 474,
+    "65000": 6351,
+    "65030": 73,
+    "70000": 80,
+    "70032": 2498,
+    "74000": 6,
+    "80000": 673,
+    "86000": 282,
+    "88000": 4294,
+    "99000": 207
+   },
+   "window": null
+  },
+  {
+   "well": "16/2-11 A",
+   "split": null,
+   "samples": 10708,
+   "depth_min_m": 734.419,
+   "depth_max_m": 2361.883,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 10708,
+    "rhob_g_cm3": 10396,
+    "nphi_vv": 10565,
+    "rdep_ohm_m": 10699
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0291,
+    "nphi_vv": 0.0134,
+    "rdep_ohm_m": 0.0008
+   },
+   "lithology_counts_global": {
+    "30000": 1808,
+    "65000": 5237,
+    "65030": 572,
+    "70000": 1796,
+    "80000": 1148,
+    "99000": 147
+   },
+   "window": null
+  },
+  {
+   "well": "16/2-16",
+   "split": null,
+   "samples": 10025,
+   "depth_min_m": 684.27,
+   "depth_max_m": 2207.918,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 10025,
+    "rhob_g_cm3": 9683,
+    "nphi_vv": 9898,
+    "rdep_ohm_m": 10025
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0341,
+    "nphi_vv": 0.0127,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 1311,
+    "65000": 5810,
+    "65030": 264,
+    "70000": 1277,
+    "80000": 1118,
+    "86000": 75,
+    "99000": 170
+   },
+   "window": null
+  },
+  {
+   "well": "16/2-6",
+   "split": null,
+   "samples": 9138,
+   "depth_min_m": 735.187,
+   "depth_max_m": 2124.011,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 9138,
+    "rhob_g_cm3": 8823,
+    "nphi_vv": 8921,
+    "rdep_ohm_m": 9138
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0345,
+    "nphi_vv": 0.0237,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 1429,
+    "65000": 4794,
+    "65030": 343,
+    "70000": 1261,
+    "74000": 94,
+    "80000": 1094,
+    "99000": 123
+   },
+   "window": null
+  },
+  {
+   "well": "16/4-1",
+   "split": null,
+   "samples": 14082,
+   "depth_min_m": 760.89,
+   "depth_max_m": 2901.202,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 14082,
+    "rhob_g_cm3": 14073,
+    "nphi_vv": 14082,
+    "rdep_ohm_m": 14082
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0006,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 3812,
+    "65000": 8070,
+    "65030": 665,
+    "70000": 578,
+    "74000": 202,
+    "80000": 63,
+    "86000": 483,
+    "93000": 103,
+    "99000": 106
+   },
+   "window": null
+  },
+  {
+   "well": "16/5-3",
+   "split": null,
+   "samples": 3021,
+   "depth_min_m": 1508.99,
+   "depth_max_m": 1968.79,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 3021,
+    "rhob_g_cm3": 3003,
+    "nphi_vv": 2979,
+    "rdep_ohm_m": 3021
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.006,
+    "nphi_vv": 0.0139,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 274,
+    "65000": 461,
+    "65030": 116,
+    "70000": 1520,
+    "70032": 222,
+    "80000": 428
+   },
+   "window": null
+  },
+  {
+   "well": "16/7-4",
+   "split": null,
+   "samples": 10010,
+   "depth_min_m": 1244.38,
+   "depth_max_m": 2765.748,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 10010,
+    "rhob_g_cm3": 10010,
+    "nphi_vv": 10010,
+    "rdep_ohm_m": 10010
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 113,
+    "65000": 6533,
+    "65030": 1247,
+    "70000": 1468,
+    "80000": 464,
+    "99000": 185
+   },
+   "window": null
+  },
+  {
+   "well": "16/7-5",
+   "split": null,
+   "samples": 15590,
+   "depth_min_m": 446.472,
+   "depth_max_m": 2898.992,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 15590,
+    "rhob_g_cm3": 10292,
+    "nphi_vv": 10293,
+    "rdep_ohm_m": 15590
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.3398,
+    "nphi_vv": 0.3398,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 1791,
+    "65000": 12132,
+    "65030": 444,
+    "70000": 905,
+    "80000": 138,
+    "99000": 180
+   },
+   "window": null
+  },
+  {
+   "well": "16/8-1",
+   "split": null,
+   "samples": 6685,
+   "depth_min_m": 1291.391,
+   "depth_max_m": 2307.359,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 6685,
+    "rhob_g_cm3": 6685,
+    "nphi_vv": 4987,
+    "rdep_ohm_m": 6685
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.254,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 716,
+    "65000": 3074,
+    "65030": 494,
+    "70000": 95,
+    "70032": 434,
+    "74000": 17,
+    "80000": 1161,
+    "99000": 694
+   },
+   "window": null
+  },
+  {
+   "well": "17/11-1",
+   "split": null,
+   "samples": 20099,
+   "depth_min_m": 162.593,
+   "depth_max_m": 3238.465,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 20099,
+    "rhob_g_cm3": 18452,
+    "nphi_vv": 17462,
+    "rdep_ohm_m": 20099
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0819,
+    "nphi_vv": 0.1312,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 1232,
+    "65000": 9362,
+    "65030": 1809,
+    "70000": 65,
+    "70032": 2575,
+    "74000": 113,
+    "80000": 821,
+    "86000": 223,
+    "88000": 3899
+   },
+   "window": null
+  },
+  {
+   "well": "25/11-15",
+   "split": null,
+   "samples": 2284,
+   "depth_min_m": 1650.088,
+   "depth_max_m": 1997.104,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 2284,
+    "rhob_g_cm3": 2284,
+    "nphi_vv": 2284,
+    "rdep_ohm_m": 2284
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 427,
+    "65000": 750,
+    "65030": 50,
+    "70000": 648,
+    "80000": 409
+   },
+   "window": null
+  },
+  {
+   "well": "25/11-19 S",
+   "split": null,
+   "samples": 6975,
+   "depth_min_m": 984.412,
+   "depth_max_m": 2044.46,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 6975,
+    "rhob_g_cm3": 6975,
+    "nphi_vv": 6969,
+    "rdep_ohm_m": 6975
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.0009,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 802,
+    "65000": 5569,
+    "65030": 37,
+    "70000": 191,
+    "99000": 376
+   },
+   "window": null
+  },
+  {
+   "well": "25/11-5",
+   "split": null,
+   "samples": 5060,
+   "depth_min_m": 1388.145,
+   "depth_max_m": 2157.113,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 5060,
+    "rhob_g_cm3": 5060,
+    "nphi_vv": 5060,
+    "rdep_ohm_m": 5060
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 826,
+    "65000": 3780,
+    "65030": 247,
+    "70000": 27,
+    "70032": 112,
+    "80000": 68
+   },
+   "window": null
+  },
+  {
+   "well": "25/2-13 T4",
+   "split": null,
+   "samples": 21062,
+   "depth_min_m": 694.808,
+   "depth_max_m": 3896.08,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 21062,
+    "rhob_g_cm3": 20598,
+    "nphi_vv": 3946,
+    "rdep_ohm_m": 21062
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.022,
+    "nphi_vv": 0.8126,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 4797,
+    "65000": 12239,
+    "65030": 1049,
+    "70000": 1516,
+    "80000": 1405,
+    "90000": 56
+   },
+   "window": null
+  },
+  {
+   "well": "25/2-14",
+   "split": null,
+   "samples": 15840,
+   "depth_min_m": 1198.938,
+   "depth_max_m": 3621.514,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 15840,
+    "rhob_g_cm3": 15840,
+    "nphi_vv": 3918,
+    "rdep_ohm_m": 15840
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.7527,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 2554,
+    "65000": 10171,
+    "65030": 487,
+    "70000": 1629,
+    "80000": 717,
+    "90000": 147,
+    "99000": 135
+   },
+   "window": null
+  },
+  {
+   "well": "25/2-7",
+   "split": null,
+   "samples": 25131,
+   "depth_min_m": 200.338,
+   "depth_max_m": 4020.098,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 25131,
+    "rhob_g_cm3": 25131,
+    "nphi_vv": 12045,
+    "rdep_ohm_m": 25131
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.5207,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 7290,
+    "65000": 11566,
+    "65030": 2168,
+    "70000": 1896,
+    "74000": 100,
+    "80000": 1502,
+    "90000": 453,
+    "99000": 156
+   },
+   "window": null
+  },
+  {
+   "well": "25/3-1",
+   "split": null,
+   "samples": 21186,
+   "depth_min_m": 693.992,
+   "depth_max_m": 3914.112,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 21186,
+    "rhob_g_cm3": 21118,
+    "nphi_vv": 6120,
+    "rdep_ohm_m": 21186
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0032,
+    "nphi_vv": 0.7111,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 5045,
+    "65000": 12461,
+    "65030": 884,
+    "70000": 1782,
+    "74000": 28,
+    "80000": 718,
+    "90000": 157,
+    "99000": 111
+   },
+   "window": null
+  },
+  {
+   "well": "25/4-5",
+   "split": null,
+   "samples": 23005,
+   "depth_min_m": 853.303,
+   "depth_max_m": 4349.911,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 23005,
+    "rhob_g_cm3": 23005,
+    "nphi_vv": 23005,
+    "rdep_ohm_m": 23005
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 4648,
+    "65000": 8934,
+    "65030": 2976,
+    "70000": 2215,
+    "80000": 4000,
+    "90000": 38,
+    "99000": 194
+   },
+   "window": null
+  },
+  {
+   "well": "25/5-1",
+   "split": null,
+   "samples": 18473,
+   "depth_min_m": 590.36,
+   "depth_max_m": 3415.128,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 18473,
+    "rhob_g_cm3": 18458,
+    "nphi_vv": 3352,
+    "rdep_ohm_m": 18473
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0008,
+    "nphi_vv": 0.8185,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 4704,
+    "65000": 8830,
+    "65030": 2142,
+    "70000": 1315,
+    "74000": 107,
+    "80000": 662,
+    "90000": 285,
+    "99000": 428
+   },
+   "window": null
+  },
+  {
+   "well": "25/5-4",
+   "split": null,
+   "samples": 12997,
+   "depth_min_m": 1199.728,
+   "depth_max_m": 3175.12,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 12997,
+    "rhob_g_cm3": 12997,
+    "nphi_vv": 2571,
+    "rdep_ohm_m": 12990
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.8022,
+    "rdep_ohm_m": 0.0005
+   },
+   "lithology_counts_global": {
+    "30000": 1862,
+    "65000": 9129,
+    "65030": 300,
+    "70000": 1126,
+    "80000": 444,
+    "90000": 10,
+    "99000": 126
+   },
+   "window": null
+  },
+  {
+   "well": "25/6-1",
+   "split": null,
+   "samples": 6209,
+   "depth_min_m": 1907.0,
+   "depth_max_m": 2850.616,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 6209,
+    "rhob_g_cm3": 6180,
+    "nphi_vv": 4417,
+    "rdep_ohm_m": 6209
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0047,
+    "nphi_vv": 0.2886,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 532,
+    "65000": 2934,
+    "65030": 2235,
+    "70000": 116,
+    "80000": 392
+   },
+   "window": null
+  },
+  {
+   "well": "25/6-2",
+   "split": null,
+   "samples": 2925,
+   "depth_min_m": 1924.616,
+   "depth_max_m": 2369.064,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 2925,
+    "rhob_g_cm3": 2925,
+    "nphi_vv": 2224,
+    "rdep_ohm_m": 2925
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.2397,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 216,
+    "65000": 2082,
+    "65030": 162,
+    "70000": 194,
+    "80000": 271
+   },
+   "window": null
+  },
+  {
+   "well": "25/6-3",
+   "split": null,
+   "samples": 11985,
+   "depth_min_m": 626.324,
+   "depth_max_m": 2450.476,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 11985,
+    "rhob_g_cm3": 8192,
+    "nphi_vv": 8192,
+    "rdep_ohm_m": 11985
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.3165,
+    "nphi_vv": 0.3165,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 2340,
+    "65000": 8405,
+    "65030": 770,
+    "70000": 218,
+    "80000": 34,
+    "99000": 218
+   },
+   "window": null
+  },
+  {
+   "well": "25/7-2",
+   "split": "train",
+   "samples": 23879,
+   "depth_min_m": 1211.536,
+   "depth_max_m": 4840.992,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 23879,
+    "rhob_g_cm3": 23774,
+    "nphi_vv": 6211,
+    "rdep_ohm_m": 23879
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0044,
+    "nphi_vv": 0.7399,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 3697,
+    "65000": 12709,
+    "65030": 1836,
+    "70000": 3851,
+    "80000": 1191,
+    "90000": 174,
+    "99000": 421
+   },
+   "window": {
+    "start_index": 18882,
+    "end_index": 19382,
+    "points": 500,
+    "depth_from_m": 4081.6,
+    "depth_to_m": 4157.448,
+    "min_coverage": 1.0,
+    "gr_std": 37.844745,
+    "original_lith_counts": {
+     "30000": 218,
+     "65000": 273,
+     "70000": 9
+    }
+   }
+  },
+  {
+   "well": "25/8-5 S",
+   "split": null,
+   "samples": 14596,
+   "depth_min_m": 1165.798,
+   "depth_max_m": 3387.43,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 14596,
+    "rhob_g_cm3": 13953,
+    "nphi_vv": 13926,
+    "rdep_ohm_m": 14596
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0441,
+    "nphi_vv": 0.0459,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 3306,
+    "65000": 9368,
+    "65030": 238,
+    "70000": 1223,
+    "74000": 4,
+    "80000": 96,
+    "90000": 68,
+    "99000": 293
+   },
+   "window": null
+  },
+  {
+   "well": "25/8-7",
+   "split": null,
+   "samples": 8999,
+   "depth_min_m": 1003.327,
+   "depth_max_m": 2371.023,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 8999,
+    "rhob_g_cm3": 2492,
+    "nphi_vv": 2657,
+    "rdep_ohm_m": 8644
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.7231,
+    "nphi_vv": 0.7047,
+    "rdep_ohm_m": 0.0394
+   },
+   "lithology_counts_global": {
+    "30000": 932,
+    "65000": 6856,
+    "65030": 408,
+    "70000": 610,
+    "74000": 26,
+    "80000": 22,
+    "90000": 7,
+    "99000": 138
+   },
+   "window": null
+  },
+  {
+   "well": "25/9-1",
+   "split": null,
+   "samples": 15743,
+   "depth_min_m": 136.086,
+   "depth_max_m": 2528.87,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 15743,
+    "rhob_g_cm3": 3685,
+    "nphi_vv": 3656,
+    "rdep_ohm_m": 15743
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.7659,
+    "nphi_vv": 0.7678,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 3207,
+    "65000": 7321,
+    "65030": 4015,
+    "70000": 672,
+    "74000": 15,
+    "80000": 163,
+    "90000": 24,
+    "99000": 326
+   },
+   "window": null
+  },
+  {
+   "well": "26/4-1",
+   "split": null,
+   "samples": 19577,
+   "depth_min_m": 698.976,
+   "depth_max_m": 3674.528,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 19577,
+    "rhob_g_cm3": 13121,
+    "nphi_vv": 13263,
+    "rdep_ohm_m": 19577
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.3298,
+    "nphi_vv": 0.3225,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 3444,
+    "65000": 14108,
+    "65030": 238,
+    "70000": 1061,
+    "74000": 33,
+    "80000": 3,
+    "90000": 430,
+    "99000": 260
+   },
+   "window": null
+  },
+  {
+   "well": "29/6-1",
+   "split": null,
+   "samples": 24464,
+   "depth_min_m": 1099.585,
+   "depth_max_m": 4819.025,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 24464,
+    "rhob_g_cm3": 4451,
+    "nphi_vv": 4451,
+    "rdep_ohm_m": 24464
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.8181,
+    "nphi_vv": 0.8181,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 3501,
+    "65000": 18746,
+    "65030": 1170,
+    "70000": 892,
+    "74000": 17,
+    "90000": 138
+   },
+   "window": null
+  },
+  {
+   "well": "30/3-3",
+   "split": null,
+   "samples": 21163,
+   "depth_min_m": 201.062,
+   "depth_max_m": 3427.414,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 21163,
+    "rhob_g_cm3": 20810,
+    "nphi_vv": 3921,
+    "rdep_ohm_m": 21163
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0167,
+    "nphi_vv": 0.8147,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 3088,
+    "65000": 13835,
+    "65030": 2786,
+    "70000": 452,
+    "74000": 46,
+    "90000": 62,
+    "99000": 894
+   },
+   "window": null
+  },
+  {
+   "well": "30/3-5 S",
+   "split": null,
+   "samples": 4382,
+   "depth_min_m": 3892.082,
+   "depth_max_m": 4561.034,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 4382,
+    "rhob_g_cm3": 4382,
+    "nphi_vv": 4382,
+    "rdep_ohm_m": 4382
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 1025,
+    "65000": 2792,
+    "65030": 419,
+    "70000": 97,
+    "90000": 49
+   },
+   "window": null
+  },
+  {
+   "well": "30/6-5",
+   "split": null,
+   "samples": 21636,
+   "depth_min_m": 256.922,
+   "depth_max_m": 3547.874,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 21636,
+    "rhob_g_cm3": 17396,
+    "nphi_vv": 17396,
+    "rdep_ohm_m": 21636
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.196,
+    "nphi_vv": 0.196,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 2989,
+    "65000": 14781,
+    "65030": 2584,
+    "70000": 436,
+    "74000": 19,
+    "80000": 360,
+    "90000": 24,
+    "99000": 443
+   },
+   "window": null
+  },
+  {
+   "well": "31/2-1",
+   "split": null,
+   "samples": 8274,
+   "depth_min_m": 1164.852,
+   "depth_max_m": 2422.348,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 8274,
+    "rhob_g_cm3": 8274,
+    "nphi_vv": 8274,
+    "rdep_ohm_m": 8257
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0021
+   },
+   "lithology_counts_global": {
+    "30000": 2631,
+    "65000": 2515,
+    "65030": 2128,
+    "70000": 234,
+    "80000": 188,
+    "90000": 43,
+    "99000": 535
+   },
+   "window": null
+  },
+  {
+   "well": "31/2-19 S",
+   "split": null,
+   "samples": 16455,
+   "depth_min_m": 1537.278,
+   "depth_max_m": 4076.286,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 16455,
+    "rhob_g_cm3": 16422,
+    "nphi_vv": 16434,
+    "rdep_ohm_m": 16414
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.002,
+    "nphi_vv": 0.0013,
+    "rdep_ohm_m": 0.0025
+   },
+   "lithology_counts_global": {
+    "30000": 2183,
+    "65000": 11595,
+    "65030": 1655,
+    "70000": 273,
+    "80000": 663,
+    "90000": 86
+   },
+   "window": null
+  },
+  {
+   "well": "31/2-7",
+   "split": null,
+   "samples": 8004,
+   "depth_min_m": 439.641,
+   "depth_max_m": 1656.097,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 8004,
+    "rhob_g_cm3": 8004,
+    "nphi_vv": 8004,
+    "rdep_ohm_m": 8004
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 677,
+    "65000": 6746,
+    "65030": 64,
+    "70000": 199,
+    "80000": 25,
+    "99000": 293
+   },
+   "window": null
+  },
+  {
+   "well": "31/2-8",
+   "split": null,
+   "samples": 19025,
+   "depth_min_m": 480.605,
+   "depth_max_m": 3379.853,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 19025,
+    "rhob_g_cm3": 19025,
+    "nphi_vv": 19025,
+    "rdep_ohm_m": 19025
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 3077,
+    "65000": 10275,
+    "65030": 4369,
+    "70000": 562,
+    "74000": 91,
+    "80000": 415,
+    "90000": 90,
+    "99000": 146
+   },
+   "window": null
+  },
+  {
+   "well": "31/2-9",
+   "split": null,
+   "samples": 8699,
+   "depth_min_m": 443.697,
+   "depth_max_m": 1765.793,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 8699,
+    "rhob_g_cm3": 8691,
+    "nphi_vv": 8698,
+    "rdep_ohm_m": 8699
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0009,
+    "nphi_vv": 0.0001,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 857,
+    "65000": 6182,
+    "65030": 1201,
+    "70000": 199,
+    "99000": 260
+   },
+   "window": null
+  },
+  {
+   "well": "31/3-1",
+   "split": null,
+   "samples": 13236,
+   "depth_min_m": 349.733,
+   "depth_max_m": 2362.365,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 13236,
+    "rhob_g_cm3": 9917,
+    "nphi_vv": 7124,
+    "rdep_ohm_m": 12773
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.2508,
+    "nphi_vv": 0.4618,
+    "rdep_ohm_m": 0.035
+   },
+   "lithology_counts_global": {
+    "30000": 3440,
+    "65000": 6418,
+    "65030": 1859,
+    "70000": 468,
+    "80000": 354,
+    "90000": 67,
+    "99000": 630
+   },
+   "window": null
+  },
+  {
+   "well": "31/3-2",
+   "split": null,
+   "samples": 10750,
+   "depth_min_m": 433.545,
+   "depth_max_m": 2082.897,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 10750,
+    "rhob_g_cm3": 10689,
+    "nphi_vv": 10646,
+    "rdep_ohm_m": 10750
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0057,
+    "nphi_vv": 0.0097,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 2430,
+    "65000": 7316,
+    "65030": 154,
+    "70000": 342,
+    "80000": 487,
+    "90000": 21
+   },
+   "window": null
+  },
+  {
+   "well": "31/3-3",
+   "split": null,
+   "samples": 11624,
+   "depth_min_m": 793.762,
+   "depth_max_m": 2562.434,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 11624,
+    "rhob_g_cm3": 11579,
+    "nphi_vv": 11610,
+    "rdep_ohm_m": 11624
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0039,
+    "nphi_vv": 0.0012,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 2421,
+    "65000": 4783,
+    "65030": 2048,
+    "70000": 876,
+    "80000": 931,
+    "90000": 39,
+    "99000": 526
+   },
+   "window": null
+  },
+  {
+   "well": "31/3-4",
+   "split": null,
+   "samples": 5377,
+   "depth_min_m": 1288.002,
+   "depth_max_m": 2115.186,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 5377,
+    "rhob_g_cm3": 5349,
+    "nphi_vv": 5362,
+    "rdep_ohm_m": 5377
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0052,
+    "nphi_vv": 0.0028,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 1162,
+    "65000": 2385,
+    "65030": 789,
+    "70000": 684,
+    "80000": 286,
+    "90000": 71
+   },
+   "window": null
+  },
+  {
+   "well": "31/4-10",
+   "split": null,
+   "samples": 8679,
+   "depth_min_m": 997.996,
+   "depth_max_m": 2317.052,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 8679,
+    "rhob_g_cm3": 8679,
+    "nphi_vv": 2208,
+    "rdep_ohm_m": 8679
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.7456,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 380,
+    "65000": 6285,
+    "65030": 1280,
+    "70000": 217,
+    "80000": 191,
+    "99000": 326
+   },
+   "window": null
+  },
+  {
+   "well": "31/4-5",
+   "split": null,
+   "samples": 13352,
+   "depth_min_m": 895.101,
+   "depth_max_m": 2925.669,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 13352,
+    "rhob_g_cm3": 13228,
+    "nphi_vv": 6415,
+    "rdep_ohm_m": 13352
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0093,
+    "nphi_vv": 0.5195,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 2180,
+    "65000": 9005,
+    "65030": 1206,
+    "70000": 394,
+    "74000": 91,
+    "80000": 58,
+    "90000": 33,
+    "99000": 385
+   },
+   "window": null
+  },
+  {
+   "well": "31/5-4 S",
+   "split": null,
+   "samples": 11314,
+   "depth_min_m": 164.942,
+   "depth_max_m": 1884.518,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 11314,
+    "rhob_g_cm3": 2417,
+    "nphi_vv": 2432,
+    "rdep_ohm_m": 9523
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.7864,
+    "nphi_vv": 0.785,
+    "rdep_ohm_m": 0.1583
+   },
+   "lithology_counts_global": {
+    "30000": 698,
+    "65000": 9453,
+    "65030": 321,
+    "70000": 250,
+    "80000": 64,
+    "99000": 528
+   },
+   "window": null
+  },
+  {
+   "well": "31/6-5",
+   "split": null,
+   "samples": 11098,
+   "depth_min_m": 387.631,
+   "depth_max_m": 2074.375,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 11098,
+    "rhob_g_cm3": 9418,
+    "nphi_vv": 4440,
+    "rdep_ohm_m": 11098
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.1514,
+    "nphi_vv": 0.5999,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 2396,
+    "65000": 6088,
+    "65030": 926,
+    "70000": 284,
+    "80000": 557,
+    "90000": 8,
+    "99000": 839
+   },
+   "window": null
+  },
+  {
+   "well": "31/6-8",
+   "split": "train",
+   "samples": 9531,
+   "depth_min_m": 688.084,
+   "depth_max_m": 2137.708,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 9531,
+    "rhob_g_cm3": 9531,
+    "nphi_vv": 9531,
+    "rdep_ohm_m": 9531
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 1830,
+    "65000": 4816,
+    "65030": 1400,
+    "70000": 333,
+    "80000": 511,
+    "90000": 9,
+    "99000": 632
+   },
+   "window": {
+    "start_index": 4735,
+    "end_index": 5235,
+    "points": 500,
+    "depth_from_m": 1407.804,
+    "depth_to_m": 1483.652,
+    "min_coverage": 1.0,
+    "gr_std": 28.36779,
+    "original_lith_counts": {
+     "65000": 478,
+     "70000": 9,
+     "80000": 13
+    }
+   }
+  },
+  {
+   "well": "32/2-1",
+   "split": null,
+   "samples": 3049,
+   "depth_min_m": 830.204,
+   "depth_max_m": 1294.108,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 3049,
+    "rhob_g_cm3": 2950,
+    "nphi_vv": 2989,
+    "rdep_ohm_m": 3041
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0325,
+    "nphi_vv": 0.0197,
+    "rdep_ohm_m": 0.0026
+   },
+   "lithology_counts_global": {
+    "30000": 1036,
+    "65000": 1659,
+    "65030": 339,
+    "70000": 15
+   },
+   "window": null
+  },
+  {
+   "well": "33/5-2",
+   "split": "train",
+   "samples": 4091,
+   "depth_min_m": 3900.56,
+   "depth_max_m": 4522.24,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 4091,
+    "rhob_g_cm3": 4070,
+    "nphi_vv": 4091,
+    "rdep_ohm_m": 4091
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0051,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 404,
+    "65000": 2699,
+    "65030": 825,
+    "70000": 60,
+    "80000": 103
+   },
+   "window": {
+    "start_index": 250,
+    "end_index": 750,
+    "points": 500,
+    "depth_from_m": 3938.56,
+    "depth_to_m": 4014.408,
+    "min_coverage": 1.0,
+    "gr_std": 42.91194,
+    "original_lith_counts": {
+     "65000": 500
+    }
+   }
+  },
+  {
+   "well": "33/6-3 S",
+   "split": null,
+   "samples": 12681,
+   "depth_min_m": 2484.169,
+   "depth_max_m": 4422.017,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 12681,
+    "rhob_g_cm3": 4081,
+    "nphi_vv": 12297,
+    "rdep_ohm_m": 12681
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.6782,
+    "nphi_vv": 0.0303,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 355,
+    "65000": 11575,
+    "65030": 423,
+    "70000": 328
+   },
+   "window": null
+  },
+  {
+   "well": "33/9-1",
+   "split": null,
+   "samples": 17278,
+   "depth_min_m": 488.77,
+   "depth_max_m": 3118.218,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 17278,
+    "rhob_g_cm3": 10393,
+    "nphi_vv": 10363,
+    "rdep_ohm_m": 17278
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.3985,
+    "nphi_vv": 0.4002,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 3240,
+    "65000": 8746,
+    "65030": 4510,
+    "70000": 386,
+    "74000": 27,
+    "80000": 97,
+    "90000": 72,
+    "99000": 200
+   },
+   "window": null
+  },
+  {
+   "well": "33/9-17",
+   "split": null,
+   "samples": 17718,
+   "depth_min_m": 515.594,
+   "depth_max_m": 3208.578,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 17718,
+    "rhob_g_cm3": 17341,
+    "nphi_vv": 17341,
+    "rdep_ohm_m": 17718
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0213,
+    "nphi_vv": 0.0213,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 1718,
+    "65000": 15484,
+    "65030": 165,
+    "70000": 187,
+    "74000": 11,
+    "80000": 89,
+    "90000": 11,
+    "99000": 53
+   },
+   "window": null
+  },
+  {
+   "well": "34/10-19",
+   "split": null,
+   "samples": 12644,
+   "depth_min_m": 291.104,
+   "depth_max_m": 2212.84,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 12644,
+    "rhob_g_cm3": 11962,
+    "nphi_vv": 11868,
+    "rdep_ohm_m": 12644
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0539,
+    "nphi_vv": 0.0614,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 2761,
+    "65000": 8189,
+    "65030": 905,
+    "70000": 338,
+    "74000": 73,
+    "80000": 36,
+    "90000": 12,
+    "99000": 330
+   },
+   "window": null
+  },
+  {
+   "well": "34/10-21",
+   "split": null,
+   "samples": 22491,
+   "depth_min_m": 587.058,
+   "depth_max_m": 4005.538,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 22491,
+    "rhob_g_cm3": 22449,
+    "nphi_vv": 14005,
+    "rdep_ohm_m": 22491
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0019,
+    "nphi_vv": 0.3773,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 3590,
+    "65000": 16624,
+    "65030": 1315,
+    "70000": 301,
+    "74000": 34,
+    "80000": 25,
+    "90000": 146,
+    "99000": 456
+   },
+   "window": null
+  },
+  {
+   "well": "34/10-33",
+   "split": null,
+   "samples": 6046,
+   "depth_min_m": 2958.272,
+   "depth_max_m": 3877.112,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 6046,
+    "rhob_g_cm3": 5868,
+    "nphi_vv": 4891,
+    "rdep_ohm_m": 5895
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0294,
+    "nphi_vv": 0.191,
+    "rdep_ohm_m": 0.025
+   },
+   "lithology_counts_global": {
+    "30000": 879,
+    "65000": 3773,
+    "65030": 1246,
+    "70000": 64,
+    "80000": 37,
+    "90000": 47
+   },
+   "window": null
+  },
+  {
+   "well": "34/10-35",
+   "split": null,
+   "samples": 20619,
+   "depth_min_m": 1051.623,
+   "depth_max_m": 4308.375,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 20619,
+    "rhob_g_cm3": 20427,
+    "nphi_vv": 3579,
+    "rdep_ohm_m": 20619
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0093,
+    "nphi_vv": 0.8264,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 2915,
+    "65000": 3850,
+    "65030": 12985,
+    "70000": 521,
+    "74000": 15,
+    "80000": 40,
+    "86000": 5,
+    "90000": 7,
+    "99000": 281
+   },
+   "window": null
+  },
+  {
+   "well": "34/11-1",
+   "split": null,
+   "samples": 4226,
+   "depth_min_m": 3922.115,
+   "depth_max_m": 4564.315,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 4226,
+    "rhob_g_cm3": 4226,
+    "nphi_vv": 4195,
+    "rdep_ohm_m": 4226
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.0073,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 653,
+    "65000": 2710,
+    "65030": 759,
+    "80000": 12,
+    "90000": 92
+   },
+   "window": null
+  },
+  {
+   "well": "34/11-2 S",
+   "split": "train",
+   "samples": 23310,
+   "depth_min_m": 1160.304,
+   "depth_max_m": 4738.992,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 23310,
+    "rhob_g_cm3": 23310,
+    "nphi_vv": 11603,
+    "rdep_ohm_m": 23310
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.5022,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 941,
+    "65000": 17774,
+    "65030": 2918,
+    "70000": 457,
+    "74000": 20,
+    "80000": 821,
+    "90000": 113,
+    "99000": 266
+   },
+   "window": {
+    "start_index": 16601,
+    "end_index": 17101,
+    "points": 500,
+    "depth_from_m": 3692.168,
+    "depth_to_m": 3768.016,
+    "min_coverage": 1.0,
+    "gr_std": 31.12974,
+    "original_lith_counts": {
+     "30000": 132,
+     "65000": 138,
+     "65030": 192,
+     "70000": 24,
+     "90000": 14
+    }
+   }
+  },
+  {
+   "well": "34/12-1",
+   "split": null,
+   "samples": 9350,
+   "depth_min_m": 3166.95,
+   "depth_max_m": 4692.726,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 9350,
+    "rhob_g_cm3": 9191,
+    "nphi_vv": 9172,
+    "rdep_ohm_m": 9350
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.017,
+    "nphi_vv": 0.019,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 1669,
+    "65000": 3684,
+    "65030": 3358,
+    "70000": 589,
+    "90000": 50
+   },
+   "window": null
+  },
+  {
+   "well": "34/2-4",
+   "split": null,
+   "samples": 23403,
+   "depth_min_m": 523.729,
+   "depth_max_m": 4103.785,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 23403,
+    "rhob_g_cm3": 13031,
+    "nphi_vv": 3605,
+    "rdep_ohm_m": 23387
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.4432,
+    "nphi_vv": 0.846,
+    "rdep_ohm_m": 0.0007
+   },
+   "lithology_counts_global": {
+    "30000": 2347,
+    "65000": 3838,
+    "65030": 15798,
+    "70000": 262,
+    "74000": 4,
+    "80000": 956,
+    "99000": 198
+   },
+   "window": null
+  },
+  {
+   "well": "34/3-1 A",
+   "split": null,
+   "samples": 2251,
+   "depth_min_m": 3771.401,
+   "depth_max_m": 4146.537,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 2251,
+    "rhob_g_cm3": 2184,
+    "nphi_vv": 2165,
+    "rdep_ohm_m": 2251
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0298,
+    "nphi_vv": 0.0382,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 298,
+    "65000": 1239,
+    "65030": 637,
+    "70000": 32,
+    "80000": 34,
+    "90000": 11
+   },
+   "window": null
+  },
+  {
+   "well": "34/4-10 R",
+   "split": null,
+   "samples": 3880,
+   "depth_min_m": 3632.002,
+   "depth_max_m": 4240.458,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 3880,
+    "rhob_g_cm3": 3632,
+    "nphi_vv": 3700,
+    "rdep_ohm_m": 3880
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0639,
+    "nphi_vv": 0.0464,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 169,
+    "65000": 2656,
+    "65030": 806,
+    "70000": 59,
+    "74000": 38,
+    "80000": 152
+   },
+   "window": null
+  },
+  {
+   "well": "34/5-1 A",
+   "split": null,
+   "samples": 14592,
+   "depth_min_m": 2119.706,
+   "depth_max_m": 4393.474,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 14592,
+    "rhob_g_cm3": 14315,
+    "nphi_vv": 14421,
+    "rdep_ohm_m": 14592
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.019,
+    "nphi_vv": 0.0117,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 62,
+    "65000": 12990,
+    "65030": 1194,
+    "70000": 295,
+    "80000": 51
+   },
+   "window": null
+  },
+  {
+   "well": "34/5-1 S",
+   "split": null,
+   "samples": 2273,
+   "depth_min_m": 3544.25,
+   "depth_max_m": 3898.714,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 2273,
+    "rhob_g_cm3": 2151,
+    "nphi_vv": 2181,
+    "rdep_ohm_m": 2273
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0537,
+    "nphi_vv": 0.0405,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 212,
+    "65000": 1404,
+    "65030": 602,
+    "70000": 48,
+    "90000": 7
+   },
+   "window": null
+  },
+  {
+   "well": "34/7-13",
+   "split": null,
+   "samples": 3900,
+   "depth_min_m": 2383.329,
+   "depth_max_m": 2975.977,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 3900,
+    "rhob_g_cm3": 3900,
+    "nphi_vv": 3900,
+    "rdep_ohm_m": 3900
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 606,
+    "65000": 2392,
+    "65030": 871,
+    "80000": 31
+   },
+   "window": null
+  },
+  {
+   "well": "34/7-20",
+   "split": null,
+   "samples": 13157,
+   "depth_min_m": 1156.342,
+   "depth_max_m": 3166.542,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 13157,
+    "rhob_g_cm3": 13056,
+    "nphi_vv": 8914,
+    "rdep_ohm_m": 13157
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0077,
+    "nphi_vv": 0.3225,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 288,
+    "65000": 10792,
+    "65030": 1331,
+    "70000": 342,
+    "74000": 69,
+    "80000": 35,
+    "90000": 17,
+    "99000": 283
+   },
+   "window": null
+  },
+  {
+   "well": "34/7-21",
+   "split": null,
+   "samples": 12424,
+   "depth_min_m": 1061.366,
+   "depth_max_m": 2971.246,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 12424,
+    "rhob_g_cm3": 12354,
+    "nphi_vv": 7590,
+    "rdep_ohm_m": 12424
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0056,
+    "nphi_vv": 0.3891,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 268,
+    "65000": 9224,
+    "65030": 2209,
+    "70000": 350,
+    "74000": 9,
+    "80000": 66,
+    "90000": 70,
+    "99000": 228
+   },
+   "window": null
+  },
+  {
+   "well": "34/8-1",
+   "split": null,
+   "samples": 17877,
+   "depth_min_m": 891.137,
+   "depth_max_m": 3608.289,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 17877,
+    "rhob_g_cm3": 17800,
+    "nphi_vv": 12386,
+    "rdep_ohm_m": 17877
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0043,
+    "nphi_vv": 0.3072,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 2387,
+    "65000": 13565,
+    "65030": 1601,
+    "70000": 252,
+    "74000": 52,
+    "99000": 20
+   },
+   "window": null
+  },
+  {
+   "well": "34/8-3",
+   "split": null,
+   "samples": 13341,
+   "depth_min_m": 1276.104,
+   "depth_max_m": 3315.184,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 13341,
+    "rhob_g_cm3": 13330,
+    "nphi_vv": 13341,
+    "rdep_ohm_m": 13341
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0008,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 543,
+    "65000": 9011,
+    "65030": 2812,
+    "70000": 313,
+    "74000": 72,
+    "80000": 343,
+    "90000": 30,
+    "99000": 217
+   },
+   "window": null
+  },
+  {
+   "well": "34/8-7 R",
+   "split": null,
+   "samples": 7084,
+   "depth_min_m": 4360.016,
+   "depth_max_m": 5436.632,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 7084,
+    "rhob_g_cm3": 7084,
+    "nphi_vv": 7084,
+    "rdep_ohm_m": 7084
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 879,
+    "65000": 3528,
+    "65030": 2589,
+    "70000": 27,
+    "80000": 61
+   },
+   "window": null
+  },
+  {
+   "well": "35/11-1",
+   "split": null,
+   "samples": 15584,
+   "depth_min_m": 989.057,
+   "depth_max_m": 3357.673,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 15584,
+    "rhob_g_cm3": 15574,
+    "nphi_vv": 8842,
+    "rdep_ohm_m": 15584
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0006,
+    "nphi_vv": 0.4326,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 3393,
+    "65000": 8802,
+    "65030": 3033,
+    "70000": 231,
+    "90000": 71,
+    "99000": 54
+   },
+   "window": null
+  },
+  {
+   "well": "35/11-10",
+   "split": null,
+   "samples": 6206,
+   "depth_min_m": 1942.312,
+   "depth_max_m": 2885.472,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 6206,
+    "rhob_g_cm3": 6169,
+    "nphi_vv": 6137,
+    "rdep_ohm_m": 6206
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.006,
+    "nphi_vv": 0.0111,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 1402,
+    "65000": 3722,
+    "65030": 567,
+    "70000": 83,
+    "80000": 336,
+    "90000": 96
+   },
+   "window": null
+  },
+  {
+   "well": "35/11-11",
+   "split": null,
+   "samples": 12844,
+   "depth_min_m": 1245.172,
+   "depth_max_m": 3214.788,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 12844,
+    "rhob_g_cm3": 12832,
+    "nphi_vv": 12844,
+    "rdep_ohm_m": 12844
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0009,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 1730,
+    "65000": 7508,
+    "65030": 2513,
+    "70000": 496,
+    "74000": 6,
+    "80000": 467,
+    "90000": 124
+   },
+   "window": null
+  },
+  {
+   "well": "35/11-12",
+   "split": null,
+   "samples": 19112,
+   "depth_min_m": 388.546,
+   "depth_max_m": 3339.93,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 19112,
+    "rhob_g_cm3": 3389,
+    "nphi_vv": 3736,
+    "rdep_ohm_m": 19112
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.8227,
+    "nphi_vv": 0.8045,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 1060,
+    "65000": 14952,
+    "65030": 2769,
+    "70000": 224,
+    "74000": 16,
+    "99000": 91
+   },
+   "window": null
+  },
+  {
+   "well": "35/11-13",
+   "split": null,
+   "samples": 2430,
+   "depth_min_m": 2901.678,
+   "depth_max_m": 3270.886,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 2430,
+    "rhob_g_cm3": 2201,
+    "nphi_vv": 2404,
+    "rdep_ohm_m": 2430
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0942,
+    "nphi_vv": 0.0107,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 677,
+    "65000": 1223,
+    "65030": 482,
+    "70000": 48
+   },
+   "window": null
+  },
+  {
+   "well": "35/11-15 S",
+   "split": null,
+   "samples": 2596,
+   "depth_min_m": 2818.088,
+   "depth_max_m": 3212.528,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 2596,
+    "rhob_g_cm3": 2225,
+    "nphi_vv": 2573,
+    "rdep_ohm_m": 2596
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.1429,
+    "nphi_vv": 0.0089,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 1200,
+    "65000": 152,
+    "65030": 1225,
+    "70000": 6,
+    "90000": 13
+   },
+   "window": null
+  },
+  {
+   "well": "35/11-6",
+   "split": null,
+   "samples": 23544,
+   "depth_min_m": 391.208,
+   "depth_max_m": 3969.744,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 23544,
+    "rhob_g_cm3": 23472,
+    "nphi_vv": 13156,
+    "rdep_ohm_m": 23016
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0031,
+    "nphi_vv": 0.4412,
+    "rdep_ohm_m": 0.0224
+   },
+   "lithology_counts_global": {
+    "30000": 2814,
+    "65000": 15402,
+    "65030": 4942,
+    "70000": 282,
+    "74000": 32,
+    "90000": 30,
+    "99000": 42
+   },
+   "window": null
+  },
+  {
+   "well": "35/11-7",
+   "split": null,
+   "samples": 13005,
+   "depth_min_m": 890.846,
+   "depth_max_m": 2873.686,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 13005,
+    "rhob_g_cm3": 12895,
+    "nphi_vv": 7309,
+    "rdep_ohm_m": 13005
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0085,
+    "nphi_vv": 0.438,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 3496,
+    "65000": 8000,
+    "65030": 881,
+    "70000": 563,
+    "90000": 65
+   },
+   "window": null
+  },
+  {
+   "well": "35/12-1",
+   "split": null,
+   "samples": 13125,
+   "depth_min_m": 998.575,
+   "depth_max_m": 3002.239,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 13125,
+    "rhob_g_cm3": 13039,
+    "nphi_vv": 7270,
+    "rdep_ohm_m": 13125
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0066,
+    "nphi_vv": 0.4461,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 703,
+    "65000": 7771,
+    "65030": 3182,
+    "70000": 335,
+    "80000": 1134
+   },
+   "window": null
+  },
+  {
+   "well": "35/3-7 S",
+   "split": null,
+   "samples": 5087,
+   "depth_min_m": 3245.636,
+   "depth_max_m": 4018.708,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 5087,
+    "rhob_g_cm3": 5079,
+    "nphi_vv": 5087,
+    "rdep_ohm_m": 5087
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0016,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 1382,
+    "65000": 3309,
+    "65030": 396
+   },
+   "window": null
+  },
+  {
+   "well": "35/4-1",
+   "split": null,
+   "samples": 20823,
+   "depth_min_m": 1335.364,
+   "depth_max_m": 4932.596,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 20823,
+    "rhob_g_cm3": 18991,
+    "nphi_vv": 20457,
+    "rdep_ohm_m": 20823
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.088,
+    "nphi_vv": 0.0176,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 2182,
+    "65000": 15174,
+    "65030": 2740,
+    "70000": 658,
+    "74000": 19,
+    "99000": 50
+   },
+   "window": null
+  },
+  {
+   "well": "35/8-4",
+   "split": null,
+   "samples": 2709,
+   "depth_min_m": 3279.256,
+   "depth_max_m": 3690.872,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 2709,
+    "rhob_g_cm3": 2709,
+    "nphi_vv": 2701,
+    "rdep_ohm_m": 2709
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.003,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 199,
+    "65000": 2119,
+    "65030": 263,
+    "70000": 128
+   },
+   "window": null
+  },
+  {
+   "well": "35/8-6 S",
+   "split": null,
+   "samples": 14378,
+   "depth_min_m": 1821.431,
+   "depth_max_m": 4006.735,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 14378,
+    "rhob_g_cm3": 14116,
+    "nphi_vv": 14083,
+    "rdep_ohm_m": 14378
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0182,
+    "nphi_vv": 0.0205,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 331,
+    "65000": 12585,
+    "65030": 845,
+    "70000": 617
+   },
+   "window": null
+  },
+  {
+   "well": "35/9-10 S",
+   "split": null,
+   "samples": 4313,
+   "depth_min_m": 2950.022,
+   "depth_max_m": 3605.446,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 4313,
+    "rhob_g_cm3": 4303,
+    "nphi_vv": 4299,
+    "rdep_ohm_m": 4313
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0023,
+    "nphi_vv": 0.0032,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 666,
+    "65000": 536,
+    "65030": 2684,
+    "70000": 427
+   },
+   "window": null
+  },
+  {
+   "well": "35/9-2",
+   "split": null,
+   "samples": 12313,
+   "depth_min_m": 1005.688,
+   "depth_max_m": 2877.112,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 12313,
+    "rhob_g_cm3": 12313,
+    "nphi_vv": 6686,
+    "rdep_ohm_m": 12282
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0,
+    "nphi_vv": 0.457,
+    "rdep_ohm_m": 0.0025
+   },
+   "lithology_counts_global": {
+    "30000": 1366,
+    "65000": 8225,
+    "65030": 1280,
+    "70000": 9,
+    "80000": 1386,
+    "90000": 47
+   },
+   "window": null
+  },
+  {
+   "well": "35/9-5",
+   "split": "validation",
+   "samples": 4942,
+   "depth_min_m": 2726.168,
+   "depth_max_m": 3477.2,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 4942,
+    "rhob_g_cm3": 4930,
+    "nphi_vv": 4942,
+    "rdep_ohm_m": 4942
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0024,
+    "nphi_vv": 0.0,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 200,
+    "65000": 3585,
+    "65030": 447,
+    "70000": 188,
+    "80000": 510,
+    "90000": 12
+   },
+   "window": {
+    "start_index": 1285,
+    "end_index": 1785,
+    "points": 500,
+    "depth_from_m": 2921.488,
+    "depth_to_m": 2997.336,
+    "min_coverage": 1.0,
+    "gr_std": 24.673689,
+    "original_lith_counts": {
+     "30000": 20,
+     "65000": 239,
+     "70000": 44,
+     "80000": 197
+    }
+   }
+  },
+  {
+   "well": "35/9-6 S",
+   "split": null,
+   "samples": 13094,
+   "depth_min_m": 1725.152,
+   "depth_max_m": 3745.536,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 13094,
+    "rhob_g_cm3": 13000,
+    "nphi_vv": 13066,
+    "rdep_ohm_m": 13094
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0072,
+    "nphi_vv": 0.0021,
+    "rdep_ohm_m": 0.0
+   },
+   "lithology_counts_global": {
+    "30000": 1038,
+    "65000": 8834,
+    "65030": 2461,
+    "70000": 731,
+    "90000": 30
+   },
+   "window": null
+  },
+  {
+   "well": "36/7-3",
+   "split": null,
+   "samples": 3628,
+   "depth_min_m": 2391.104,
+   "depth_max_m": 2948.184,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 3628,
+    "rhob_g_cm3": 3474,
+    "nphi_vv": 3467,
+    "rdep_ohm_m": 3625
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.0424,
+    "nphi_vv": 0.0444,
+    "rdep_ohm_m": 0.0008
+   },
+   "lithology_counts_global": {
+    "30000": 962,
+    "65000": 2107,
+    "65030": 513,
+    "70000": 46
+   },
+   "window": null
+  },
+  {
+   "well": "7/1-1",
+   "split": null,
+   "samples": 16241,
+   "depth_min_m": 334.313,
+   "depth_max_m": 2802.793,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 16241,
+    "rhob_g_cm3": 4383,
+    "nphi_vv": 4387,
+    "rdep_ohm_m": 16038
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.7301,
+    "nphi_vv": 0.7299,
+    "rdep_ohm_m": 0.0125
+   },
+   "lithology_counts_global": {
+    "30000": 1786,
+    "65000": 10895,
+    "65030": 529,
+    "70000": 736,
+    "70032": 2041,
+    "80000": 183,
+    "99000": 71
+   },
+   "window": null
+  },
+  {
+   "well": "7/1-2 S",
+   "split": null,
+   "samples": 2040,
+   "depth_min_m": 2859.992,
+   "depth_max_m": 3169.92,
+   "native_step_m": 0.152,
+   "curves_present": {
+    "gr_api": 2040,
+    "rhob_g_cm3": 1602,
+    "nphi_vv": 1654,
+    "rdep_ohm_m": 2032
+   },
+   "missing_rate": {
+    "gr_api": 0.0,
+    "rhob_g_cm3": 0.2147,
+    "nphi_vv": 0.1892,
+    "rdep_ohm_m": 0.0039
+   },
+   "lithology_counts_global": {
+    "30000": 1375,
+    "65000": 452,
+    "65030": 213
+   },
+   "window": null
+  }
+ ]
+}

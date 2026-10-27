@@ -1,0 +1,10 @@
+data/raw/
+__pycache__/
+*.pyc
+deployment/
+tmp/
+evidence/
+.private-*
+deliverables/github-pages/
+deliverables/github-pages.zip
+deliverables/github-pages-manifest.json
