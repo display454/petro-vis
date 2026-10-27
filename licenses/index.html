@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>来源与许可 · 测井可视化教学实验室</title>
+  <link rel="stylesheet" href="../assets/core/tokens.css">
+  <link rel="stylesheet" href="../assets/core/layout.css">
+  <link rel="stylesheet" href="../assets/core/ui.css">
+  <style>main{max-width:960px;padding:32px 24px 64px;margin:auto}h1{font-size:28px}h2{font-size:20px;margin-top:32px}p,li{font-size:16px;line-height:1.85}a{overflow-wrap:anywhere}code{overflow-wrap:anywhere}.licence-list{padding-left:24px}</style>
+</head>
+<body><main>
+  <a href="../index.html#/">← 返回实验室</a>
+  <h1>来源与许可</h1>
+  <p>五个教学实验包含课程框架、本项目新增内容与公开测井数据。各部分的权利和许可分别说明，公开数据的原有许可持续有效。</p>
+  <h2>课程框架与项目内容</h2>
+  <p>原始页面框架、13 环节与 61 场景目录及两个参考样例来自课程材料，权利归原作者。提供的基线未附独立开源许可证。项目新增代码和图文目前保留作者权利，没有统一授予开源许可证。</p>
+  <p><a href="../LICENSE.txt">项目权利说明</a> · <a href="../THIRD_PARTY_NOTICES.md">完整来源与引用记录</a> · <a href="https://github.com/display454/petro-vis">项目源码</a></p>
+  <h2>FORCE 2020 公开井数据</h2>
+  <p>Bormann P., Aursand P., Dilib F., Dischington P., Manral S. (2020). FORCE Machine Learning Competition.</p>
+  <p lang="en">Lithofacies data was provided by the FORCE Machine Learning competition with well logs and seismic 2020.</p>
+  <ul class="licence-list">
+    <li>井曲线：<a href="https://data.norge.no/nlod/en/2.0">NLOD 2.0</a>；<a href="NLOD-2.0.txt">本地许可证全文</a>。</li>
+    <li>人工解释岩性标签：<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>；<a href="CC-BY-4.0.txt">本地许可证全文</a>。</li>
+    <li><a href="https://github.com/bolgebrygg/Force-2020-Machine-Learning-competition">原始发布仓库</a>；<a href="https://doi.org/10.5281/zenodo.4351156">长期数据归档</a>；<a href="force-2020-provenance.json">筛选规则、来源与 SHA256</a>。</li>
+  </ul>
+  <p>岩性识别与数据修复实验使用 6 井、3,000 点的教学子集。仅按观测选择连续窗，再以固定哈希选井并拆分；曲线保存四位小数，深度三位小数，标签依训练井规则映射；未插补或重采样。前三例使用合成数据。</p>
+  <p>原始解释标签、本站预测与合成参考分别保存。结果仅适用于相应教学实验，数据提供者未为本站或算法结果背书。</p>
+  <h2>独立案例包</h2>
+  <p>五个 ZIP 含完整源码、图文和本例所需数据，可在课程框架独立导入。每包 README 附权利说明；使用公开数据的两包还附 NLOD 2.0 与 CC BY 4.0 全文及来源引用。</p>
+  <p><a href="../downloads/index.html">下载五个独立案例包</a> · <a href="../downloads/manifest.json">文件清单与校验值</a></p>
+</main></body></html>

@@ -1,0 +1,185 @@
+/* =========================================================
+   设计令牌 Design Tokens
+   方向：地层图谱（纸面、标尺、编号）+ 研究工作台（密度、联动）
+   规则：颜色/字号/间距只在这里定义；案例与组件用变量，不写死色值。
+   兼容：旧变量名全部保留（--paper/--ink/--jade/--clay…），只调整取值。
+   ========================================================= */
+
+:root{
+  /* ---------- 画布：暖白纸面 ---------- */
+  --paper:      #f5f3ec;   /* 主背景，纸面 */
+  --paper-2:    #edeae1;   /* 次级底板 */
+  --paper-3:    #e4e0d5;   /* 三级底板 */
+  --card:       #fffefa;   /* 卡片 / 图表底 */
+  --card-soft:  #faf8f2;   /* 卡片内嵌区 */
+  --track:      #fffefa;   /* 专业图表底 */
+
+  /* ---------- 描边 ---------- */
+  --line:       #e2ded2;
+  --line-2:     #d5d0c2;
+  --line-3:     #bdb7a6;
+
+  /* ---------- 墨色（文字） ---------- */
+  --ink:        #263a35;
+  --ink-2:      #48584f;
+  --ink-3:      #5c6b63;
+  --ink-4:      #5c6b63;
+  --ink-inv:    #fbfaf5;
+
+  /* ---------- 主强调 ---------- */
+  --jade:       #256754;
+  --jade-d:     #1b4c3e;
+  --jade-l:     #e5efe9;
+  --clay:       #a45d36;
+  --clay-d:     #7f4726;
+  --clay-l:     #f7ece1;
+
+  /* ---------- 五类方法色（中饱和，白底可读） ---------- */
+  --c-cv:       #256754;   /* 计算机视觉 */
+  --c-ts:       #a45d36;   /* 时序预测 */
+  --c-nlp:      #6f4f7f;   /* 自然语言处理 */
+  --c-opt:      #3a5f8c;   /* 优化算法 */
+  --c-kg:       #6b6f2a;   /* 知识图谱 */
+
+  --bg-cv:      #e5efe9;
+  --bg-ts:      #f7ece1;
+  --bg-nlp:     #efe9f2;
+  --bg-opt:     #e8eef7;
+  --bg-kg:      #efefe0;
+
+  /* ---------- 语义色 ---------- */
+  --ok:         #2f6b4a;
+  --ok-bg:      #e6f0e8;
+  --warn:       #946d15;
+  --warn-bg:    #f7efd8;
+  --bad:        #a04a41;
+  --bad-bg:     #f8e8e4;
+
+  /* ---------- 图表语义（预测 / 参考 / 基线） ---------- */
+  --pred:       #256754;   /* 预测界面：深绿实线 */
+  --ref:        #8b968e;   /* 参考界面：灰虚线 */
+  --base-mark:  #a45d36;   /* 基线：暖铜短标 */
+  --fit:        #1b4c3e;   /* 模型拟合 */
+
+  /* ---------- 圆角与阴影（克制：以分隔线为主） ---------- */
+  --r-s: 4px;
+  --r-m: 6px;
+  --r-l: 8px;
+  --r-xl: 10px;
+
+  --sh-1: 0 1px 1px rgba(46,42,30,.04);
+  --sh-2: 0 1px 2px rgba(46,42,30,.05), 0 6px 16px -12px rgba(46,42,30,.18);
+  --sh-3: 0 2px 4px rgba(46,42,30,.05), 0 16px 36px -20px rgba(46,42,30,.22);
+
+  /* ---------- 字体（全部系统字体，无远端依赖） ---------- */
+  --mono: 'JetBrains Mono','SFMono-Regular','Cascadia Mono',Consolas,'Liberation Mono',monospace;
+  --sans: -apple-system,BlinkMacSystemFont,'Segoe UI Variable','Segoe UI',
+          'PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',sans-serif;
+  --serif: 'Songti SC','Source Han Serif SC','Noto Serif CJK SC','SimSun',
+           'Times New Roman',serif;
+
+  /* ---------- 布局 ---------- */
+  --nav-h: 72px;
+  --maxw: 1440px;
+  --sp-1: 6px;  --sp-2: 10px;  --sp-3: 14px;
+  --sp-4: 20px; --sp-5: 28px;  --sp-6: 40px;
+  --sp-7: 56px; --sp-8: 80px;
+
+  /* 正文16、辅助14、标题20/28；保留旧变量名兼容现有组件。 */
+  --fs-micro: 14px;
+  --fs-xs: 14px;
+  --fs-sm: 14px;
+  --fs-base: 16px;
+  --fs-md: 16px;
+  --fs-lg: 20px;
+  --fs-xl: 28px;
+}
+
+/* =========================================================
+   Reset
+   ========================================================= */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  font-size:var(--fs-base);
+  line-height:1.8;
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+
+/* 纸面：只在页顶给一层极淡的暖光，不做整页渐变或装饰网格 */
+body::before{
+  content:'';
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(1200px 460px at 50% -20%, rgba(255,255,255,.86) 0%, rgba(255,255,255,0) 70%),
+    linear-gradient(180deg, rgba(165,152,118,.05) 0%, rgba(165,152,118,0) 34%);
+}
+
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;font-size:inherit;color:inherit;background:none;border:none;cursor:pointer}
+input,select,textarea{font-family:inherit;font-size:inherit}
+img,svg{max-width:100%}
+::selection{background:rgba(37,103,84,.18);color:var(--ink)}
+
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--paper)}
+::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:5px;border:2px solid var(--paper)}
+::-webkit-scrollbar-thumb:hover{background:var(--line-3)}
+
+:focus-visible{outline:2px solid var(--jade);outline-offset:2px;border-radius:2px}
+
+/* =========================================================
+   排版基元
+   ========================================================= */
+h1,h2,h3,h4,h5{font-weight:640;letter-spacing:normal;line-height:1.28;color:var(--ink)}
+p{color:var(--ink-2)}
+b,strong{font-weight:640;color:var(--ink)}
+
+.wrap{width:min(var(--maxw),calc(100% - 56px));margin:0 auto}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* 辅助标记：仅用于有信息价值的说明 */
+.kicker{
+  font-family:var(--sans);font-size:var(--fs-micro);letter-spacing:normal;
+  text-transform:uppercase;color:var(--jade-d);
+  display:inline-flex;align-items:center;gap:9px;
+}
+.kicker::before{content:'';width:18px;height:1px;background:currentColor;opacity:.6}
+.kicker.plain::before{display:none}
+.kicker.clay{color:var(--clay-d)}
+
+.eyebrow{
+  font-family:var(--sans);font-size:var(--fs-micro);letter-spacing:normal;
+  text-transform:uppercase;color:var(--ink-4);
+}
+
+.lede{font-size:var(--fs-base);line-height:1.8;color:var(--ink-2)}
+
+/* 专业标题：系统中文衬线，只用于专题与章节大标题 */
+.serif{font-family:var(--sans);font-weight:600;letter-spacing:normal}
+
+/* 工具类 */
+.muted{color:var(--ink-3)}
+.small{font-size:var(--fs-sm)}
+.nowrap{white-space:nowrap}
+.hr{height:1px;background:var(--line);border:0;margin:0}
+.stack{display:flex;flex-direction:column}
+.row{display:flex;align-items:center}
+
+/* 细标尺：真实深度轴与编号处使用，不做装饰 */
+.rule{height:1px;background:repeating-linear-gradient(90deg,var(--line-2) 0 6px,transparent 6px 10px)}
+
+/* 动效：只在状态切换时，不做入场表演 */
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.rise{animation:fade .18s linear both}
+.d1{animation-delay:.02s}.d2{animation-delay:.04s}.d3{animation-delay:.06s}
+.d4{animation-delay:.08s}.d5{animation-delay:.10s}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
