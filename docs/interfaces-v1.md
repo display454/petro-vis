@@ -47,6 +47,8 @@ case.json 的 tabs.demo 使用 {mode:"auto",html:"demo/index.html",label:"可运
 
 保持 Cases.register、CaseImport 与 CaseDemoHost 的原 API。上传仍由原 CaseImport 完成；B 不新造上传协议或把拖文件上传替换成粘贴网址。
 
+R10（2026-11-03）新增ZIP输入适配：`CaseZip.read(file, limit)`在浏览器内将单案例ZIP展开为带`webkitRelativePath`的File数组，再进入原`loadFiles`/校验/存储流程；CaseImport公共API、清单字段与宿主API均不变。入口支持按钮和拖拽，单包展开上限6MiB。fflate本地库及case-zip在case-upload之前加载。A维护此集成扩展，B不恢复旧导入器覆盖它。
+
 A 的生成器使用同一源内容注册插件，示范经 CaseDemoHost.create 运行并在退出时 destroy。index 加载顺序仍为 data → registry → kit → cases → host → import → admin → shell。插件 mount 执行时宿主已存在，注册阶段不能提前调用它。
 
 原始“welllog-layer”是老师参考；五个本人 ID 为主规划列出的 welllog-* ID。统计“本人已完成”需同时满足本人 ID 清单和 status=ready，不能直接使用 Cases.stats().ready。

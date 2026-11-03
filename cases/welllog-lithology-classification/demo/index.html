@@ -20,6 +20,15 @@
     </p>
   </header>
 
+  <section class="method-explainer" aria-label="智能方法与作用机制">
+    <h2>智能方法：k 近邻岩性分类（kNN）</h2>
+    <p class="method-path">训练井带标签样本 → 标准化近邻投票 → 新井岩性</p>
+    <div class="method-columns">
+      <div><h3>为什么会起作用</h3><p>不同岩性在 GR、RHOB、NPHI 与 log RDEP 上形成不同响应组合。算法保存训练井的响应与岩性标签，按训练尺度寻找近邻，由 k 个近邻投票分类；多曲线共同提供区分类别的依据。</p></div>
+      <div><h3>用操作检验方法的作用</h3><p>切到测试井，与“总猜多数类”基线同时比较宏 F1 和逐类召回。点击混淆矩阵的误分类格，联动追踪具体井段；即使准确率约 79%，小类仍可能漏判，直接检验近邻的可分性与类别不平衡影响。</p></div>
+    </div>
+  </section>
+
   <section class="experiment-guide" aria-label="引导实验"><div><h2>总体准确率会掩盖哪些错误？</h2><p>切到冻结测试井，同时看准确率与宏 F1。点混淆矩阵的非对角格，追踪该类错判在岩性柱与交会图中的位置。</p></div><div class="experiment-actions"><button type="button" data-experiment="default">验证井</button><button type="button" data-experiment="stress">冻结测试井</button></div><p class="experiment-note">快捷实验会恢复默认条件，再只改变所述因素；也可继续手动调节参数。</p></section>
 
 

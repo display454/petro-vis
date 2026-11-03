@@ -19,6 +19,15 @@
     <p class="bt-sub" id="well-meta">正在生成教学井…</p>
   </header>
 
+  <section class="method-explainer" aria-label="智能方法与作用机制">
+    <h2>智能方法：多曲线变点检测与动态规划</h2>
+    <p class="method-path">GR、RHOB、log RDEP → 标准化 → 搜索分层边界</p>
+    <div class="method-columns">
+      <div><h3>为什么会起作用</h3><p>同一岩层内的曲线响应通常较稳定，跨层时多条曲线会一起改变。算法寻找“层内波动之和 + 新增界面惩罚”最小的整体分段，用动态规划比较候选位置，自动决定在哪里分层。</p></div>
+      <div><h3>用操作检验方法的作用</h3><p>将惩罚从 4 调到 32：预测界面由 7 条减至 6 条，FN 从 0 变为 1。点选界面，核对三轨曲线与邻窗均值差基线，观察抑制细碎分段与保留薄层之间的取舍。</p></div>
+    </div>
+  </section>
+
   <section class="experiment-guide" aria-label="引导实验"><div><h2>薄层为什么会被漏掉？</h2><p>先看默认结果，再增大分段惩罚。比较同一深度上的参考虚线与预测实线，并查看漏检数 FN。</p></div><div class="experiment-actions"><button type="button" data-experiment="default">默认对照</button><button type="button" data-experiment="stress">增大惩罚至 32</button></div><p class="experiment-note">快捷实验会恢复默认条件，再只改变所述因素；也可继续手动调节参数。</p></section>
 
 

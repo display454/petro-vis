@@ -16,13 +16,13 @@
   },
   {
     "path": "README.md",
-    "bytes": 4169,
-    "sha256": "a839c3d107ef9ade9a5187c194efb2eed02e333fdb72f16361db99dc3178f589"
+    "bytes": 4555,
+    "sha256": "e55fbb62d7404c20e94db941dc5d1260377e64ed0a2be41cc8364099ae420051"
   },
   {
     "path": "THIRD_PARTY_NOTICES.md",
-    "bytes": 2615,
-    "sha256": "1c11b1b1b2ba800a7a0c246d4cf1f99ad277b8a125792e7afa51f3fbe7311b17"
+    "bytes": 3004,
+    "sha256": "01cacc577ac056fd5905fe387d9f9d5929856bd4910d72a128d70a94e805791b"
   },
   {
     "path": "cases/welllog-curve-reconstruction/README.txt",
@@ -51,13 +51,13 @@
   },
   {
     "path": "cases/welllog-curve-reconstruction/demo/demo.css",
-    "bytes": 19188,
-    "sha256": "d0eaa1f225e5f414346b303737287829762a3c4c84b752f4ce25303f247c485d"
+    "bytes": 19956,
+    "sha256": "77583e9c445883cc662ff1a81fd11811cc37308e2302ec7582050a0786fdb43c"
   },
   {
     "path": "cases/welllog-curve-reconstruction/demo/index.html",
-    "bytes": 7256,
-    "sha256": "434b4ad3eec9f485e168a9936f2a0349ed3a0abc4cebaa56c2220ddfe0938b77"
+    "bytes": 8132,
+    "sha256": "38bc2f55912263a0f4dfeb19c821bdab4a0a18a6ecccca7b2462080fdc44d74f"
   },
   {
     "path": "cases/welllog-fracture-detection/README.txt",
@@ -81,13 +81,13 @@
   },
   {
     "path": "cases/welllog-fracture-detection/demo/demo.css",
-    "bytes": 16440,
-    "sha256": "0735629069c1d8f65b8180f9760ba686d9370a51a94f0f923ad940c91d0b070f"
+    "bytes": 17208,
+    "sha256": "c564e86169a065745bfef874f86edd788d11b2f8a5e3b0d2cffc28ac88c9932c"
   },
   {
     "path": "cases/welllog-fracture-detection/demo/index.html",
-    "bytes": 10476,
-    "sha256": "3e56898c0114b85fbd40abb3dadd4484b5efbb992ddb5d19d510393cb54282a6"
+    "bytes": 11368,
+    "sha256": "b0ac23f786501e60ae6c6091d97555e0d6bde1ae52a294ee48a493cb21934ac6"
   },
   {
     "path": "cases/welllog-lithology-classification/README.txt",
@@ -116,13 +116,13 @@
   },
   {
     "path": "cases/welllog-lithology-classification/demo/demo.css",
-    "bytes": 20711,
-    "sha256": "ab14d94df538bd055da63948f78aa48d928628451bdecad6c8fd999a385cce39"
+    "bytes": 21479,
+    "sha256": "d31c2869def5ce575dbb92d17e0476267c5e70c25e7b0c2929e761e06e3f6dec"
   },
   {
     "path": "cases/welllog-lithology-classification/demo/index.html",
-    "bytes": 7624,
-    "sha256": "8585bf7ea9ffe17180a6a8d6c7388f822fba711fe73313ec45b75a396457e6c3"
+    "bytes": 8519,
+    "sha256": "fd9cb982a986bbbc02a65047f2c6c06043f916c7e6862677afb0d2165d8c7ef4"
   },
   {
     "path": "cases/welllog-multicurve-segmentation/README.txt",
@@ -146,13 +146,13 @@
   },
   {
     "path": "cases/welllog-multicurve-segmentation/demo/demo.css",
-    "bytes": 19518,
-    "sha256": "4736cccdeb7a955ef2369e9beff2acefa7f6eda357daf622814f50313f05b882"
+    "bytes": 20286,
+    "sha256": "ed086457d637d6ecccb78e53873e640caa2fa7b141af16c1dfa8c59c9db1e785"
   },
   {
     "path": "cases/welllog-multicurve-segmentation/demo/index.html",
-    "bytes": 8965,
-    "sha256": "882695d2dd83424781f936d9cd221d2653c5688bc6132b892adbcec6bb825817"
+    "bytes": 9808,
+    "sha256": "98b91f72226b7ffb5b24b87fefa35185764dcd6c4e5bc1f3b613998415e406f3"
   },
   {
     "path": "cases/welllog-porosity-regression/README.txt",
@@ -176,13 +176,13 @@
   },
   {
     "path": "cases/welllog-porosity-regression/demo/demo.css",
-    "bytes": 16129,
-    "sha256": "3965ecea7d1a038c3f5b0bf9b5a7e1f95ac93c23e4a8d07104ae47f2d247e345"
+    "bytes": 16897,
+    "sha256": "1b8f1f1904a44fb90e51250919f933ee0cb7bd46d5ed3a9cd02ea6bd21d1484a"
   },
   {
     "path": "cases/welllog-porosity-regression/demo/index.html",
-    "bytes": 9273,
-    "sha256": "337eca7f6d95862db42c12a9971138f781e685e4e1ecb56ac6300d3828a7c989"
+    "bytes": 10154,
+    "sha256": "5583f8b6fd3fc0a80b7886613c9b242f20d7eb642598f97080dca0d20f8990e0"
   },
   {
     "path": "contracts/interfaces.d.ts",
@@ -207,32 +207,32 @@
   {
     "path": "deliverables/cases/manifest.json",
     "bytes": 1908,
-    "sha256": "c73066e3cf071e37d829d13c9f663d55a3b3f337e27d4a738ddfc9c9ae77ae58"
+    "sha256": "637aeeade649b5833afcc634988f0a7d4453d0e4ba2a0e2e2bcb867f48b7ab6f"
   },
   {
     "path": "deliverables/cases/测井-储层参数智能解释.zip",
-    "bytes": 40218,
-    "sha256": "aeae9ef7394e21b821428396bb3b77c94ea10705277c64139528793f2fbc297f"
+    "bytes": 40784,
+    "sha256": "59c4e117fb7fbd4f45d0cdf0a940a5f0e6edbabfc69ea227023457d106689421"
   },
   {
     "path": "deliverables/cases/测井-岩性识别.zip",
-    "bytes": 102056,
-    "sha256": "1517f6d97357c03de7ece08f5ea327da13a35dc928a5f7115ec71775e9725c32"
+    "bytes": 102660,
+    "sha256": "4aaf53f95a22b681d658dec0afccd8618bbe6f179c1126c262ccde5820dd50a0"
   },
   {
     "path": "deliverables/cases/测井-成像测井裂缝识别.zip",
-    "bytes": 125293,
-    "sha256": "f33a4b388bfdd6d75bfe0e6ad6eff4652df0bdc1bf4766fe25f6d1535f7d5b22"
+    "bytes": 125865,
+    "sha256": "c661b9e455f12c4d479557c4378ed991a50a3180555d4fa2af9d51877a0fde36"
   },
   {
     "path": "deliverables/cases/测井-测井数据修复.zip",
-    "bytes": 101141,
-    "sha256": "c233616158fd15f8eef7ec6de9425f9dbae01d779d4423bd7313294bf5d9fc1f"
+    "bytes": 101741,
+    "sha256": "348adc0b481091f97629fb512bb3f42d9c8b0f1c659b3adbce9358f0cd0754f6"
   },
   {
     "path": "deliverables/cases/测井-测井曲线智能分层.zip",
-    "bytes": 48090,
-    "sha256": "db1e4bacd3a8b572344a6ef8c8e02789a8eb52511665ccd4249a5875dd282764"
+    "bytes": 48647,
+    "sha256": "d74692ffa39efd6fa8f281d21618a52a97440c751a24798dd0592e023da3fbff"
   },
   {
     "path": "docs/case-01-design.md",
@@ -256,8 +256,8 @@
   },
   {
     "path": "docs/interfaces-v1.md",
-    "bytes": 28244,
-    "sha256": "12d7e119e2ae6f960d3628670720c1837873d14f814f374ebfafe9d8088f9d2c"
+    "bytes": 28667,
+    "sha256": "3a26d6f3a519188e5443a51461916ed0a6a4e00c4bb8cd91abdf0b8a3bc9c356"
   },
   {
     "path": "extracted/assets/core/case-demo-host.js",
@@ -281,8 +281,8 @@
   },
   {
     "path": "site/THIRD_PARTY_NOTICES.md",
-    "bytes": 2576,
-    "sha256": "befb457e9dd924f4328999bcedd6cde5f034117a649361c9ee68df1c52051a1b"
+    "bytes": 3004,
+    "sha256": "01cacc577ac056fd5905fe387d9f9d5929856bd4910d72a128d70a94e805791b"
   },
   {
     "path": "site/assets/cases/_template.case.js",
@@ -296,13 +296,13 @@
   },
   {
     "path": "site/assets/cases/welllog-curve-reconstruction.case.js",
-    "bytes": 369069,
-    "sha256": "ec695be64cbd2d6734cfb9f29b87073f642ae9524eb6eb20354520ce8d343c57"
+    "bytes": 370739,
+    "sha256": "70a83fe7f53075be740c575c3ed88f2076878f3bb0b851f06d2d2b657c9e331d"
   },
   {
     "path": "site/assets/cases/welllog-fracture-detection.case.js",
-    "bytes": 208288,
-    "sha256": "cf7e2374e34a1d9a215132a7bea2c1c59f687073e9945f9484213edb2f55a509"
+    "bytes": 209974,
+    "sha256": "e1f9c993b4f8e8cd77a16441abc1e81e6e2efcaf3e57ba283827b75f36470e8e"
   },
   {
     "path": "site/assets/cases/welllog-layer.case.js",
@@ -316,18 +316,18 @@
   },
   {
     "path": "site/assets/cases/welllog-lithology-classification.case.js",
-    "bytes": 429097,
-    "sha256": "801b13f3550f8ff495b0e1641a7fff44df3a0128e5bac56dadc9e148d6c02c0d"
+    "bytes": 430786,
+    "sha256": "3ff5b6ff204819e1313d5a9d7d1154bd7de183969050ba2521f48e9d45d9def4"
   },
   {
     "path": "site/assets/cases/welllog-multicurve-segmentation.case.js",
-    "bytes": 154806,
-    "sha256": "0259f7b7b91d5590acb41dd8570229defb858979b2a5b7108e293c4fe0c0f448"
+    "bytes": 156443,
+    "sha256": "b9d4ca8f3bb59f65b3f1f37cba3944e218d77ec0d6d5cc9107e073fca8c699ec"
   },
   {
     "path": "site/assets/cases/welllog-porosity-regression.case.js",
-    "bytes": 160220,
-    "sha256": "8f6f43b0f33261e04a06ea2626c1e30eefdc92ca29aca8934c40ea06ecd6cd3e"
+    "bytes": 161896,
+    "sha256": "9af573eb9c1e9944e56d5e5bc9c490e5ba8dc2098e71d27acf66514591a208d7"
   },
   {
     "path": "site/assets/core/admin.js",
@@ -341,8 +341,13 @@
   },
   {
     "path": "site/assets/core/case-upload.js",
-    "bytes": 66694,
-    "sha256": "7e6591bdbd07d1b1b5dba2140190787c94b4f91217c7d0fd96ccb86807f97a99"
+    "bytes": 68246,
+    "sha256": "47d2f2a848370fd329508f0cd5f401aac57730d918c61c04d939c69493700488"
+  },
+  {
+    "path": "site/assets/core/case-zip.js",
+    "bytes": 5467,
+    "sha256": "65f7a56c8084abbbae3570ac96207f23313de797f86af23cd2d97a85cfc48702"
   },
   {
     "path": "site/assets/core/kit.js",
@@ -361,8 +366,8 @@
   },
   {
     "path": "site/assets/core/shell.js",
-    "bytes": 63919,
-    "sha256": "5ca36c7d22678287c625015ffe54584dd0a0b6db101ffa72d7e645f9ac3d1621"
+    "bytes": 63881,
+    "sha256": "4b38f5b7a6c64ed5b46dda8c2619fce55b109d9d35f30414bf8c0e615c48cd32"
   },
   {
     "path": "site/assets/core/tokens.css",
@@ -371,13 +376,18 @@
   },
   {
     "path": "site/assets/core/ui.css",
-    "bytes": 50599,
-    "sha256": "b845960f9fe9bd8d46e35c3a9bb9f7fe3128b1bbdf0c08dd3d42bdbfa6deea1b"
+    "bytes": 50613,
+    "sha256": "4d5085ea6ac02d02a7ea40b6323eff6c6b32f8722d2642514b8681eca4430e45"
   },
   {
     "path": "site/assets/data.js",
     "bytes": 79603,
     "sha256": "c72429b12a68f11739f297e5fb70ab353e5fb4a377ec0e5522f4da9ddfd478e2"
+  },
+  {
+    "path": "site/assets/vendor/fflate-0.8.2.js",
+    "bytes": 32665,
+    "sha256": "c3b34f2e9f5e74d4d7d64e01cac7a0c01954c6c406414d42185c7b53d6875ddf"
   },
   {
     "path": "site/docs/如何添加新案例.md",
@@ -386,8 +396,8 @@
   },
   {
     "path": "site/downloads/index.html",
-    "bytes": 2024,
-    "sha256": "5988f835507aa4d7fb7b5c5a976efbdf7cbfbd201368e826c3fe366ca0bd6914"
+    "bytes": 2091,
+    "sha256": "e72f8fcf9d10ac27db38635bf71dc26b9032b5e063a96e3ef55dc2df5f7438c2"
   },
   {
     "path": "site/firstbreak-pick-case/README.txt",
@@ -416,8 +426,8 @@
   },
   {
     "path": "site/index.html",
-    "bytes": 2993,
-    "sha256": "a626d67bfa280307504b80aa70f2a771ff2f9188dd0da14e704c5604af2a7887"
+    "bytes": 3105,
+    "sha256": "707a3af7e9de55d59f7763d326df0a4d85c84f35193191dde5bfff961560d54a"
   },
   {
     "path": "site/licenses/CC-BY-4.0.txt",
@@ -430,14 +440,19 @@
     "sha256": "45d7409310d94bdd3ac27ae48ba52804ed7fb20db4c2656a61bfcc120191f20e"
   },
   {
+    "path": "site/licenses/fflate-MIT.txt",
+    "bytes": 1069,
+    "sha256": "805f6cb28bb8b6d3a0badd83c93bccd9671fa01a3b4b92b7042b0743325ac243"
+  },
+  {
     "path": "site/licenses/force-2020-provenance.json",
     "bytes": 2893,
     "sha256": "c363f28e7b9f2499e35c0f18f573357ec1d14d3d05504645d000abd33a5c963b"
   },
   {
     "path": "site/licenses/index.html",
-    "bytes": 3135,
-    "sha256": "35c8388e15109d5ee993e7fc9d322727433b37d78ace9457f2fa35ab0fc79894"
+    "bytes": 3441,
+    "sha256": "fb5fb59389a6e1131052cb1bc578e619cb58c4dbb856c2a9fecf62290c68200b"
   },
   {
     "path": "tests/case-01-core.test.cjs",
@@ -463,6 +478,11 @@
     "path": "tests/case-05-core.test.cjs",
     "bytes": 4474,
     "sha256": "5c979bcabb1b5b381da0d8c248825c1febc05f912aac018b7738836086912b1e"
+  },
+  {
+    "path": "tests/case-zip.test.cjs",
+    "bytes": 3955,
+    "sha256": "4c8ed09fcfcf9ad2e968bbf8901979e1eec261da9216b33fa4a232dad8572c3a"
   },
   {
     "path": "tests/ui-render-regressions.test.cjs",

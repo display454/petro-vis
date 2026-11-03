@@ -24,6 +24,15 @@
     </div>
   </header>
 
+  <section class="method-explainer" aria-label="智能方法与作用机制">
+    <h2>智能方法：k 近邻回归（kNN）</h2>
+    <p class="method-path">训练井模拟标定 → 相似样本检索 → 孔隙度预测</p>
+    <div class="method-columns">
+      <div><h3>为什么会起作用</h3><p>孔隙度会同时影响密度、中子、伽马与电阻率响应。算法用训练井拟合的尺度统一各曲线，在多维响应中寻找最相近的 k 个标定样本，以其孔隙度均值预测新样本；局部相似性把历史标定经验转成预测。</p></div>
+      <div><h3>用操作检验方法的作用</h3><p>先比较四曲线与仅 RHOB，再切换“流体偏移”。查看 kNN 和密度公式的 MAE、散点与残差：标准条件下 kNN 约 0.803 pp，偏移后约 1.786 pp，检验相似性假设何时适用。</p></div>
+    </div>
+  </section>
+
   <section class="experiment-guide" aria-label="引导实验"><div><h2>换一种流体，误差会怎样变化？</h2><p>从默认对照切换到流体偏移。查看散点偏离对角线的方向，再比较两法 MAE；两者都变差时，要考虑训练条件是否适用。</p></div><div class="experiment-actions"><button type="button" data-experiment="default">标准对照</button><button type="button" data-experiment="stress">流体偏移</button></div><p class="experiment-note">快捷实验会恢复默认条件，再只改变所述因素；也可继续手动调节参数。</p></section>
 
 

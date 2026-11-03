@@ -21,6 +21,15 @@
     </p>
   </header>
 
+  <section class="method-explainer" aria-label="智能方法与作用机制">
+    <h2>智能方法：跨曲线岭回归</h2>
+    <p class="method-path">训练井完整观测 → 学习曲线关系 → 补全被遮挡 GR</p>
+    <div class="method-columns">
+      <div><h3>为什么会起作用</h3><p>GR 与密度、中子、电阻率共同反映地层性质。岭回归从训练井学习 RHOB、NPHI、log RDEP 到 GR 的系数，加入 L2 惩罚抑制过大系数；在缺口处利用仍可见的辅助曲线预测 GR，而线性插值只利用缺口两端。</p></div>
+      <div><h3>用操作检验方法的作用</h3><p>同一人工缺口比较两法 MAE，点选缺口看局部曲线。验证井插值/回归约 10.55/22.81，测试井约 42.42/36.41；观察跨曲线信息何时有帮助、何时井间关系变化会削弱预测。</p></div>
+    </div>
+  </section>
+
   <section class="experiment-guide" aria-label="引导实验"><div><h2>复杂模型一定比插值好吗？</h2><p>用默认的 15% 遮挡比较两种方法，再切换测试井。查看同区 MAE 与局部缺口，判断方法的优势是否能迁移到另一口井。</p></div><div class="experiment-actions"><button type="button" data-experiment="default">验证井 · 15%</button><button type="button" data-experiment="stress">测试井 · 15%</button><button type="button" data-experiment="empty">无遮挡</button></div><p class="experiment-note">快捷实验会恢复默认条件，再只改变所述因素；也可继续手动调节参数。</p></section>
 
 

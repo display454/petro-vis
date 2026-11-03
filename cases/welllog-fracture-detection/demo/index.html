@@ -24,6 +24,15 @@
     </div>
   </header>
 
+  <section class="method-explainer" aria-label="智能方法与作用机制">
+    <h2>智能方法：暗线增强与正弦几何模式搜索</h2>
+    <p class="method-path">灰度像素 → 暗线响应 → 正弦候选与阈值筛选</p>
+    <div class="method-columns">
+      <div><h3>为什么会起作用</h3><p>平面裂缝与圆柱井壁的交线展开后呈正弦形。算法先突出比邻域更暗的像素，再搜索中心深度、振幅与相位，用沿轨迹的响应和覆盖度评分并去重，将几何规律转成自动检测依据。</p></div>
+      <div><h3>用操作检验方法的作用</h3><p>勾选增强图，对照候选轨迹；切换“层理干扰”，再调整阈值。默认 TP=3、FP=0，层理情境 FP=1：观察相似几何如何被检出，也如何造成误检。本例是图像模式检测，未训练神经网络。</p></div>
+    </div>
+  </section>
+
   <section class="experiment-guide" aria-label="引导实验"><div><h2>几何形状相似，就一定是裂缝吗？</h2><p>先看清晰图像，再加入层理干扰。对照叠加图与候选列表中的误检：算法找到了正弦形状，地质解释仍需复核。</p></div><div class="experiment-actions"><button type="button" data-experiment="default">清晰图像</button><button type="button" data-experiment="stress">加入层理干扰</button></div><p class="experiment-note">快捷实验会恢复默认条件，再只改变所述因素；也可继续手动调节参数。</p></section>
 
 

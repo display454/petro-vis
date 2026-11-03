@@ -401,3 +401,12 @@ select{height:auto;min-height:40px;line-height:1.5;padding-top:7px;padding-botto
 button,input[type=range]{min-height:40px}
 @media(max-width:900px){.experiment-guide{grid-template-columns:minmax(0,1fr)}.experiment-actions{max-width:none}}
 @media(max-width:560px){.bench{padding:12px 0 22px}.bench-top h1{font-size:20px}.experiment-guide{padding:12px}.col-head h2,.plot-head h2{font-size:20px}.identity{gap:6px}}
+
+/* R10：方法、机制与实验观察同屏可读，随独立案例包提供。 */
+.method-explainer{margin:16px 0;padding:16px 18px;background:var(--card,#fff);border:1px solid var(--line-2,#deded6);border-radius:4px}
+.method-explainer h2{font-size:20px;line-height:1.5;margin:0 0 6px}
+.method-explainer .method-path{font-size:16px;color:var(--jade-d,#255d50);margin:0 0 12px;overflow-wrap:anywhere}
+.method-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 28px}
+.method-explainer h3{font-size:16px;line-height:1.6;margin:0 0 4px}
+.method-explainer p{font-size:16px;line-height:1.8;margin:0;color:var(--ink-2,#454d47)}
+@media(max-width:700px){.method-explainer{padding:12px}.method-columns{grid-template-columns:minmax(0,1fr);gap:12px}}

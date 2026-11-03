@@ -25,4 +25,8 @@
 
 项目新增代码、图文与教学合成数据保留各自作者权利，当前没有统一授予开源许可证。公开展示与源码可见不改变上述权利范围；数据许可独立有效。详见 [项目权利说明](LICENSE)。
 
-站点运行不依赖第三方脚本库、CDN、在线字体、后端或 API；图表由原生 SVG/Canvas 与 JavaScript 绘制。系统字体由访问者设备提供。
+图表由原生 SVG/Canvas 与 JavaScript 绘制。站点不依赖 CDN、在线字体、后端或 API；系统字体由访问者设备提供。
+
+## ZIP 解压：fflate 0.8.2
+
+浏览器内的案例 ZIP 导入使用本地打包的 fflate 0.8.2（Copyright (c) 2023 Arjun Barrett），MIT许可。来源：https://github.com/101arrowz/fflate/tree/v0.8.2 。原版浏览器构建保存在 `site/assets/vendor/fflate-0.8.2.js`，许可证全文在 [fflate MIT](site/licenses/fflate-MIT.txt)。组件仅用于本地解压，案例演示本身无包外依赖。

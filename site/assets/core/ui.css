@@ -817,7 +817,7 @@ html.mdl-open{overflow:hidden}
 @media (max-width:900px){
   .imp-grid{grid-template-columns:1fr}
   .imp-flow{grid-template-columns:1fr}
-  .imp-r{order:-1}
+  .imp-r{order:0}
   .mdl{padding:12px}
   .mdl-p{max-height:calc(100vh - 24px)}
 }
@@ -861,7 +861,7 @@ html.mdl-open{overflow:hidden}
 #import-modal .mdl-p{width:min(1080px,100%)}
 #import-preview .mdl-p{width:min(1180px,100%)}
 
-.imp-choose{display:flex;gap:7px;margin-top:9px}
+.imp-choose{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
 .imp-choose .btn{pointer-events:auto}
 
 /* 文件清单 */
