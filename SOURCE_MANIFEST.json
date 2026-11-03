@@ -281,8 +281,8 @@
   },
   {
     "path": "site/THIRD_PARTY_NOTICES.md",
-    "bytes": 3004,
-    "sha256": "01cacc577ac056fd5905fe387d9f9d5929856bd4910d72a128d70a94e805791b"
+    "bytes": 2956,
+    "sha256": "44c3752a121bf0aaed618d6bf8c60e2bf3a853ac9a1080589e79ba9bc8f17d5b"
   },
   {
     "path": "site/assets/cases/_template.case.js",
