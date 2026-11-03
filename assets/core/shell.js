@@ -940,7 +940,7 @@
       '<div class="sec-rail">' +
       '<span class="r"><span class="tag">不需要改任何文件</span></span></div>' +
       '<h2>上传一个案例包，三步接进去</h2>' +
-      '<p>下载模板（zip，含一个能跑的示范页）→ 改清单、替换演示内容 → 把整个文件夹拖回网站。系统逐项检查格式，通过后当场出现在站点里。</p>' +
+      '<p>下载 ZIP 模板 → 修改清单与演示 → 选择 ZIP 压缩包或整个文件夹。系统自动解压并逐项检查，通过后案例立即出现在站点里。</p>' +
       '</div>' +
 
       '<div class="upcard">' +
@@ -954,7 +954,7 @@
       '<button class="btn primary" data-import>＋ 打开「添加案例」</button>' +
       '<button class="btn" data-dl-template>↓ 下载案例包模板（.zip）</button>' +
       '</div>' +
-      '<div class="upcard-note">模板解压后就是一个可直接运行的完整包：清单 + 示范页 + 样式 + 脚本，改完整个文件夹拖回去即可。' +
+      '<div class="upcard-note">模板含清单、示范页、样式与脚本。改完可压缩为 ZIP 直接添加，也可导入整个文件夹。' +
       '上传的案例保存在本机浏览器（localStorage），换电脑需重新上传；要永久发布给所有人，用下面的方式 B。</div>' +
       '</div>' +
       '<div class="upcard-r">' +
